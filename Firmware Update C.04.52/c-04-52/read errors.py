@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import binascii
 import struct
 
 BASE = 0x40000000
