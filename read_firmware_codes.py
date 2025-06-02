@@ -14,23 +14,26 @@ def getString(data,offset):
 with open('342-0608-A.bin', 'rb') as file:
 	data = file.read()
 
-	print(getString(data, 0xCE3))
-	BASE = 0xFE0
-	while True:
-		s = getString(data, BASE)
-		for sl in [s[i: i + 16] for i in range(0, len(s), 16)]:
-			print(sl)
-		BASE += len(s) + 1
-		if BASE >= 0x1510:
-			break
-	
-	BASE = 0x21B44
-	while True:
-		s = getString(data, BASE)
-		print(s)
-		BASE += len(s) + 1
-		if BASE >= 0x22B75:
-			break
+	# Copyright string of ROM
+	#print(getString(data, 0xCE3))
+	if False: # Internal greetings
+		BASE = 0xFE0
+		while True:
+			s = getString(data, BASE)
+			for sl in [s[i: i + 16] for i in range(0, len(s), 16)]:
+				print(sl)
+			BASE += len(s) + 1
+			if BASE >= 0x1510:
+				break
+
+	if False: # Debugger help
+		BASE = 0x21B44
+		while True:
+			s = getString(data, BASE)
+			print(s)
+			BASE += len(s) + 1
+			if BASE >= 0x22B75:
+				break
 	# The BC is stored in the Master Stack Pointer (MSP) of the 68030.
 	
 	lpos = 0x40000
@@ -38,6 +41,9 @@ with open('342-0608-A.bin', 'rb') as file:
 		lpos -= 0x40
 		license = data[lpos:lpos+0x40]
 		bootConfig,bf_str,oc,serialNumber,macAdr,invbootConfig = struct.unpack('>L10sL12s2x16s12xL',license)
+		# check if the bootConfig is matching the inverse one.
+		if bootConfig != 0xFFFFFFFF and (bootConfig != invbootConfig ^ 0xFFFFFFFF):
+			print('%08x => %08x != ~%08x' % (bootConfig, bootConfig ^ 0xFFFFFFFF, invbootConfig))
 		if bootConfig == 0xFFFFFFFF or (bootConfig != invbootConfig ^ 0xFFFFFFFF):
 			break
 		bf_str = (bf_str.decode('ascii').rstrip('\0') + ' ' * 10)[:11]
@@ -47,31 +53,31 @@ with open('342-0608-A.bin', 'rb') as file:
 		print('#%2d ADR:%08x => BC:%08x BF:"%s" OC:%08x Serial:"%s" MAC:"%s"' % (r,lpos,bootConfig,bf_str,oc,serialNumber,macAdr))
 		bcl = []
 		if bootConfig & 1:
-			bcl.append('check for terminal before booting')
+			bcl.append('Check for terminal before booting')
 		if (bootConfig & 6) == 0:
-			bcl.append('boot from disk')
+			bcl.append('Boot from disk')
 		elif (bootConfig & 6) == 2:
-			bcl.append('boot to HP-IB monitor')
+			bcl.append('Boot to HP-IB monitor')
 		elif (bootConfig & 6) == 4:
-			bcl.append('boot from rom')
+			bcl.append('Boot from ROM')
 		elif (bootConfig & 6) == 6:
-			bcl.append('boot to LAN monitor')
+			bcl.append('Boot to LAN monitor')
 		if bootConfig & 8:
-			bcl.append('cache enabled')
+			bcl.append('Cache enabled')
 		if bootConfig & 0x10:
-			bcl.append('rs232 output')
+			bcl.append('RS232 output')
 		if bootConfig & 0x20:
-			bcl.append('long power-on tests')
+			bcl.append('Long power-on tests')
 		if bootConfig & 0x40:
-			bcl.append('power on tests')
+			bcl.append('Power on tests')
 		if bootConfig & 0x80:
-			bcl.append('monitor reboot upon exception')
+			bcl.append('Monitor reboot upon exception')
 		if bootConfig & 0x100:
-			bcl.append('abort RAM test on first errorexception')
+			bcl.append('Abort RAM test on first error')
 		if bootConfig & 0x200:
-			bcl.append('hp-ib ifc resets')
+			bcl.append('HP-IB ifc resets')
 		if bootConfig & 0x400:
-			bcl.append('replace Flash w/ SRAM daugherboard')
+			bcl.append('Replace Flash w/ SRAM daugherboard')
 		if bootConfig & 0x800:
 			bcl.append('moveDataSeg(1)/noMove(0) on hp-ib/disk loads')
 		if bootConfig & 0x1000:
