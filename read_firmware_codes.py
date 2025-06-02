@@ -84,9 +84,14 @@ with open('342-0608-A.bin', 'rb') as file:
 			bcl.append('Output test info to RS-232')
 		if bootConfig & 0x2000:
 			bcl.append('Search floppy for loadable files')
-		bcl.append('HP-IB Adr #%d' % ((bootConfig >> 16) & 0x1F))
+		bcl.append('HP-IB Adr #%d' % ((bootConfig >> (16+0)) & 0x1F))
 		bcl.append('HP-IB Disk Adr #%d' % ((bootConfig >> (16+8)) & 0x7))
 		bcl.append('HP-IB Disk Unit #%d' % ((bootConfig >> (16+12)) & 0x3))
+		# the following two seem to rely on a HW emulator during development
+		if bootConfig & 0x80000000:
+			bcl.append('HW Emulator')
+		if bootConfig & 0x40000000:
+			bcl.append('HW Emulator Setup (force 0x1000 option)')
 		print('BOOT Config = %s' % ', '.join(bcl))
 
 		ocl = []
