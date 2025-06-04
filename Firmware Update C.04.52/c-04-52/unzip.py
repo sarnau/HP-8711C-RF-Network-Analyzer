@@ -7,7 +7,7 @@ for idx in range(7):
 		block = bytearray(f.read())
 		versionA,headerVersion = struct.unpack('>HH', block[:4])
 		headerSize = 0x40
-		if headerVersion == 0x010B or headerVersion == 0x10D or headerVersion == 0x010E:
+		if headerVersion == 0x010B or headerVersion == 0x010D or headerVersion == 0x010E:
 			headerSize = 0x1000 # This seems only to be used during development for RAM based firmware
 		data += block
 
