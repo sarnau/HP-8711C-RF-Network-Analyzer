@@ -11,7 +11,7 @@ def getString(data,offset):
 		offset += 1
 	return s
 
-with open('342-0608-A.bin', 'rb') as file:
+with open('08712-80033.bin', 'rb') as file:
 	data = file.read()
 
 	# Copyright string of ROM
