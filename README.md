@@ -57,3 +57,19 @@ I've written an ANSI-C application and a python script to generate a code for a 
 
 - `HP option code generator.py`
 - `HP option code generator.c`
+
+
+## LAN Interface
+
+The LAN interface exposes several ports as follows:
+
+- 21/tcp   ftp
+- 23/tcp   telnet
+- 80/tcp   http
+- 5025/tcp SCPI server
+- 5030/tcp ?
+- 5050/tcp LAN Debugger
+
+FTP and http are fully documented. telnet allows talking via SCPI commands.
+
+Interesting is 5050, which is the LAN Debugger. It is accessible via telnet and even provides help. It allows inspecting the memory and even modifying it.
