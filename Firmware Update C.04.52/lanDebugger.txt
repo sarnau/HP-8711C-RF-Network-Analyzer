@@ -1,0 +1,214 @@
+✓ ~ > telnet 192.168.1.3 5050
+Trying 192.168.1.3...
+Connected to 192.168.1.3.
+Escape character is '^]'.
+Welcome to the LAN Debugger.  Enter '?' for help.
+> ?
+Available commands are:
+arp
+bootp
+bye
+dbyte	[<hex start address> [num bytes]] - display memory using bytes
+dlong	[<hex start address> [num bytes]] - display memory using longs
+dmem	[<hex start address> [num bytes]] - display memory using bytes
+dword	[<hex start address> [num bytes]] - display memory using words
+ifconfig
+ip
+mem
+ps
+quit
+route
+sbyte	<hex start address> <hexchars> - set memory using bytes
+slong	<hex start address> <hexchars> - set memory using longs
+smem	<hex start address> <hexchars> - set memory using bytes
+socket
+sword	<hex start address> <hexchars> - set memory using words
+tcp
+trace
+udp
+> arp
+received 2 badtype 0 bogus addr 0 reqst in 2 replies 0 reqst out 0
+IP addr         Type           Time Q Addr
+192.168.1.200   10 Mb Ethernet 899    00:30:93:10:6f:1f
+255.255.255.255 10 Mb Ethernet 0      ff:ff:ff:ff:ff:ff
+> ip address
+0.0.0.0
+> ip rtimer
+IP reasm timeout (sec): 30
+> ip status
+( 1)ipForwarding                 1     ( 2)ipDefaultTTL               255
+( 3)ipInReceives                25     ( 4)ipInHdrErrors                0
+( 5)ipInAddrErrors               0     ( 6)ipForwDatagrams              0
+( 7)ipInUnknownProtos            0     ( 8)ipInDiscards                 0
+( 9)ipInDelivers                25     (10)ipOutRequests               24
+(11)ipOutDiscards                0     (12)ipOutNoRoutes                0
+(13)ipReasmTimeout              30     (14)ipReasmReqds                 0
+(15)ipReasmOKs                   0     (16)ipReasmFails                 0
+(17)ipFragOKs                    0     (18)ipFragFails                  0
+(19)ipFragCreates                0     
+Routing lookups: 27, cache hits 24 (89%)
+> ip ttl
+IP Time-to-live: 255
+> mem
+
+Region  start      end         min     max    pend    USED  cnt   AVAIL cnt
+ 1 REG1 0xc03b9418 0xc0405857   20  312384  312385  204160   42  108224   1
+ 2 REG2 0xc0405858 0xc0fffbff   20 12559272 12559273 12247060  192  312212   1
+ 3 FSYS 0xc0fefc90 0xc0ffd88f   20   56320   56321   31884   44   24436   1
+ 4 LAN1 0xc0f9847c 0xc0fefc7b   20  358400  358401   55720   19  302680   2
+ 5 LAN2 0xc0f72c68 0xc0f98467   20  153600  153601    2912   26  150688   1
+ 6 USER 0xc04836ac 0xc0f72c4f   20 11466148 11466149 11466148    2       0   0
+ 7 RDSK 0xc0d42e64 0xc0f72c4f   20 2293228 2293229 2293228    1       0   0
+ 8 IBAS 0xc04836c0 0xc0d42e4f   20 9172880 9172881  125568    7 9047312   1
+
+> ps
+
+=================================================================
+
+
+    pid    PNAME  STAT/M PRI GID POS  TIX MEMORY STK CPU      Tcks    RunCnt
+0xc03b8080  LDBG   RUN/* 150  0   *     1    0kB 19%  0%        21       100
+
+0xc03b74ec  TCH1   RDY   100  0   1     1    0kB 32% 77%      3779     67497
+0xc03b6eb0  IDLE   RDY     0  0   2     1    0kB  6%  8%       393    103383
+
+0xc03b7078  TIME  vblk   180  0   .  1776    0kB 26%  0%         1       141
+     >> WAITING(0x100): TimedEventChange
+
+0xc03b7f9c  HTTP  xblk   120  0   .     1    0kB 12%  0%         1        75
+0xc03b7eb8  ethe  xblk/* 255  0   .     1    0kB 11%  0%         0         2
+0xc03b7dd4   TNS  xblk/* 150  0   .     1    0kB 16%  0%         1         5
+0xc03b7cf0   NET  xblk/* 255  0   .     1    0kB 12%  0%         2       251
+0xc03b7c0c  LANT  xblk/* 190  0   .     1    0kB 11%  0%         0         2
+0xc03b7b28  IBAS  vblk   100  0   .     1    0kB  4%  0%         2        11
+     >> WAITING(0x8008): TITHCOMREADYSIG
+0xc03b7a44  IBSL  vblk   150  0   .     1    0kB 38%  0%         1        12
+     >> WAITING(0x8200): ibe_wake_hpsl
+     >> SIGNALLED(0x800): ibe_inq_wait
+0xc03b7960  IBfp  xblk   105  0   .     1    0kB 13%  0%         0         2
+0xc03b787c  IBkr  susp   100  0   .     1    0kB 12%  0%         0         2
+0xc03b7798  HPIB  vblk/* 150  0   .     1    0kB 38%  0%         0         8
+     >> WAITING(0x1): NEW_DATA_S
+0xc03b76b4  PLOT  vblk   100  0   .     1    0kB 26%  0%         0         3
+     >> WAITING(0x8009): user_event_4,BEGIN_PLOT
+0xc03b75d0  TCH2  vblk   100  0   .     1    0kB 32%  0%         0         4
+     >> WAITING(0x8001): SIG_START_TRACE(2)
+0xc03b7408  ARRY  xblk   110  0   .     1    0kB 26%  0%        15       151
+0xc03b7324  SELB  xblk   120  0   .     1    0kB 28%  0%        10        14
+0xc03b7240  FPKP  xblk   160  0   .     1    0kB 15%  0%         0         3
+0xc03b715c  MMGR   RDY   170  0   1     1    0kB 26%  3%       163      2395
+0xc03b6f94  DBUG  xblk   200  0   .     1    0kB 37%  0%         0         4
+0xc03b6dcc  ROOT  susp/* 250  0   .     1    0kB  2% 11%       537      3796
+     >> SIGNALLED(0x10003000): ibe_outq_wait
+
+	22 Process(s) (21 avail); Total time: 4926 ticks.
+
+    xid    XNAME  TYPE  ACC  maxQ  Qlen BLOCKED
+0xc03b3abe   LAN  fifo  any    1    0    
+0xc03b3a9c   LAN  fifo  any    1    0    HTTP
+0xc03b3a7a   LAN  fifo  any    1    0    TNS 
+0xc03b3a58   LAN  fifo  any    1    0    ethe
+0xc03b3a36   LAN  fifo  any    1    0    
+0xc03b3a14  TSEM  fifo  any    1    0    LANT
+0xc03b39f2   ITH  fifo  any  inf    1    
+0xc03b39d0   ITH  fifo  any  inf    1    
+0xc03b39ae   ITH  fifo  any  inf    1    
+0xc03b398c  CALs  fifo  any    1    0    
+0xc03b396a  SBRs  fifo  any    1    0    
+0xc03b3948  ISDs  fifo  any    1    0    
+0xc03b3926  FDCs  fifo  any    1    0    
+0xc03b3904  KYQs  fifo  any    1    0    
+0xc03b38e2  ARSs  fifo  any    1    0    
+0xc03b38c0  IBEs  fifo  any    1    0    
+0xc03b389e  ERMs  fifo  any    1    0    
+0xc03b387c  SERs  fifo  any    1    0    
+0xc03b385a  TVTs  fifo  any    1    0    
+0xc03b3838  CENs  fifo  any    1    0    
+0xc03b3816  ASNs  fifo  any    1    0    
+0xc03b37f4  ABLs  fifo  any    1    0    
+0xc03b37d2  DSUs  fifo  any    1    0    
+0xc03b37b0  AUSs  fifo  any    1    0    
+0xc03b378e  SMSs  fifo  any    1    0    
+0xc03b376c  MKRs  fifo  any    1    0    
+0xc03b374a  CMAs  fifo  any    1    0    
+0xc03b3728  TSLs  fifo  any    1    0    
+0xc03b3706  DINT  fifo  any    1    0    
+0xc03b36e4  DDLs  fifo  any    1    0    
+0xc03b36c2  DSPL  fifo  any    1    0    
+0xc03b36a0  MDLs  fifo  any    1    0    
+0xc03b367e  SELs  fifo  any    1    0    
+0xc03b365c  ISLs  fifo  any    1    0    
+0xc03b363a  IBex  fifo  any  inf    0    
+0xc03b3618  IBkx  fifo  any  inf    0    
+0xc03b35f6  IBfx  fifo  any  inf    0    IBfp
+0xc03b35d4  SELx  fifo  any  inf    0    SELB
+0xc03b35b2  MAFx  fifo  any  inf    0    
+0xc03b3590  CMHx  fifo  any  inf    0    
+0xc03b356e  ARRx  fifo  any  inf    0    ARRY
+0xc03b354c  SVCx  fifo  any  inf    0    
+0xc03b352a  CALx  fifo  any  inf    0    
+0xc03b3508  MMGx  fifo  any  inf    1    
+0xc03b34e6  COM2  fifo  any    1    0    DBUG
+0xc03b34c4  COM1  fifo  any    1    0    
+0xc03b34a2  fpkq  fifo  any  inf    0    FPKP
+0xc03b3480  hpbc  fifo  any    1    0    
+	48 Exchange(s) (22 avail).
+	4 Msg buffer(s) (508 avail).
+
+Semaphore   Name  Locks  Count  Owner  Blocked
+0xc0141994  LAN   0      0      (LDBG) 
+0xc014196c  LAN   0      -1     (HTTP) HTTP
+0xc0141944  LAN   0      -1     (TNS ) TNS
+0xc014191c  LAN   0      -1            ethe
+0xc01418f4  LAN   0      0      (NET ) 
+0xc00c282c  TSEM  0      -1     (LANT) LANT
+0xc012d4c0  CALs  0      1             
+0xc012d434  SBRs  0      1             
+0xc012d418  ISDs  0      1             
+0xc012d4a4  FDCs  0      1             
+0xc012d488  KYQs  0      1             
+0xc012d3fc  ARSs  0      1             
+0xc012d46c  IBEs  0      1             
+0xc012d450  ERMs  0      1             
+0xc012d3c4  SERs  0      1             
+0xc012d3a8  TVTs  0      1             
+0xc012d38c  CENs  0      1             
+0xc012d370  ASNs  0      1             
+0xc012d354  ABLs  0      1             
+0xc012d338  DSUs  0      1             
+0xc012d31c  AUSs  0      1             
+0xc012d300  SMSs  0      1             
+0xc012d2e4  MKRs  1      0      TCH1   
+0xc012d2c8  CMAs  0      1             
+0xc012d2ac  TSLs  0      1             
+0xc012d258  DINT  0      1             
+0xc012d3e0  DDLs  0      1             
+0xc012d274  DSPL  0      1             
+0xc012d290  MDLs  1      0      TCH1   
+0xc012d23c  SELs  0      1             
+0xc012d220  ISLs  0      1             
+0xc00fdd04  COM2  0      -1            DBUG
+0xc00fdc7c  COM1  0      0             
+0xc0345ff2  hpbc  0      1             
+
+Region  start      end         min     max    pend    USED  cnt   AVAIL cnt
+ 1 REG1 0xc03b9418 0xc0405857   20  312384  312385  204160   42  108224   1
+ 2 REG2 0xc0405858 0xc0fffbff   20 12559272 12559273 12247060  192  312212   1
+ 3 FSYS 0xc0fefc90 0xc0ffd88f   20   56320   56321   31884   44   24436   1
+ 4 LAN1 0xc0f9847c 0xc0fefc7b   20  358400  358401  103480   49  254920   2
+ 5 LAN2 0xc0f72c68 0xc0f98467   20  153600  153601    2912   26  150688   1
+ 6 USER 0xc04836ac 0xc0f72c4f   20 11466148 11466149 11466148    2       0   0
+ 7 RDSK 0xc0d42e64 0xc0f72c4f   20 2293228 2293229 2293228    1       0   0
+ 8 IBAS 0xc04836c0 0xc0d42e4f   20 9172880 9172881  125568    7 9047312   1
+
+=================================================================
+> socket
+S#   Type    PCB      Remote socket         Owner
+  20 TCP     c0f97bd0                       c03b7dd4 TNS       
+  21 TCP     c0f97ab8                       c03b7f9c HTTP?;?c?;m??;~?
+  22 TCP     c0f97964 192.168.1.200:60534   c03b7cf0 NET       
+> route
+Dest            Len Interface    Gateway          Metric  P Timer  Use
+192.168.1.0     24  ethernet                      0         0      39
+default         0   ethernet     192.166.1.1      1         0      0
+> 

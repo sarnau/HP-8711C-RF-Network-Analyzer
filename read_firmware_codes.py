@@ -110,19 +110,3 @@ with open('08712-80033.bin', 'rb') as file:
 				ocl.append('Fault/SRL')
 		print('License = %s' % ', '.join(ocl))
 		print()
-
-def set_bit(value, bit):
-    return value | (1<<bit)
-
-def clear_bit(value, bit):
-    return value & ~(1<<bit)
-
-d0 = 0x3ffc0
-d1 = 15
-while True:
-	d1 -= 1
-	d0 = clear_bit(d0,d1)
-	print('%2d %08x %d' % (d1,d0,((0x40000 - d0)//0x40)-1))
-	d0 = set_bit(d0,d1)
-	if d1 == 6:
-		break
