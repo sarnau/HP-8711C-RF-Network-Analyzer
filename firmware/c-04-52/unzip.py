@@ -9,7 +9,7 @@ for idx in range(7):
 		headerSize = 0x40
 		if headerVersion == 0x010B or headerVersion == 0x010D or headerVersion == 0x010E:
 			headerSize = 0x1000 # This seems only to be used during development for RAM based firmware
-		data += block
+		data += block[headerSize:]
 
-with open('C871XC_0x40000000.bin', 'wb') as output_file:
+with open('../C871XC_ROM_C_04_52.bin', 'wb') as output_file:
 	output_file.write(data)

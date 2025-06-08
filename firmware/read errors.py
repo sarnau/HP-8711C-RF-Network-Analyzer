@@ -11,7 +11,7 @@ def getString(data,offset):
 		offset += 1
 	return s
 
-with open("C871XC_0x40000000.bin", 'rb') as file:
+with open("C871XC_ROM_C_04_52.bin", 'rb') as file:
 	data = file.read()
 	for offset in range(0x40243954-BASE,0x40243954-BASE+0x1000, 16):
 		errors,error_message_table_name,minErr,maxErr = struct.unpack('>LLLL', data[offset:offset+16])
