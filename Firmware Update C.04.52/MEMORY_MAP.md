@@ -1,5 +1,7 @@
 # Memory MAP of the system
 
+MAIN DECODE takes A24-A26 to generate these areas:
+
 	00000000-00FFFFFF     BootROM Area
 		00000000-0003FFFF BootROM (256KB)
 		00040000-00FFFFFF 3x Mirrored
