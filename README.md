@@ -70,7 +70,7 @@ I've written an ANSI-C application and a python script to generate a code for a 
 
 ## Converting the unit to an 8712C or 8714C without opening the device
 
-There is no opcode code to enable the vector unit with Smith Charts. While the 8711C and 8712C (or 8713C and 8714C) are identical from the hardware side, the license is missing from the BootROM.
+There is keyword option to enable the vector unit with Smith Charts. While the 8711C and 8712C (or 8713C and 8714C) are identical from the hardware side, the license is missing from the BootROM.
 
 So far the typical way to upgrade the unit was to open the device, reading it out, patch it and then reflashing the BootROM. I have found a much easier way, which at least works for macOS and Linux. I have added a way it _could_ work on Windows, but I haven't tested it.
 
