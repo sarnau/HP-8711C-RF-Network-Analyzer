@@ -9,11 +9,11 @@ I have done some work with Ghidra to look into the firmware ROM. I've also added
 Before doing *ANYTHING*, please do a backup of the Correction constants! Not just the non-volatile RAM, but also on a floppy disk! Make sure to copy it of the floppy to e.g. a USB stick, which you keep with the device. Just in case!
 
 
-## Software update
+## Software update to C.04.52
 
-The latest firmware for the 8711C, 8712C, 8713C, 8714C is C.04.52. It is available on the [Keysight website](https://www.keysight.com/us/en/lib/software-detail/computer-software/8711c-8712c-8713c-8714c-network-analyzer-firmware-upgrade-c0452-14acirc-mb-1000000337epsgsud.html), but requires access to a very old DOS computer. Dosbox on macOS or Windows doesn't like the LIF.EXE tool. I would appreciate if somebody could send me a disk image with this update.
+The latest firmware for the 8711C, 8712C, 8713C, 8714C is C.04.52. It is available on the [Keysight website](https://www.keysight.com/us/en/lib/software-detail/computer-software/8711c-8712c-8713c-8714c-network-analyzer-firmware-upgrade-c0452-14acirc-mb-1000000337epsgsud.html). I also added it to the repository.
 
-I also added it to the repository.
+Because the official tools doesn't work in Dosbox and requires an old computer, I've written a little Python script to generate a disk image from the update files. I then used Greaseweazle to write it to a 3.5 HD floppy disk on my Mac. Put the disk into the drive and turn the 871XC on to update the device.
 
 
 ## Maintenance in the power supply
