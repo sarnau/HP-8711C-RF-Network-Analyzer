@@ -8,6 +8,7 @@
 import struct
 import binascii
 from datetime import datetime, timezone
+import lhafile
 
 def align_bytearray_length(data: bytearray, alignment: int = 256, pad_byte: int = 0) -> bytearray:
     padding_needed = (-len(data)) % alignment
@@ -18,6 +19,15 @@ def align_bytearray_length(data: bytearray, alignment: int = 256, pad_byte: int 
 def dec_to_bcd(val):
 	return (val // 10) * 0x10 + (val % 10)
 
+# 1. extract the LHA's SFX 2.13S file
+file = open('c-04-52.exe','rb')
+file.seek(file.read().find(b'-lh')-2)
+lha = lhafile.LhaFile(file)
+fileDict = {}
+for n in lha.infolist():
+	fileDict[n.filename] = lha.read(n.filename)
+
+# 2. generate a LIF disk image with the necessary files
 sectorSize = 0x100
 sectorCount = 0x1680 # 18 sectors of 512 bytes
 directoryStartSector = 2
@@ -29,7 +39,7 @@ fileOffset = 0x5
 filelist = ['C871XC_0','C871XC_1','C871XC_2','C871XC_3','C871XC_4','C871XC_5','C871XC_6','C_04_52C']
 for i in range(len(filelist)):
 	filename = filelist[i]
-	fileData = open(filename,'rb').read()
+	fileData = fileDict[filename]
 	dt = datetime.fromtimestamp(struct.unpack('<L', fileData[4:8])[0], timezone.utc)
 	year = dec_to_bcd(dt.year - 1900)
 	month = dec_to_bcd(dt.month)
@@ -60,4 +70,4 @@ for i in range(len(filelist)):
 	data = data[:fileOffset * sectorSize] + fileData + data[(fileOffset + fileSize) * sectorSize:]
 	fileOffset += fileSize
 
-open('../../disks/HP 08712-10015 Firmware Disk C.04.52.img','wb').write(data)
+open('../disks/HP 08712-10015 Firmware Disk C.04.52.img','wb').write(data)
