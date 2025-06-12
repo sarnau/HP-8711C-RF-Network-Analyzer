@@ -18,7 +18,7 @@ while True:
 			w = struct.unpack('>H', data[BASE+8+i:BASE+8+i+2])[0]
 			dsp_mem[adr - DSP_MEM_BASE + i*8]     = w >> 8
 			dsp_mem[adr - DSP_MEM_BASE + i*8 + 1] = w & 0xFF
-	print('$%08x:$%04x %s' % (adr,l, binascii.hexlify(data[BASE+8:BASE+8+2*l]).decode('ascii')[:64]))
+	#print('$%08x:$%04x %s' % (adr,l, binascii.hexlify(data[BASE+8:BASE+8+2*l]).decode('ascii')[:64]))
 	BASE += 8 + l*2
 
 #open('DSP_MEM_%08x.bin' % DSP_MEM_BASE, 'wb').write(dsp_mem)
@@ -28,6 +28,21 @@ def dsp_read_word(adr):
 
 def dsp_read_long(adr):
 	return dsp_read_word(adr) + (dsp_read_word(adr + 16) << 16)
+
+
+if False:
+	# print the build-in font, which seems to be 256 characters, each 16 wide and 22 pixel tall
+	FONT_BASE = 0xffde0800
+	CHARS_PER_LINE = 8
+	for ch in range(0,256,CHARS_PER_LINE):
+		for chx in range(CHARS_PER_LINE):
+			print('%02x              ' % (ch+chx),end='')
+		print
+		for h in reversed(range(10,32)):
+			for chx in range(CHARS_PER_LINE):
+				w = dsp_read_word(FONT_BASE + ((ch+chx) * 32 + h) * 16)
+				print("{0:016b}".format(w).replace('0',' ').replace('1','#')[::-1],end='')
+			print()
 
 dsp_adr = None
 
@@ -42,6 +57,16 @@ def dsp_disass():
 	rd = op & 0x0f        # Destination register
 	rf = 'AB'[(op & 0x10) >> 4] # Register file
 	om = op & 0xfe00
+
+	def byte_to_signed(byte_value):
+		if not 0 <= byte_value <= 255:
+			raise ValueError("Input must be in range 0-255")
+		return byte_value - 256 if byte_value > 127 else byte_value
+
+	def word_to_signed(word_value):
+		if not 0 <= word_value <= 0xFFFF:
+			raise ValueError("Input must be in range 0-65535 (16-bit unsigned)")
+		return word_value - 0x10000 if word_value > 0x7FFF else word_value
 
 	def get_reg(r):
 		if r != 0x0f:
@@ -61,6 +86,12 @@ def dsp_disass():
 	def get_word_parm():
 		global dsp_adr
 		res = '%Xh' % dsp_read_word(dsp_adr)
+		dsp_adr += 16
+		return res
+
+	def get_word_parm_1s_comp():
+		global dsp_adr
+		res = '%Xh' % ~dsp_read_word(dsp_adr)
 		dsp_adr += 16
 		return res
 
@@ -96,18 +127,18 @@ def dsp_disass():
 
 	def get_relative():
 		global dsp_adr
-		res = '%Xh' % (pc + 32 + (dsp_read_word(dsp_adr) << 4))
+		res = '%Xh' % (pc + 32 + word_to_signed(dsp_read_word(dsp_adr)) * 16)
 		dsp_adr += 16
 		return res
 
 	def get_relative_8bit():
-		return '%Xh' % (pc + 32 + ((op & 0xFF) << 4))
+		return '%Xh' % (pc + 16 + byte_to_signed(op & 0xFF) * 16)
 
 	def get_relative_5bit():
 		ls = (op >> 5) & 0x1F
 		if op & 0x0400:
 			ls = -ls
-		return '%Xh' % (pc + 32 + (ls << 4))
+		return '%Xh' % (pc + 16 + (ls << 4))
 
 	def get_field():
 		return '01'[(op & 0x200) >> 9]
@@ -282,7 +313,7 @@ def dsp_disass():
 			return 'INC      %s' % (get_des_reg())
 	elif om == 0x1400 or om == 0x1600:
 		if (op & 0x03e0) != 0x0020:
-			return 'SUBK     %d,%s' % (get_constant_1_32(),get_des_reg())
+			return 'SUBK     %s,%s' % (get_constant_1_32(),get_des_reg())
 		else:
 			return 'DEC      %s' % (get_des_reg())
 	elif om == 0x1800:
@@ -463,9 +494,10 @@ def dsp_disass():
 	elif om == 0xfc00:
 		return 'PIXT     *%s,*%s' % (get_src_reg(),get_des_reg())
 
-	return 'DW     %04Xh' % (op & 0xffff)
+	return 'DW       %04Xh' % (op & 0xffff)
 
-# 2. print all traps of the TI34010
+# 2. check all traps of the TI34010
+LABELS = {}
 for trap in range(32):
 	if trap == 0:
 		trapName = 'RESET'
@@ -484,26 +516,58 @@ for trap in range(32):
 	elif trap == 30:
 		trapName = 'ILLOP'
 	else:
-		trapName = 'Trap %d' % (trap)
+		trapName = 'TRAP_%d' % (trap)
 	DSP_TRAP_BASE = 0xFFFF_FC00
 	trapAdr = DSP_TRAP_BASE + (31-trap) * 32
 	trapDest = dsp_read_long(trapAdr)
-	if trapDest != 0:
-		words = ''
-		for wc in range(16):
-			words += '%04x ' % dsp_read_word(trapDest + wc * 16)
-		print('$%08x %-10s : $%08x %s' % (trapAdr, trapName, trapDest, words))
-		dsp_adr = trapDest
-		print(dsp_disass())
-		print(dsp_disass())
-		print(dsp_disass())
-		print(dsp_disass())
+	print('%08xh : %-8s => %08x' % (trapAdr, trapName, trapDest))
+	if trapDest not in LABELS:
+		LABELS[trapDest] = trapName
 
-dsp_adr = 0xFFDB26F0
-print('%08x : %s' % (dsp_adr, dsp_disass()))
-print('%08x : %s' % (dsp_adr, dsp_disass()))
-print('%08x : %s' % (dsp_adr, dsp_disass()))
-print('%08x : %s' % (dsp_adr, dsp_disass()))
-print('%08x : %s' % (dsp_adr, dsp_disass()))
-print('%08x : %s' % (dsp_adr, dsp_disass()))
-print('%08x : %s' % (dsp_adr, dsp_disass()))
+# 3. disassemble the full firmware
+TABLE = set()
+TABLE.add(0xffdb3fe0)
+TABLE.add(0xffdb3220)
+TABLE.add(0xffdb32b0)
+
+def disass_line():
+	global dsp_adr
+	pc = dsp_adr
+	opcode = dsp_read_word(dsp_adr)
+	while opcode == 0x0000:
+		dsp_adr += 16
+		opcode = dsp_read_word(dsp_adr)
+	if dsp_adr != pc:
+		dstr = 'DW       %04xh*%d' % (0x0000,(dsp_adr-pc)//16)
+	elif dsp_adr >= 0xffdb29a0 and dsp_adr < 0xffdb3220:
+		adr = dsp_read_long(dsp_adr)
+		dsp_adr += 32
+		if adr >= 0xffdb3220 and adr < 0xffdb44d0:
+			TABLE.add(adr)
+		dstr = 'DL       %08Xh' % (adr)
+	elif dsp_adr in TABLE:
+		wc = dsp_read_word(dsp_adr)
+		dsp_adr += 16
+		ww = ['%04Xh' % (wc)]
+		for i in range(wc):
+			ww.append('%04xh' % dsp_read_word(dsp_adr))
+			dsp_adr += 16
+		dstr = 'DW       %s' % ','.join(ww)
+	else:
+		dstr = dsp_disass()
+	l = dsp_adr - pc
+	ww = []
+	for i in range(0, l, 16):
+		ww.append('%04x' % dsp_read_word(pc + i))
+	print('%08xh : %-24s : %s' % (pc, ' '.join(ww)[:24], dstr))
+	return dstr
+
+dsp_adr = 0xffda8000
+while (dsp_adr-0xffda8000)//16 < 0x126a:
+	if dsp_adr in LABELS:
+		print('=' * 80)
+		print('= %s' % LABELS[dsp_adr])
+		print('=' * 80)
+	dstr = disass_line()
+	if dstr.startswith('RETS') or dstr.startswith('RETI') or dstr.startswith('JR ') or dstr.startswith('JUMP'):
+		print()
