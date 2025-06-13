@@ -17,6 +17,7 @@ C00001C0h: .word 0000h
 C00001E0h: .word 0000h
 C0000200h: .word 8000h
 C0000220h: .word 0000h
+C0000240h: .word 0000h
 C0000260h: .word 0000h
 C0000280h: .word 0000h
 C00002A0h: .word 0004h
