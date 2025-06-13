@@ -5,32 +5,32 @@ import struct
 import sys
 data = open('08712-80033 C.01.000.bin', 'rb').read()
 
-# 1. find all memory blocks written into the DSP
-DSP_MEM_BASE = 0xFFD0_0000
-DSP_REG_BASE = 0xC000_0000
-dsp_mem = bytearray([0x00]*(0x1_0000_0000 - DSP_MEM_BASE))
+# 1. find all memory blocks written into the GSP
+GSP_MEM_BASE = 0xFFD0_0000
+GSP_REG_BASE = 0xC000_0000
+gsp_mem = bytearray([0x00]*(0x1_0000_0000 - GSP_MEM_BASE))
 BASE = 0x00007558
 while True:
 	adr,l = struct.unpack('>LL', data[BASE:BASE+8])
 	if l == 0xFFFF_FFFF:
 		break
-	if adr >= DSP_MEM_BASE:
+	if adr >= GSP_MEM_BASE:
 		for i in range(0,l*2,2):
 			w = struct.unpack('>H', data[BASE+8+i:BASE+8+i+2])[0]
-			dsp_mem[adr - DSP_MEM_BASE + i*8]     = w >> 8
-			dsp_mem[adr - DSP_MEM_BASE + i*8 + 1] = w & 0xFF
-	elif adr >= DSP_REG_BASE and adr < DSP_REG_BASE + 0x1000:
-		DSP_REGS = struct.unpack('>%dH' % l, data[BASE+8:BASE+8+l*2])
+			gsp_mem[adr - GSP_MEM_BASE + i*8]     = w >> 8
+			gsp_mem[adr - GSP_MEM_BASE + i*8 + 1] = w & 0xFF
+	elif adr >= GSP_REG_BASE and adr < GSP_REG_BASE + 0x1000:
+		GSP_REGS = struct.unpack('>%dH' % l, data[BASE+8:BASE+8+l*2])
 	#print('%08Xh:$%04X %s' % (adr,l, binascii.hexlify(data[BASE+8:BASE+8+2*l]).decode('ascii')[:64]))
 	BASE += 8 + l*2
 
-#open('DSP_MEM_%08X.bin' % DSP_MEM_BASE, 'wb').write(dsp_mem)
+#open('GSP_MEM_%08X.bin' % GSP_MEM_BASE, 'wb').write(gsp_mem)
 
-def dsp_read_word(adr):
-	return struct.unpack('>H', dsp_mem[adr-DSP_MEM_BASE:adr-DSP_MEM_BASE+2])[0]
+def gsp_read_word(adr):
+	return struct.unpack('>H', gsp_mem[adr-GSP_MEM_BASE:adr-GSP_MEM_BASE+2])[0]
 
-def dsp_read_long(adr):
-	return dsp_read_word(adr) + (dsp_read_word(adr + 16) << 16)
+def gsp_read_long(adr):
+	return gsp_read_word(adr) + (gsp_read_word(adr + 16) << 16)
 
 
 if False:
@@ -43,18 +43,18 @@ if False:
 		print
 		for h in reversed(range(10,32)):
 			for chx in range(CHARS_PER_LINE):
-				w = dsp_read_word(FONT_BASE + ((ch+chx) * 32 + h) * 16)
+				w = gsp_read_word(FONT_BASE + ((ch+chx) * 32 + h) * 16)
 				print("{0:016b}".format(w).replace('0',' ').replace('1','#')[::-1],end='')
 			print()
 
-dsp_adr = None
+gsp_adr = None
 
-def dsp_disass():
-	global dsp_adr
+def gsp_disass():
+	global gsp_adr
 
-	pc = dsp_adr
-	op = dsp_read_word(dsp_adr)
-	dsp_adr += 16
+	pc = gsp_adr
+	op = gsp_read_word(gsp_adr)
+	gsp_adr += 16
 	subop = op & 0x01e0
 	rs = (op >> 5) & 0x0f # Source register
 	rd = op & 0x0f        # Destination register
@@ -87,27 +87,27 @@ def dsp_disass():
 		return get_src_reg() + ',' + get_des_reg()
 
 	def get_word_parm():
-		global dsp_adr
-		res = '%Xh' % dsp_read_word(dsp_adr)
-		dsp_adr += 16
+		global gsp_adr
+		res = '%Xh' % gsp_read_word(gsp_adr)
+		gsp_adr += 16
 		return res
 
 	def get_word_parm_1s_comp():
-		global dsp_adr
-		res = '%Xh' % (~dsp_read_word(dsp_adr) & 0xFFFF)
-		dsp_adr += 16
+		global gsp_adr
+		res = '%Xh' % (~gsp_read_word(gsp_adr) & 0xFFFF)
+		gsp_adr += 16
 		return res
 
 	def get_long_parm():
-		global dsp_adr
-		res = '%Xh' % dsp_read_long(dsp_adr)
-		dsp_adr += 32
+		global gsp_adr
+		res = '%Xh' % gsp_read_long(gsp_adr)
+		gsp_adr += 32
 		return res
 
 	def get_long_parm_1s_comp():
-		global dsp_adr
-		res = '%Xh' % (~dsp_read_long(dsp_adr) & 0xFFFFFFFF)
-		dsp_adr += 32
+		global gsp_adr
+		res = '%Xh' % (~gsp_read_long(gsp_adr) & 0xFFFFFFFF)
+		gsp_adr += 32
 		return res
 
 	def get_constant():
@@ -129,9 +129,9 @@ def dsp_disass():
 		return '%Xh' % constant
 
 	def get_relative():
-		global dsp_adr
-		res = '%Xh' % (pc + 32 + word_to_signed(dsp_read_word(dsp_adr)) * 16)
-		dsp_adr += 16
+		global gsp_adr
+		res = '%Xh' % (pc + 32 + word_to_signed(gsp_read_word(gsp_adr)) * 16)
+		gsp_adr += 16
 		return res
 
 	def get_relative_8bit():
@@ -157,9 +157,9 @@ def dsp_disass():
 	def get_reg_list(rev):
 		first = -1
 		last = 0
-		global dsp_adr
-		l = dsp_read_word(dsp_adr)
-		dsp_adr += 16
+		global gsp_adr
+		l = gsp_read_word(gsp_adr)
+		gsp_adr += 16
 		ret = ''
 	
 		for i in range(16):
@@ -522,10 +522,10 @@ def trapName(trap):
 	return trapName
 
 LABELS = {}
-DSP_TRAP_BASE = 0xFFFF_FC00
+GSP_TRAP_BASE = 0xFFFF_FC00
 for trap in range(32):
-	trapAdr = DSP_TRAP_BASE + (31-trap) * 32
-	trapDest = dsp_read_long(trapAdr)
+	trapAdr = GSP_TRAP_BASE + (31-trap) * 32
+	trapDest = gsp_read_long(trapAdr)
 	#print('%08Xh: %-8s => %08X' % (trapAdr, trapName(trap), trapDest))
 	if trapDest not in LABELS:
 		LABELS[trapDest] = trapName(trap)
@@ -541,57 +541,57 @@ PRINT_DATA = True
 # print the other non-code segments
 if PRINT_DATA:
 	print('04200000h: .word 0')
-	for r in range(len(DSP_REGS)):
-		print('%08Xh: .word %04Xh' % (DSP_REG_BASE+r*2*16, DSP_REGS[r]))
+	for r in range(len(GSP_REGS)):
+		print('%08Xh: .word %04Xh' % (GSP_REG_BASE+r*2*16, GSP_REGS[r]))
 	print('ffda0000h: .bss 512*8')
 
 def disass_line():
-	global dsp_adr
-	pc = dsp_adr
-	opcode = dsp_read_word(dsp_adr)
+	global gsp_adr
+	pc = gsp_adr
+	opcode = gsp_read_word(gsp_adr)
 	addLF = True
 	while opcode == 0x0000:
-		dsp_adr += 16
-		opcode = dsp_read_word(dsp_adr)
-	if dsp_adr != pc:
-		dstr = '.bss     %d*2*8' % ((dsp_adr-pc)//16)
-	elif dsp_adr >= 0xffdb29a0 and dsp_adr < 0xffdb3220:
-		adr = dsp_read_long(dsp_adr)
-		dsp_adr += 32
+		gsp_adr += 16
+		opcode = gsp_read_word(gsp_adr)
+	if gsp_adr != pc:
+		dstr = '.bss     %d*2*8' % ((gsp_adr-pc)//16)
+	elif gsp_adr >= 0xffdb29a0 and gsp_adr < 0xffdb3220:
+		adr = gsp_read_long(gsp_adr)
+		gsp_adr += 32
 		if adr >= 0xffdb3220 and adr < 0xffdb44d0:
 			TABLE.add(adr)
 		dstr = '.long    %08Xh' % (adr)
-	elif dsp_adr >= 0xFFDAADD0 and dsp_adr < 0xFFDAAF50:
-		adr = dsp_read_long(dsp_adr)
-		dsp_adr += 32
+	elif gsp_adr >= 0xFFDAADD0 and gsp_adr < 0xFFDAAF50:
+		adr = gsp_read_long(gsp_adr)
+		gsp_adr += 32
 		dstr = '.long    %08Xh' % (adr)
-	elif dsp_adr in TABLE:
-		wc = dsp_read_word(dsp_adr)
-		dsp_adr += 16
+	elif gsp_adr in TABLE:
+		wc = gsp_read_word(gsp_adr)
+		gsp_adr += 16
 		ww = ['%04Xh' % (wc)]
 		for i in range(wc):
-			ww.append('%04Xh' % dsp_read_word(dsp_adr))
-			dsp_adr += 16
+			ww.append('%04Xh' % gsp_read_word(gsp_adr))
+			gsp_adr += 16
 		dstr = '.word    %s' % ','.join(ww)
 	else:
-		dstr = dsp_disass()
+		dstr = gsp_disass()
 		addLF = False
 		if dstr.startswith('RETS') or dstr.startswith('RETI') or dstr.startswith('JR ') or dstr.startswith('JUMP'):
 			addLF = True
-	l = dsp_adr - pc
+	l = gsp_adr - pc
 	ww = []
 	for i in range(0, l, 16):
-		ww.append('%04X' % dsp_read_word(pc + i))
+		ww.append('%04X' % gsp_read_word(pc + i))
 	print('%08Xh: %-24s %s' % (pc, ' '.join(ww)[:24], dstr))
 	if addLF:
 		print()
 	return dstr
 
-dsp_adr = 0xffda8000
-while (dsp_adr-0xffda8000)//16 < 0x126a:
-	if dsp_adr in LABELS:
+gsp_adr = 0xffda8000
+while (gsp_adr-0xffda8000)//16 < 0x126a:
+	if gsp_adr in LABELS:
 		print('=' * 80)
-		print('= %s' % LABELS[dsp_adr])
+		print('= %s' % LABELS[gsp_adr])
 		print('=' * 80)
 	disass_line()
 
@@ -600,20 +600,20 @@ if PRINT_DATA:
 	print()
 	for r in range(0,0x15C,2):
 		adr = 0xffdc8000+r*16
-		print('%08Xh: .long %08Xh' % (adr, dsp_read_long(adr)))
+		print('%08Xh: .long %08Xh' % (adr, gsp_read_long(adr)))
 	print('ffdd0000h: .bss 256*2*8')
 	print('ffdd1000h: .bss 11*2*8')
 	print('ffdd8000h: .bss 16*2*8')
 	def print_bytes(adr,size):
 		bstr = ''
 		for r in range(size):
-			w = dsp_read_word(adr + r * 16)
+			w = gsp_read_word(adr + r * 16)
 			bstr += ',%02xh,%02xh' % (w >> 8, w & 0xFF)
 		print('%08Xh: .byte %s' % (adr, bstr[1:]))
 	def print_words(adr,size):
 		bstr = ''
 		for r in range(size):
-			w = dsp_read_word(adr + r * 16)
+			w = gsp_read_word(adr + r * 16)
 			bstr += ',%04Xh' % (w)
 		print('%08Xh: .word %s' % (adr, bstr[1:]))
 	
@@ -629,13 +629,13 @@ if PRINT_DATA:
 			print_words(adr,32)
 	for r in range(0xad):
 		adr = 0xffec0800+r*16
-		print('%08Xh: .word %04Xh' % (adr, dsp_read_word(adr)))
+		print('%08Xh: .word %04Xh' % (adr, gsp_read_word(adr)))
 	for r in range(0,6,2):
 		adr = 0xffece000+r*16
-		print('%08Xh: .long %08Xh' % (adr, dsp_read_long(adr)))
+		print('%08Xh: .long %08Xh' % (adr, gsp_read_long(adr)))
 	print_words(0xffece800,0x0683)
 	print()
 	for trap in range(32):
-		trapAdr = DSP_TRAP_BASE + (31-trap) * 32
-		trapDest = dsp_read_long(trapAdr)
+		trapAdr = GSP_TRAP_BASE + (31-trap) * 32
+		trapDest = gsp_read_long(trapAdr)
 		print('%08Xh: %-8s => %08X' % (trapAdr, trapName(trap), trapDest))
