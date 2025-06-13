@@ -5,6 +5,12 @@ import struct
 import sys
 data = open('08712-80033 C.01.000.bin', 'rb').read()
 
+orig_stdout = sys.stdout
+f = open('GSP_MEM.asm', 'w')
+sys.stdout = f
+
+LABELS = {}
+
 # 1. find all memory blocks written into the GSP
 GSP_MEM_BASE = 0xFFD0_0000
 GSP_REG_BASE = 0xC000_0000
@@ -100,15 +106,19 @@ def gsp_disass():
 
 	def get_long_parm():
 		global gsp_adr
-		res = '%Xh' % gsp_read_long(gsp_adr)
+		adr = gsp_read_long(gsp_adr)
 		gsp_adr += 32
-		return res
+		if adr in LABELS:
+			return LABELS[adr]
+		return '%Xh' % adr
 
 	def get_long_parm_1s_comp():
 		global gsp_adr
-		res = '%Xh' % (~gsp_read_long(gsp_adr) & 0xFFFFFFFF)
+		adr = ~gsp_read_long(gsp_adr) & 0xFFFFFFFF
 		gsp_adr += 32
-		return res
+		if adr in LABELS:
+			return LABELS[adr]
+		return '%Xh' % adr
 
 	def get_constant():
 		constant = (op >> 5) & 0x1F
@@ -519,9 +529,8 @@ def trapName(trap):
 		trapName = 'ILLOP'
 	else:
 		trapName = 'TRAP_%d' % (trap)
-	return trapName
+	return trapName + '_VECTOR'
 
-LABELS = {}
 GSP_TRAP_BASE = 0xFFFF_FC00
 for trap in range(32):
 	trapAdr = GSP_TRAP_BASE + (31-trap) * 32
@@ -529,6 +538,39 @@ for trap in range(32):
 	#print('%08Xh: %-8s => %08X' % (trapAdr, trapName(trap), trapDest))
 	if trapDest not in LABELS:
 		LABELS[trapDest] = trapName(trap)
+
+LABELS[0xC000_0000] = 'HESYNC'
+LABELS[0xC000_0010] = 'HEBLNK'
+LABELS[0xC000_0020] = 'HSBLNK'
+LABELS[0xC000_0030] = 'HTOTAL'
+LABELS[0xC000_0040] = 'VESYNC'
+LABELS[0xC000_0050] = 'VEBLNK'
+LABELS[0xC000_0060] = 'VSBLNK'
+LABELS[0xC000_0070] = 'VTOTAL'
+LABELS[0xC000_0080] = 'DPYCTL'
+LABELS[0xC000_0090] = 'DPYSTRT'
+LABELS[0xC000_00A0] = 'DPYINT'
+LABELS[0xC000_00B0] = 'CONTROL'
+LABELS[0xC000_00C0] = 'HSTDATA'
+LABELS[0xC000_00D0] = 'HSTADRH'
+LABELS[0xC000_00E0] = 'HSTADRL'
+LABELS[0xC000_00F0] = 'HSTCTLL'
+LABELS[0xC000_0100] = 'HSTCTLH'
+LABELS[0xC000_0110] = 'INTENB'
+LABELS[0xC000_0120] = 'INTPEND'
+LABELS[0xC000_0130] = 'CONVSP'
+LABELS[0xC000_0140] = 'CONVDP'
+LABELS[0xC000_0150] = 'PSIZE'
+LABELS[0xC000_0160] = 'PMASK'
+LABELS[0xC000_0170] = 'REG_0x0170'
+LABELS[0xC000_0180] = 'REG_0x0180'
+LABELS[0xC000_0190] = 'REG_0x0190'
+LABELS[0xC000_01A0] = 'REG_0x01A0'
+LABELS[0xC000_01B0] = 'DPYTAP'
+LABELS[0xC000_01C0] = 'HCOUNT'
+LABELS[0xC000_01D0] = 'VCOUNT'
+LABELS[0xC000_01E0] = 'DPYADR'
+LABELS[0xC000_01F0] = 'REFCNT'
 
 # 3. disassemble the full firmware
 TABLE = set()
@@ -538,12 +580,20 @@ TABLE.add(0xffdb32b0)
 
 PRINT_DATA = True
 
+def printAddress(adr):
+	if adr in LABELS:
+		print('%s:' % LABELS[adr])
+	print('%08Xh: ' % adr,end='')
+
 # print the other non-code segments
 if PRINT_DATA:
-	print('%08Xh: .word 0' % 0x04200000)
+	printAddress(0x04200000)
+	print('.word 0')
 	for r in range(len(GSP_REGS)):
-		print('%08Xh: .word %04Xh' % (GSP_REG_BASE+r*2*16, GSP_REGS[r]))
-	print('%08Xh: .bss 512*8' % 0xffda0000)
+		printAddress(GSP_REG_BASE+r*2*16)
+		print('.word %04Xh' % (GSP_REGS[r]))
+	printAddress(0xffda0000)
+	print('.bss 512*8')
 
 def disass_line():
 	global gsp_adr
@@ -582,7 +632,8 @@ def disass_line():
 	ww = []
 	for i in range(0, l, 16):
 		ww.append('%04X' % gsp_read_word(pc + i))
-	print('%08Xh: %-24s %s' % (pc, ' '.join(ww)[:24], dstr))
+	printAddress(pc)
+	print('%-24s %s' % (' '.join(ww)[:24], dstr))
 	if addLF:
 		print()
 	return dstr
@@ -600,22 +651,28 @@ if PRINT_DATA:
 	print()
 	for r in range(0,0x15C,2):
 		adr = 0xffdc8000+r*16
-		print('%08Xh: .long %08Xh' % (adr, gsp_read_long(adr)))
-	print('%08Xh: .bss 256*2*8' % 0xffdd0000)
-	print('%08Xh: .bss 11*2*8' % 0xffdd1000)
-	print('%08Xh: .bss 16*2*8' % 0xffdd8000)
+		printAddress(adr)
+		print('.long %08Xh' % (gsp_read_long(adr)))
+	printAddress(0xffdd0000)
+	print('.bss 256*2*8')
+	printAddress(0xffdd1000)
+	print('.bss 11*2*8')
+	printAddress(0xffdd8000)
+	print('.bss 16*2*8')
 	def print_bytes(adr,size):
 		bstr = ''
 		for r in range(size):
 			w = gsp_read_word(adr + r * 16)
 			bstr += ',%02xh,%02xh' % (w >> 8, w & 0xFF)
-		print('%08Xh: .byte %s' % (adr, bstr[1:]))
+		printAddress(adr)
+		print('.byte %s' % (bstr[1:]))
 	def print_words(adr,size):
 		bstr = ''
 		for r in range(size):
 			w = gsp_read_word(adr + r * 16)
 			bstr += ',%04Xh' % (w)
-		print('%08Xh: .word %s' % (adr, bstr[1:]))
+		printAddress(adr)
+		print('.word %s' % (bstr[1:]))
 	
 	print_bytes(0xffde0000,32)
 	print_bytes(0xffde0200,32)
@@ -629,13 +686,19 @@ if PRINT_DATA:
 			print_words(adr,32)
 	for r in range(0xad):
 		adr = 0xffec0800+r*16
-		print('%08Xh: .word %04Xh' % (adr, gsp_read_word(adr)))
+		printAddress(adr)
+		print('.word %04Xh' % (gsp_read_word(adr)))
 	for r in range(0,6,2):
 		adr = 0xffece000+r*16
-		print('%08Xh: .long %08Xh' % (adr, gsp_read_long(adr)))
+		printAddress(adr)
+		print('.long %08Xh' % (gsp_read_long(adr)))
 	print_words(0xffece800,0x0683)
 	print()
 	for trap in range(32):
 		trapAdr = GSP_TRAP_BASE + (31-trap) * 32
 		trapDest = gsp_read_long(trapAdr)
-		print('%08Xh: %-8s => %08X' % (trapAdr, trapName(trap), trapDest))
+		printAddress(trapAdr)
+		print('%-8s => %08X' % (trapName(trap), trapDest))
+
+sys.stdout = orig_stdout
+f.close()
