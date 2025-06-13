@@ -79,9 +79,30 @@ def gsp_disass():
 
 	def get_reg(r):
 		if r != 0x0f:
-			return '%c%d' % (rf,r)
+			reg = '%c%d' % (rf,r)
+			if reg == 'B0':
+				reg = 'B0_SADDR'
+			elif reg == 'B1':
+				reg = 'B1_SPTCH'
+			elif reg == 'B2':
+				reg = 'B2_DADDR'
+			elif reg == 'B3':
+				reg = 'B3_DPTCH'
+			elif reg == 'B4':
+				reg = 'B4_OFFSET'
+			elif reg == 'B5':
+				reg = 'B5_WSTART'
+			elif reg == 'B6':
+				reg = 'B6_WEND'
+			elif reg == 'B7':
+				reg = 'B7_DVDX'
+			elif reg == 'B8':
+				reg = 'B8_COLOR0'
+			elif reg == 'B9':
+				reg = 'B9_COLOR1'
 		else:
-			return 'SP'
+			reg = 'SP'
+		return reg
 
 	def get_src_reg():
 		return get_reg(rs)
@@ -108,8 +129,11 @@ def gsp_disass():
 		global gsp_adr
 		adr = gsp_read_long(gsp_adr)
 		gsp_adr += 32
-		if adr in LABELS:
-			return LABELS[adr]
+		if (adr & 0xFFFF_FFF0) in LABELS:
+			if adr & 0xf:
+				return LABELS[adr & 0xFFFF_FFF0] + '+%d' % (adr & 0xf)
+			else:
+				return LABELS[adr & 0xFFFF_FFF0]
 		return '%Xh' % adr
 
 	def get_long_parm_1s_comp():
@@ -140,18 +164,26 @@ def gsp_disass():
 
 	def get_relative():
 		global gsp_adr
-		res = '%Xh' % (pc + 32 + word_to_signed(gsp_read_word(gsp_adr)) * 16)
+		adr = (pc + 32 + word_to_signed(gsp_read_word(gsp_adr)) * 16)
 		gsp_adr += 16
-		return res
+		if adr in LABELS:
+			return LABELS[adr]
+		return '%Xh' % adr
 
 	def get_relative_8bit():
-		return '%Xh' % (pc + 16 + byte_to_signed(op & 0xFF) * 16)
+		adr = (pc + 16 + byte_to_signed(op & 0xFF) * 16)
+		if adr in LABELS:
+			return LABELS[adr]
+		return '%Xh' % adr
 
 	def get_relative_5bit():
 		ls = (op >> 5) & 0x1F
 		if op & 0x0400:
 			ls = -ls
-		return '%Xh' % (pc + 16 + (ls << 4))
+		adr = (pc + 16 + (ls << 4))
+		if adr in LABELS:
+			return LABELS[adr]
+		return '%Xh' % adr
 
 	def get_field():
 		return '01'[(op & 0x200) >> 9]
@@ -468,14 +500,14 @@ def gsp_disass():
 		return 'MOVE   *%s(%s),*%s+,%s' % (get_src_reg(),get_word_parm(),get_des_reg(),get_field())
 	elif om == 0xd400 or om == 0xd600:
 		if subop == 0x0000:
-			return 'MOVE @%s,*%s+,%s' % (get_long_parm(),get_des_reg(),get_field())
+			return 'MOVE   @%s,*%s+,%s' % (get_long_parm(),get_des_reg(),get_field())
 		elif subop == 0x0100:
-			return 'EXGF %s,%s' % (get_des_reg(),get_field())
+			return 'EXGF   %s,%s' % (get_des_reg(),get_field())
 	elif om == 0xde00:
 		if subop == 0x0100:
-			return 'LINE 0'
+			return 'LINE   0'
 		elif subop == 0x0180:
-			return 'LINE 1'
+			return 'LINE   1'
 
 	elif om == 0xe000:
 		return 'ADDXY  %s' % (get_src_des_reg())
@@ -571,6 +603,12 @@ LABELS[0xC000_01C0] = 'HCOUNT'
 LABELS[0xC000_01D0] = 'VCOUNT'
 LABELS[0xC000_01E0] = 'DPYADR'
 LABELS[0xC000_01F0] = 'REFCNT'
+LABELS[0xFFDA_0000] = 'USERFLAGS'
+LABELS[0xFFDD_FDF0] = 'STACK_TOP'
+LABELS[0xFFDE_0800] = 'FONT_DATA'
+LABELS[0xFFDC_8000] = 'FUNCTION_ADR_TABLE'
+LABELS[0xFFDC_9540] = 'FONTS_TABLES'
+LABELS[0xFFDA_86A0] = 'COMMAND_LOOP'
 
 # 3. disassemble the full firmware
 TABLE = set()
@@ -624,7 +662,7 @@ def disass_line():
 			gsp_adr += 16
 		dstr = '.word    %s' % ','.join(ww)
 	else:
-		dstr = gsp_disass()
+		dstr = gsp_disass().strip()
 		addLF = False
 		if dstr.startswith('RETS') or dstr.startswith('RETI') or dstr.startswith('JR ') or dstr.startswith('JUMP'):
 			addLF = True
@@ -679,7 +717,6 @@ if PRINT_DATA:
 	print_bytes(0xffde0400,32)
 	print_bytes(0xffde0600,32)
 	if False:
-		print('FONT_DATA:')
 		for ch in range(256):
 			adr = 0xffde0800 + ch * 32 * 16
 			print('CHAR_%02x:' % ch)
