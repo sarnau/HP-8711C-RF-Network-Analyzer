@@ -22,57 +22,57 @@
                                 <SPLIT_NODE WIDTH="716" HEIGHT="1545" DIVIDER_LOCATION="683" ORIENTATION="VERTICAL">
                                     <SPLIT_NODE WIDTH="490" HEIGHT="749" DIVIDER_LOCATION="502" ORIENTATION="VERTICAL">
                                         <COMPONENT_NODE TOP_INFO="1">
-                                            <COMPONENT_INFO NAME="Program Tree" OWNER="ProgramTreePlugin" TITLE="Program Trees" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525207231212378" />
-                                            <COMPONENT_INFO NAME="Functions Window" OWNER="FunctionWindowPlugin" TITLE="Functions" ACTIVE="true" GROUP="Default" INSTANCE_ID="3669525209280129864" />
+                                            <COMPONENT_INFO NAME="Program Tree" OWNER="ProgramTreePlugin" TITLE="Program Trees" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528532296142714" />
+                                            <COMPONENT_INFO NAME="Functions Window" OWNER="FunctionWindowPlugin" TITLE="Functions" ACTIVE="true" GROUP="Default" INSTANCE_ID="3669528534246494056" />
                                         </COMPONENT_NODE>
                                         <COMPONENT_NODE TOP_INFO="0">
-                                            <COMPONENT_INFO NAME="Symbol Tree" OWNER="SymbolTreePlugin" TITLE="Symbol Tree" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525207231212373" />
+                                            <COMPONENT_INFO NAME="Symbol Tree" OWNER="SymbolTreePlugin" TITLE="Symbol Tree" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528532296142709" />
                                         </COMPONENT_NODE>
                                     </SPLIT_NODE>
                                     <COMPONENT_NODE TOP_INFO="0">
-                                        <COMPONENT_INFO NAME="DataTypes Provider" OWNER="DataTypeManagerPlugin" TITLE="Data Type Manager" ACTIVE="true" GROUP="Default" INSTANCE_ID="3669525210265791313" />
+                                        <COMPONENT_INFO NAME="DataTypes Provider" OWNER="DataTypeManagerPlugin" TITLE="Data Type Manager" ACTIVE="true" GROUP="Default" INSTANCE_ID="3669528535116812145" />
                                     </COMPONENT_NODE>
                                 </SPLIT_NODE>
                                 <SPLIT_NODE WIDTH="2000" HEIGHT="1552" DIVIDER_LOCATION="756" ORIENTATION="VERTICAL">
                                     <SPLIT_NODE WIDTH="1386" HEIGHT="638" DIVIDER_LOCATION="705" ORIENTATION="VERTICAL">
                                         <SPLIT_NODE WIDTH="1565" HEIGHT="1545" DIVIDER_LOCATION="508" ORIENTATION="HORIZONTAL">
                                             <COMPONENT_NODE TOP_INFO="0">
-                                                <COMPONENT_INFO NAME="Listing" OWNER="CodeBrowserPlugin" TITLE="Listing:  08712-80033.bin" ACTIVE="true" GROUP="Core" INSTANCE_ID="3669525209280129860" />
+                                                <COMPONENT_INFO NAME="Listing" OWNER="CodeBrowserPlugin" TITLE="Listing:  08712-80033.bin" ACTIVE="true" GROUP="Core" INSTANCE_ID="3669528534246494052" />
                                             </COMPONENT_NODE>
                                             <COMPONENT_NODE TOP_INFO="0">
-                                                <COMPONENT_INFO NAME="Decompiler" OWNER="DecompilePlugin" TITLE="Decompile: BOOT_GSP_INIT_FIRMWARE" ACTIVE="true" GROUP="Default" INSTANCE_ID="3669285212173846875" />
-                                                <COMPONENT_INFO NAME="Bytes" OWNER="ByteViewerPlugin" TITLE="Bytes: 08712-80033.bin" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525207231212381" />
-                                                <COMPONENT_INFO NAME="Data Window" OWNER="DataWindowPlugin" TITLE="Defined Data" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210553101120" />
-                                                <COMPONENT_INFO NAME="Defined Strings" OWNER="ViewStringsPlugin" TITLE="Defined Strings" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210553101124" />
-                                                <COMPONENT_INFO NAME="Equates Table" OWNER="EquateTablePlugin" TITLE="Equates Table" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525209280129858" />
-                                                <COMPONENT_INFO NAME="External Programs" OWNER="ReferencesPlugin" TITLE="External Programs" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525209280129861" />
-                                                <COMPONENT_INFO NAME="Relocation Table" OWNER="RelocationTablePlugin" TITLE="Relocation Table" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210553101123" />
+                                                <COMPONENT_INFO NAME="Decompiler" OWNER="DecompilePlugin" TITLE="Decompile: GSP_DEBUG_PRINT_CURRENT_COMMAND" ACTIVE="true" GROUP="Default" INSTANCE_ID="3669285212173846875" />
+                                                <COMPONENT_INFO NAME="Bytes" OWNER="ByteViewerPlugin" TITLE="Bytes: 08712-80033.bin" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528532296142717" />
+                                                <COMPONENT_INFO NAME="Data Window" OWNER="DataWindowPlugin" TITLE="Defined Data" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535378956128" />
+                                                <COMPONENT_INFO NAME="Defined Strings" OWNER="ViewStringsPlugin" TITLE="Defined Strings" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535378956132" />
+                                                <COMPONENT_INFO NAME="Equates Table" OWNER="EquateTablePlugin" TITLE="Equates Table" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528534246494050" />
+                                                <COMPONENT_INFO NAME="External Programs" OWNER="ReferencesPlugin" TITLE="External Programs" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528534246494053" />
+                                                <COMPONENT_INFO NAME="Relocation Table" OWNER="RelocationTablePlugin" TITLE="Relocation Table" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535378956131" />
                                             </COMPONENT_NODE>
                                         </SPLIT_NODE>
                                         <SPLIT_NODE WIDTH="1386" HEIGHT="189" DIVIDER_LOCATION="495" ORIENTATION="HORIZONTAL">
                                             <COMPONENT_NODE TOP_INFO="0">
-                                                <COMPONENT_INFO NAME="Data Type Preview" OWNER="DataTypePreviewPlugin" TITLE="Data Type Preview" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210131573589" />
+                                                <COMPONENT_INFO NAME="Data Type Preview" OWNER="DataTypePreviewPlugin" TITLE="Data Type Preview" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535001468789" />
                                             </COMPONENT_NODE>
                                             <COMPONENT_NODE TOP_INFO="0">
-                                                <COMPONENT_INFO NAME="Virtual Disassembler - Current Instruction" OWNER="DisassembledViewPlugin" TITLE="Disassembled View" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525209280129857" />
+                                                <COMPONENT_INFO NAME="Virtual Disassembler - Current Instruction" OWNER="DisassembledViewPlugin" TITLE="Disassembled View" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528534246494049" />
                                             </COMPONENT_NODE>
                                         </SPLIT_NODE>
                                     </SPLIT_NODE>
                                     <COMPONENT_NODE TOP_INFO="1">
-                                        <COMPONENT_INFO NAME="Console" OWNER="ConsolePlugin" TITLE="Console" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525207231212380" />
-                                        <COMPONENT_INFO NAME="Bookmarks" OWNER="BookmarkPlugin" TITLE="Bookmarks" ACTIVE="false" GROUP="Core.Bookmarks" INSTANCE_ID="3669525207231212377" />
+                                        <COMPONENT_INFO NAME="Console" OWNER="ConsolePlugin" TITLE="Console" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528532296142716" />
+                                        <COMPONENT_INFO NAME="Bookmarks" OWNER="BookmarkPlugin" TITLE="Bookmarks" ACTIVE="false" GROUP="Core.Bookmarks" INSTANCE_ID="3669528532296142713" />
                                     </COMPONENT_NODE>
                                 </SPLIT_NODE>
                             </SPLIT_NODE>
                         </SPLIT_NODE>
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Function Call Trees" OWNER="CallTreePlugin" TITLE="Function Call Trees" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525207231212374" />
+                            <COMPONENT_INFO NAME="Function Call Trees" OWNER="CallTreePlugin" TITLE="Function Call Trees" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528532296142710" />
                         </COMPONENT_NODE>
                     </SPLIT_NODE>
                     <WINDOW_NODE X_POS="118" Y_POS="702" WIDTH="1384" HEIGHT="990">
                         <SPLIT_NODE WIDTH="1609" HEIGHT="1515" DIVIDER_LOCATION="633" ORIENTATION="HORIZONTAL">
                             <COMPONENT_NODE TOP_INFO="0">
-                                <COMPONENT_INFO NAME="Script Manager" OWNER="GhidraScriptMgrPlugin" TITLE="Script Manager" ACTIVE="false" GROUP="Script Group" INSTANCE_ID="3669525207231212375" />
+                                <COMPONENT_INFO NAME="Script Manager" OWNER="GhidraScriptMgrPlugin" TITLE="Script Manager" ACTIVE="false" GROUP="Script Group" INSTANCE_ID="3669528532296142711" />
                             </COMPONENT_NODE>
                             <COMPONENT_NODE TOP_INFO="0">
                                 <COMPONENT_INFO NAME="Script Editor" OWNER="GhidraScriptMgrPlugin" TITLE="SwitchOverride.java (Read-Only) " ACTIVE="false" GROUP="Script Group" INSTANCE_ID="3444459174151644998" />
@@ -81,42 +81,42 @@
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="396" Y_POS="302" WIDTH="1660" HEIGHT="830">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Memory Map" OWNER="MemoryMapPlugin" TITLE="Memory Map" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525207231212356" />
+                            <COMPONENT_INFO NAME="Memory Map" OWNER="MemoryMapPlugin" TITLE="Memory Map" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528532296142692" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="383" Y_POS="25" WIDTH="1020" HEIGHT="1038">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Function Graph" OWNER="FunctionGraphPlugin" TITLE="Function Graph" ACTIVE="false" GROUP="Function Graph" INSTANCE_ID="3669525210553101125" />
+                            <COMPONENT_INFO NAME="Function Graph" OWNER="FunctionGraphPlugin" TITLE="Function Graph" ACTIVE="false" GROUP="Function Graph" INSTANCE_ID="3669528535378956133" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="550" Y_POS="206" WIDTH="655" HEIGHT="509">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Register Manager" OWNER="RegisterPlugin" TITLE="Register Manager" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525209280129863" />
+                            <COMPONENT_INFO NAME="Register Manager" OWNER="RegisterPlugin" TITLE="Register Manager" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528534246494055" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="212" Y_POS="47" WIDTH="1815" HEIGHT="751">
                         <SPLIT_NODE WIDTH="1815" HEIGHT="642" DIVIDER_LOCATION="573" ORIENTATION="HORIZONTAL">
                             <COMPONENT_NODE TOP_INFO="0">
-                                <COMPONENT_INFO NAME="Symbol Table" OWNER="SymbolTablePlugin" TITLE="Symbol Table" ACTIVE="false" GROUP="symbolTable" INSTANCE_ID="3669525210553101121" />
+                                <COMPONENT_INFO NAME="Symbol Table" OWNER="SymbolTablePlugin" TITLE="Symbol Table" ACTIVE="false" GROUP="symbolTable" INSTANCE_ID="3669528535378956129" />
                             </COMPONENT_NODE>
                             <COMPONENT_NODE TOP_INFO="0">
-                                <COMPONENT_INFO NAME="Symbol References" OWNER="SymbolTablePlugin" TITLE="Symbol References" ACTIVE="false" GROUP="symbolTable" INSTANCE_ID="3669525210553101122" />
+                                <COMPONENT_INFO NAME="Symbol References" OWNER="SymbolTablePlugin" TITLE="Symbol References" ACTIVE="false" GROUP="symbolTable" INSTANCE_ID="3669528535378956130" />
                             </COMPONENT_NODE>
                         </SPLIT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="666" Y_POS="314" WIDTH="470" HEIGHT="527">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Checksum Generator" OWNER="ComputeChecksumsPlugin" TITLE="Checksum Generator" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525209280129859" />
+                            <COMPONENT_INFO NAME="Checksum Generator" OWNER="ComputeChecksumsPlugin" TITLE="Checksum Generator" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528534246494051" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="1114" Y_POS="645" WIDTH="854" HEIGHT="427">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Function Tags" OWNER="FunctionTagPlugin" TITLE="Function Tags" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210265791314" />
+                            <COMPONENT_INFO NAME="Function Tags" OWNER="FunctionTagPlugin" TITLE="Function Tags" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535116812146" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="-1" Y_POS="-1" WIDTH="0" HEIGHT="0">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Comment Window" OWNER="CommentWindowPlugin" TITLE="Comments" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210265791327" />
+                            <COMPONENT_INFO NAME="Comment Window" OWNER="CommentWindowPlugin" TITLE="Comments" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535116812159" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="1223" Y_POS="531" WIDTH="1179" HEIGHT="1088">
@@ -131,7 +131,7 @@
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="62" Y_POS="25" WIDTH="1004" HEIGHT="1077">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Function Call Graph" OWNER="FunctionCallGraphPlugin" TITLE="Function Call Graph" ACTIVE="false" GROUP="Function Call Graph" INSTANCE_ID="3669525210131573590" />
+                            <COMPONENT_INFO NAME="Function Call Graph" OWNER="FunctionCallGraphPlugin" TITLE="Function Call Graph" ACTIVE="false" GROUP="Function Call Graph" INSTANCE_ID="3669528535001468790" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="236" Y_POS="176" WIDTH="1264" HEIGHT="1162">
@@ -216,22 +216,22 @@
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="0" Y_POS="0" WIDTH="0" HEIGHT="0">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Bundle Manager" OWNER="GhidraScriptMgrPlugin" TITLE="Bundle Manager" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525207231212376" />
+                            <COMPONENT_INFO NAME="Bundle Manager" OWNER="GhidraScriptMgrPlugin" TITLE="Bundle Manager" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528532296142712" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="0" Y_POS="0" WIDTH="0" HEIGHT="0">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="PyGhidra" OWNER="PyGhidra" TITLE="PyGhidra" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210265791326" />
+                            <COMPONENT_INFO NAME="PyGhidra" OWNER="PyGhidra" TITLE="PyGhidra" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535116812158" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="0" Y_POS="0" WIDTH="0" HEIGHT="0">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Jython" OWNER="Jython" TITLE="Jython" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525210265791315" />
+                            <COMPONENT_INFO NAME="Jython" OWNER="Jython" TITLE="Jython" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528535116812147" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="0" Y_POS="0" WIDTH="0" HEIGHT="0">
                         <COMPONENT_NODE TOP_INFO="0">
-                            <COMPONENT_INFO NAME="Source Files and Transforms" OWNER="SourceFilesTablePlugin" TITLE="Source Files and Transforms" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669525209280129862" />
+                            <COMPONENT_INFO NAME="Source Files and Transforms" OWNER="SourceFilesTablePlugin" TITLE="Source Files and Transforms" ACTIVE="false" GROUP="Default" INSTANCE_ID="3669528534246494054" />
                         </COMPONENT_NODE>
                     </WINDOW_NODE>
                     <WINDOW_NODE X_POS="356" Y_POS="107" WIDTH="1630" HEIGHT="1222">
@@ -264,167 +264,356 @@
                     <PLUGIN NAME="NavigationHistoryPlugin">
                         <XML NAME="HISTORY_LIST_0">
                             <SAVE_STATE>
-                                <STATE NAME="CURRENT_LOC_INDEX" TYPE="int" VALUE="5" />
-                                <STATE NAME="LOCATION_COUNT" TYPE="int" VALUE="6" />
+                                <STATE NAME="CURRENT_LOC_INDEX" TYPE="int" VALUE="29" />
+                                <STATE NAME="LOCATION_COUNT" TYPE="int" VALUE="30" />
                                 <STATE NAME="MEMENTO_CLASS0" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                 <STATE NAME="MEMENTO_CLASS1" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS10" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS11" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS12" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS13" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS14" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS15" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS16" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS17" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS18" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS19" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                 <STATE NAME="MEMENTO_CLASS2" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS20" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS21" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS22" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS23" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS24" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS25" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS26" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS27" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS28" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS29" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                 <STATE NAME="MEMENTO_CLASS3" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                 <STATE NAME="MEMENTO_CLASS4" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                 <STATE NAME="MEMENTO_CLASS5" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS6" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS7" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS8" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                <STATE NAME="MEMENTO_CLASS9" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                 <XML NAME="MEMENTO_DATA0">
                                     <SAVE_STATE>
                                         <XML NAME="MEMENTO0">
                                             <SAVE_STATE>
-                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
                                                 <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
                                                 <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
                                                 <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                                 <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="00000000" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="00000000" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="4019de04" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="4019de04" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="4019de04" />
                                                 <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.MemoryBlockStartFieldLocation" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
                                                 <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                                <ARRAY NAME="_COMMENT" TYPE="string">
-                                                    <A VALUE="//" />
-                                                    <A VALUE="// ROM " />
-                                                    <A VALUE="// ram:00000000-ram:0003ffff" />
-                                                    <A VALUE="//" />
-                                                </ARRAY>
                                                 <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_TYPE" TYPE="int" VALUE="-1" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="4019de04" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="4019de04" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
                                             </SAVE_STATE>
                                         </XML>
                                         <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
-                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="1" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
                                         <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                         <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="00000000" />
-                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="00000000" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="4019de04" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="4019de04" />
                                         <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.MemoryBlockStartFieldLocation" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
                                         <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                        <ARRAY NAME="_COMMENT" TYPE="string">
-                                            <A VALUE="//" />
-                                            <A VALUE="// ROM " />
-                                            <A VALUE="// ram:00000000-ram:0003ffff" />
-                                            <A VALUE="//" />
-                                        </ARRAY>
                                         <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                        <STATE NAME="_TYPE" TYPE="int" VALUE="-1" />
                                     </SAVE_STATE>
                                 </XML>
                                 <XML NAME="MEMENTO_DATA1">
                                     <SAVE_STATE>
                                         <XML NAME="MEMENTO0">
                                             <SAVE_STATE>
-                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="568" />
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
                                                 <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
                                                 <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
                                                 <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                                 <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000756a" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000756a" />
-                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.IndentFieldLocation" />
-                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                                <ARRAY NAME="_COMP_PATH" TYPE="int" />
-                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                            </SAVE_STATE>
-                                        </XML>
-                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
-                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="1" />
-                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
-                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000756a" />
-                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000756a" />
-                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.IndentFieldLocation" />
-                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                        <ARRAY NAME="_COMP_PATH" TYPE="int" />
-                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                    </SAVE_STATE>
-                                </XML>
-                                <XML NAME="MEMENTO_DATA2">
-                                    <SAVE_STATE>
-                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
-                                        <XML NAME="MEMENTO0">
-                                            <SAVE_STATE>
-                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="618" />
-                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
-                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
-                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
-                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="00007558" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="00007558" />
-                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="8" />
-                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
-                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                                <ARRAY NAME="_COMP_PATH" TYPE="int" />
-                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="000072f6" />
-                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                            </SAVE_STATE>
-                                        </XML>
-                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
-                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="1" />
-                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
-                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="00007558" />
-                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="00007558" />
-                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="8" />
-                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
-                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                        <ARRAY NAME="_COMP_PATH" TYPE="int" />
-                                        <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="000072f6" />
-                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                    </SAVE_STATE>
-                                </XML>
-                                <XML NAME="MEMENTO_DATA3">
-                                    <SAVE_STATE>
-                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
-                                        <XML NAME="MEMENTO0">
-                                            <SAVE_STATE>
-                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="560" />
-                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
-                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
-                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
-                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="000072f6" />
-                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="000072f6" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="000072f6" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="4019dee0" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="4019dee0" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="4019dee0" />
                                                 <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
                                                 <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
                                                 <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
                                                 <STATE NAME="_ROW" TYPE="int" VALUE="0" />
                                             </SAVE_STATE>
                                         </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="4019dee0" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="4019dee0" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
                                         <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
-                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="1" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
                                         <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                         <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="000072f6" />
-                                        <STATE NAME="_ADDR_REP" TYPE="string" VALUE="000072f6" />
-                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="000072f6" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="4019dee0" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="4019dee0" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA10">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285212173846875" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c16c" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="c012c16c" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c16c" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <ARRAY NAME="_COMP_PATH" TYPE="int" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="23" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="14" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_RGB_STACK_POINTER" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c16c" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c16c" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA11">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="797" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c16c" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c16c" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="10" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="8" />
+                                                <ARRAY NAME="_COMP_PATH" TYPE="int" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401b9916" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="23" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="14" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_RGB_STACK_POINTER" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c16c" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c16c" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="10" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="8" />
+                                        <ARRAY NAME="_COMP_PATH" TYPE="int" />
+                                        <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401b9916" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA12">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9916" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9916" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9916" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="23" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="14" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_RGB_STACK_POINTER" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9916" />
+                                        <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9916" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9916" />
                                         <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
                                         <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
                                         <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
                                         <STATE NAME="_ROW" TYPE="int" VALUE="0" />
                                     </SAVE_STATE>
                                 </XML>
-                                <XML NAME="MEMENTO_DATA4">
+                                <XML NAME="MEMENTO_DATA13">
                                     <SAVE_STATE>
-                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285212173846875" />
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
                                         <XML NAME="MEMENTO0">
                                             <SAVE_STATE>
-                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="768" />
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="397" />
                                                 <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
                                                 <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
                                                 <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                                 <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000730c" />
-                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="0000730c" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000730c" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="6" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="6" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="6" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401b9a90" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA14">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a90" />
                                                 <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
                                                 <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
                                                 <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
@@ -433,54 +622,685 @@
                                         </XML>
                                         <XML NAME="MEMENTO1">
                                             <SAVE_STATE>
-                                                <STATE NAME="INDEX" TYPE="int" VALUE="34" />
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
                                                 <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
                                                 <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
                                                 <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                                 <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
                                                 <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
-                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="-15" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000730c" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000730c" />
-                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="18" />
-                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="6" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
                                                 <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="00007160" />
-                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="68" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401b9a90" />
                                                 <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_FIRMWARE" />
                                             </SAVE_STATE>
                                         </XML>
                                         <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                         <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
                                         <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                         <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000730c" />
-                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000730c" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a90" />
+                                        <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9a90" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a90" />
                                         <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                                        <STATE NAME="_CHAR_POS" TYPE="int" VALUE="18" />
-                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
                                         <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                        <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="00007160" />
-                                        <STATE NAME="_LINE_NUM" TYPE="int" VALUE="68" />
                                         <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                        <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_FIRMWARE" />
                                     </SAVE_STATE>
                                 </XML>
-                                <XML NAME="MEMENTO_DATA5">
+                                <XML NAME="MEMENTO_DATA15">
                                     <SAVE_STATE>
-                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285212173846875" />
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
                                         <XML NAME="MEMENTO0">
                                             <SAVE_STATE>
-                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="752" />
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="493" />
                                                 <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
                                                 <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
                                                 <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                                 <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="00007558" />
-                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="00007558" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="00007558" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a78" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a78" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="4" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="10" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401bddcc" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a78" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a78" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="4" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="10" />
+                                        <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401bddcc" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA16">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bddcc" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401bddcc" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bddcc" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a90" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bddcc" />
+                                        <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401bddcc" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bddcc" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA17">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="614" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bdda0" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bdda0" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="13" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bdda0" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bdda0" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="13" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bdda0" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bdda0" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="13" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401be576" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA18">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bdda0" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bdda0" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="13" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401be576" />
+                                        <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401be576" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401be576" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA19">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="637" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401be564" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401be564" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="4" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="40093974" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401be576" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401be564" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401be564" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="4" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="40093974" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA2">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b7d3e" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b7d3e" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b7d3e" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b7d3e" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b7d3e" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b7d3e" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b7d3e" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA20">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="40093974" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="40093974" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="40093974" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="40093974" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="40093974" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="40093974" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="40093974" />
+                                        <STATE NAME="_ADDR_REP" TYPE="string" VALUE="40093974" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="40093974" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA21">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b94b6" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b94b6" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b94b6" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b94b6" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b94b6" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b94b6" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b94b6" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA22">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="77" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b945e" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b945e" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b945e" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b945e" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b945e" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b945e" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b945e" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA23">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA24">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9780" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9780" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA25">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA26">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285212173846875" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="1149" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="7" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="15" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_PEN_BACKGROUND" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b995a" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b995a" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CHAR_POS" TYPE="int" VALUE="7" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b9910" />
+                                        <STATE NAME="_LINE_NUM" TYPE="int" VALUE="15" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_PEN_BACKGROUND" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA27">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285212173846875" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c24e" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="c012c24e" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c24e" />
                                                 <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
                                                 <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
                                                 <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
@@ -490,35 +1310,481 @@
                                         </XML>
                                         <XML NAME="MEMENTO1">
                                             <SAVE_STATE>
-                                                <STATE NAME="INDEX" TYPE="int" VALUE="34" />
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
                                                 <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
                                                 <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
                                                 <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                                 <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
                                                 <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
-                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="-15" />
-                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000730c" />
-                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000730c" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b995a" />
                                                 <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="18" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="7" />
                                                 <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
                                                 <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="00007160" />
-                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="68" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="15" />
                                                 <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_FIRMWARE" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_PEN_BACKGROUND" />
                                             </SAVE_STATE>
                                         </XML>
                                         <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
                                         <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
                                         <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
                                         <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
-                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="00007558" />
-                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="00007558" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c24e" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c24e" />
                                         <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
                                         <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
                                         <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
                                         <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA28">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="721" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c24e" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c24e" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="14" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="4" />
+                                                <ARRAY NAME="_COMP_PATH" TYPE="int" />
+                                                <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401bd668" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="7" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="15" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_PEN_BACKGROUND" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="c012c24e" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="c012c24e" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="14" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.XRefFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="4" />
+                                        <ARRAY NAME="_COMP_PATH" TYPE="int" />
+                                        <STATE NAME="_REF_ADDRESS" TYPE="string" VALUE="401bd668" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA29">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285218607909188" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bd668" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401bd668" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bd668" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b995a" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="7" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="15" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_PEN_BACKGROUND" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401bd668" />
+                                        <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401bd668" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401bd668" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA3">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA4">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9780" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9780" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9780" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA5">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9910" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9910" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA6">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a78" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b9a78" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a78" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a78" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a78" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b9a78" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b9a78" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA7">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401ba348" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401ba348" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401ba348" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401ba348" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401ba348" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401ba348" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401ba348" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA8">
+                                    <SAVE_STATE>
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="749" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401ba348" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401ba348" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95a8" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95a8" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.ProgramLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                    </SAVE_STATE>
+                                </XML>
+                                <XML NAME="MEMENTO_DATA9">
+                                    <SAVE_STATE>
+                                        <STATE NAME="FOCUSED_NAV" TYPE="long" VALUE="3669285212173846875" />
+                                        <XML NAME="MEMENTO0">
+                                            <SAVE_STATE>
+                                                <STATE NAME="CURSOR_OFFSET" TYPE="int" VALUE="1345" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.codebrowser.CodeViewerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_ADDR_REP" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.AddressFieldLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <XML NAME="MEMENTO1">
+                                            <SAVE_STATE>
+                                                <STATE NAME="INDEX" TYPE="int" VALUE="0" />
+                                                <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.decompile.DecompilerLocationMemento" />
+                                                <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
+                                                <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                                <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                                <STATE NAME="X_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95fc" />
+                                                <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_CHAR_POS" TYPE="int" VALUE="23" />
+                                                <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                                <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b95a8" />
+                                                <STATE NAME="_LINE_NUM" TYPE="int" VALUE="14" />
+                                                <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                                <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_RGB_STACK_POINTER" />
+                                            </SAVE_STATE>
+                                        </XML>
+                                        <STATE NAME="MEMENTO_CLASS" TYPE="string" VALUE="ghidra.app.plugin.core.gotoquery.DefaultNavigatableLocationMemento" />
+                                        <STATE NAME="NUM_MEMENTOS" TYPE="int" VALUE="2" />
+                                        <STATE NAME="PROGRAM_ID" TYPE="long" VALUE="3665704259571776742" />
+                                        <STATE NAME="PROGRAM_PATH_" TYPE="string" VALUE="HP 8711C:/08712-80033.bin" />
+                                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401b95fc" />
+                                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401b95fc" />
+                                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_CHAR_POS" TYPE="int" VALUE="23" />
+                                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                                        <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="401b95a8" />
+                                        <STATE NAME="_LINE_NUM" TYPE="int" VALUE="14" />
+                                        <STATE NAME="_ROW" TYPE="int" VALUE="0" />
+                                        <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_RGB_STACK_POINTER" />
                                     </SAVE_STATE>
                                 </XML>
                                 <STATE NAME="NAV_ID" TYPE="long" VALUE="-1" />
@@ -537,20 +1803,16 @@
                         <STATE NAME="TreeName-0" TYPE="string" VALUE="Program Tree" />
                     </PLUGIN>
                     <PLUGIN NAME="DecompilePlugin">
-                        <STATE NAME="INDEX" TYPE="int" VALUE="34" />
+                        <STATE NAME="INDEX" TYPE="int" VALUE="0" />
                         <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285212173846875" />
                         <STATE NAME="Num Disconnected" TYPE="int" VALUE="0" />
-                        <STATE NAME="Y_OFFSET" TYPE="int" VALUE="-15" />
-                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000730c" />
-                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000730c" />
-                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                        <STATE NAME="_CHAR_POS" TYPE="int" VALUE="18" />
-                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.app.decompiler.DecompilerLocation" />
+                        <STATE NAME="Y_OFFSET" TYPE="int" VALUE="0" />
+                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401ba35c" />
+                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401ba361" />
+                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="2" />
+                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.BytesFieldLocation" />
                         <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                        <STATE NAME="_FUNCTION_ENTRY" TYPE="string" VALUE="00007160" />
-                        <STATE NAME="_LINE_NUM" TYPE="int" VALUE="68" />
                         <STATE NAME="_ROW" TYPE="int" VALUE="0" />
-                        <STATE NAME="_TOKEN_TEXT" TYPE="string" VALUE="GSP_FIRMWARE" />
                     </PLUGIN>
                     <PLUGIN NAME="ByteViewerPlugin">
                         <STATE NAME="Block Column" TYPE="int" VALUE="0" />
@@ -569,12 +1831,11 @@
                         <STATE NAME="PATHNAME_0" TYPE="string" VALUE="/08712-80033.bin" />
                         <STATE NAME="PROJECT_NAME_0" TYPE="string" VALUE="HP 8711C" />
                         <STATE NAME="VERSION_0" TYPE="int" VALUE="-1" />
-                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000a4c4" />
-                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000a4c4" />
-                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.IndentFieldLocation" />
+                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401ba35c" />
+                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401ba361" />
+                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="2" />
+                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.BytesFieldLocation" />
                         <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                        <ARRAY NAME="_COMP_PATH" TYPE="int" />
                         <STATE NAME="_ROW" TYPE="int" VALUE="0" />
                     </PLUGIN>
                     <PLUGIN NAME="FunctionGraphPlugin">
@@ -594,16 +1855,15 @@
                         <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285219725691205" />
                     </PLUGIN>
                     <PLUGIN NAME="CodeBrowserPlugin">
-                        <STATE NAME="INDEX" TYPE="int" VALUE="42180" />
+                        <STATE NAME="INDEX" TYPE="int" VALUE="31647891" />
                         <STATE NAME="NAV_ID" TYPE="long" VALUE="3669285218607909188" />
                         <STATE NAME="Num Disconnected" TYPE="int" VALUE="0" />
-                        <STATE NAME="Y_OFFSET" TYPE="int" VALUE="-239" />
-                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="0000a4c4" />
-                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="0000a4c4" />
-                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="0" />
-                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.IndentFieldLocation" />
+                        <STATE NAME="Y_OFFSET" TYPE="int" VALUE="-1619" />
+                        <STATE NAME="_ADDRESS" TYPE="string" VALUE="401ba35c" />
+                        <STATE NAME="_BYTE_ADDR" TYPE="string" VALUE="401ba361" />
+                        <STATE NAME="_CHAR_OFFSET" TYPE="int" VALUE="2" />
+                        <STATE NAME="_CLASSNAME" TYPE="string" VALUE="ghidra.program.util.BytesFieldLocation" />
                         <STATE NAME="_COLUMN" TYPE="int" VALUE="0" />
-                        <ARRAY NAME="_COMP_PATH" TYPE="int" />
                         <STATE NAME="_ROW" TYPE="int" VALUE="0" />
                     </PLUGIN>
                 </DATA_STATE>
