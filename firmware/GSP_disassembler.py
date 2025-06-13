@@ -540,10 +540,10 @@ PRINT_DATA = True
 
 # print the other non-code segments
 if PRINT_DATA:
-	print('04200000h: .word 0')
+	print('%08Xh: .word 0' % 0x04200000)
 	for r in range(len(GSP_REGS)):
 		print('%08Xh: .word %04Xh' % (GSP_REG_BASE+r*2*16, GSP_REGS[r]))
-	print('ffda0000h: .bss 512*8')
+	print('%08Xh: .bss 512*8' % 0xffda0000)
 
 def disass_line():
 	global gsp_adr
@@ -601,9 +601,9 @@ if PRINT_DATA:
 	for r in range(0,0x15C,2):
 		adr = 0xffdc8000+r*16
 		print('%08Xh: .long %08Xh' % (adr, gsp_read_long(adr)))
-	print('ffdd0000h: .bss 256*2*8')
-	print('ffdd1000h: .bss 11*2*8')
-	print('ffdd8000h: .bss 16*2*8')
+	print('%08Xh: .bss 256*2*8' % 0xffdd0000)
+	print('%08Xh: .bss 11*2*8' % 0xffdd1000)
+	print('%08Xh: .bss 16*2*8' % 0xffdd8000)
 	def print_bytes(adr,size):
 		bstr = ''
 		for r in range(size):
