@@ -55,6 +55,17 @@ if False:
 
 gsp_adr = None
 
+def get_long_parm():
+	global gsp_adr
+	adr = gsp_read_long(gsp_adr)
+	gsp_adr += 32
+	if (adr & 0xFFFF_FFF0) in LABELS:
+		if adr & 0xf:
+			return LABELS[adr & 0xFFFF_FFF0] + '+%d' % (adr & 0xf)
+		else:
+			return LABELS[adr & 0xFFFF_FFF0]
+	return '%08Xh' % adr
+
 def gsp_disass():
 	global gsp_adr
 
@@ -124,17 +135,6 @@ def gsp_disass():
 		res = '%Xh' % (~gsp_read_word(gsp_adr) & 0xFFFF)
 		gsp_adr += 16
 		return res
-
-	def get_long_parm():
-		global gsp_adr
-		adr = gsp_read_long(gsp_adr)
-		gsp_adr += 32
-		if (adr & 0xFFFF_FFF0) in LABELS:
-			if adr & 0xf:
-				return LABELS[adr & 0xFFFF_FFF0] + '+%d' % (adr & 0xf)
-			else:
-				return LABELS[adr & 0xFFFF_FFF0]
-		return '%Xh' % adr
 
 	def get_long_parm_1s_comp():
 		global gsp_adr
@@ -605,10 +605,120 @@ LABELS[0xC000_01E0] = 'DPYADR'
 LABELS[0xC000_01F0] = 'REFCNT'
 LABELS[0xFFDA_0000] = 'USERFLAGS'
 LABELS[0xFFDD_FDF0] = 'STACK_TOP'
-LABELS[0xFFDE_0800] = 'FONT_DATA'
-LABELS[0xFFDC_8000] = 'FUNCTION_ADR_TABLE'
+
+# Command Table
+GSP_CMDS = {
+2: 'ARC',
+4: 'BENCHMARK_TEXT',
+6: 'BINARY_MAP',
+8: 'CIRCLE',
+10: 'COPY_RECTANGLE',
+12: 'DOT',
+14: 'ERASE_RECTANGLE',
+16: 'FILL_CIRCLE',
+18: 'FILL_RECTANGLE',
+26: 'GRAPHYY_0x1a',
+28: 'GRAPHYY_0x1c',
+32: 'GRAPHYY_0x20',
+36: 'LINE_ABSOLUTE',
+38: 'LINE_RELATIVE',
+40: 'PIXEL_MAP',
+42: 'POLYLINE_ABSOLUTE',
+44: 'POLYLINE_RELATIVE',
+46: 'TEXT',
+48: 'TEXT_UNDERLINE',
+50: 'CALL',
+52: 'CALL_NOT_USER_FLAG',
+54: 'CALL_ON_USER_FLAG',
+56: 'JUMP',
+58: 'JUMP_NOT_USER_FLAG',
+60: 'JUMP_ON_USER_FLAG',
+62: 'RETURN',
+64: 'SKIP1',
+66: 'SKIP2',
+68: 'SKIP3',
+70: 'SKIP4',
+72: 'USER_FLAG_CLEAR',
+74: 'USER_FLAG_SET',
+76: 'USER_FLAG_TOGGLE ',
+78: 'DYNAMIC_FRAME',
+80: 'STATIC_FRAME',
+82: 'STATIC_FRAME_AND_ERASE',
+84: 'GATED_CALL',
+86: 'INTERRUPT_HOST',
+88: 'NOP',
+92: 'SEGMENT_END',
+94: 'SEGMENT_END_AND_RETURN',
+96: 'SEGMENT_END_AND_JUMP',
+98: 'SEGMENT_START',
+100: 'STALL',
+102: 'SYNC_COPY_STATIC',
+104: 'SYNC_DISPLAY_DYNAMIC',
+106: 'BENCHMARK_START_0x6a',
+108: 'BENCHMARK_START_0x6c',
+110: 'CLIP_OFF',
+112: 'CLIP_ON',
+114: 'CLIP_RECTANGLE',
+116: 'MOVE_ABSOLUTE_0x74',
+118: 'MOVE_ABSOLUTE_0x76',
+120: 'ORIGIN',
+122: 'PEN_BACKGROUND',
+122: 'PIXEL_OPERATION',
+124: 'PEN_FOREGROUND',
+128: 'PIXEL_STRETCH_OFF',
+130: 'PIXEL_STRETCH_ON',
+132: 'SCALE_FACTOR_0x84',
+134: 'SCALE_FACTOR_0x86',
+136: 'TEXT_FONT',
+138: 'TRANSPARENCY_OFF',
+140: 'TRANSPARENCY_ON',
+}
+LABELS[0xFFDA_86A0] = 'CMD_LOOP'
+LABELS[0xFFDA_87A0] = 'ILLEGAL_CMD'
+LABELS[0xFFDC_8000] = 'CMD_ADR_TABLE'
+LABELS[0xFFEC_0800] = 'CURRENT_CMD_PC'
+LABELS[0xFFEC_0820] = 'CURRENT_CMD'
+LABELS[0xFFEC_E000] = 'CMD_LIST_PTR'
+LABELS[0xFFEC_E800] = 'CMD_BUFFER'
+LABELS[0xFFDD_1000] = 'CMD_STACK'
+
+for r in range(0xa9):
+	dadr = gsp_read_long(0xffdc8000+r*32)
+	if dadr != 0:
+		if r in GSP_CMDS:
+			LABELS[dadr] = 'COMMAND_%d_%s' % (r,GSP_CMDS[r])
+			continue
+		if r-1 in GSP_CMDS:
+			continue
+		if dadr == 0xFFDA_E890:
+			LABELS[dadr] = 'COMMAND_IGNORE'
+			continue
+		if dadr not in LABELS:
+			LABELS[dadr] = 'COMMAND_%d' % (r)
+		else:
+			LABELS[dadr] += '_%d' % (r)
+
+# Font Table
 LABELS[0xFFDC_9540] = 'FONTS_TABLES'
-LABELS[0xFFDA_86A0] = 'COMMAND_LOOP'
+LABELS[0xFFDE_0800] = 'FONT_DATA'
+for r in range(4):
+	dadr = gsp_read_long(0xFFDC9540+r*32)
+	if dadr not in LABELS:
+		LABELS[dadr] = 'FONT_%d' % (r)
+
+# Input Message
+LABELS[0xFFEC_0B80] = 'MSGIN_TABLE'
+msgIndex = 0
+for r in range(0xad):
+	gsp_adr = 0xffec0800+r*16
+	if gsp_adr >= 0xFFEC_0B80 and gsp_adr <= 0xFFEC_0C70:
+		if (gsp_adr & 0x10) == 0x00:
+			dadr = gsp_read_long(gsp_adr)
+			if dadr not in LABELS:
+				LABELS[dadr] = 'MSGIN_%d' % (msgIndex)
+			else:
+				LABELS[dadr] += '_%d' % (msgIndex)
+			msgIndex += 1
 
 # 3. disassemble the full firmware
 TABLE = set()
@@ -679,18 +789,26 @@ def disass_line():
 gsp_adr = 0xffda8000
 while (gsp_adr-0xffda8000)//16 < 0x126a:
 	if gsp_adr in LABELS:
-		print('=' * 80)
-		print('= %s' % LABELS[gsp_adr])
-		print('=' * 80)
+		print('*' * 80)
+		print('* %s' % LABELS[gsp_adr])
+		print('*' * 80)
 	disass_line()
 
 # print the other non-code segments
 if PRINT_DATA:
 	print()
-	for r in range(0,0x15C,2):
-		adr = 0xffdc8000+r*16
-		printAddress(adr)
-		print('.long %08Xh' % (gsp_read_long(adr)))
+	for r in range(0xa9):
+		gsp_adr = 0xffdc8000+r*32
+		printAddress(gsp_adr)
+		print('.long %s' % (get_long_parm()))
+	print()
+
+	# Font Table
+	for r in range(4):
+		gsp_adr = 0xFFDC9540+r*32
+		printAddress(gsp_adr)
+		print('.long %s' % (get_long_parm()))
+	print()
 	printAddress(0xffdd0000)
 	print('.bss 256*2*8')
 	printAddress(0xffdd1000)
@@ -711,31 +829,36 @@ if PRINT_DATA:
 			bstr += ',%04Xh' % (w)
 		printAddress(adr)
 		print('.word %s' % (bstr[1:]))
-	
+	print()
 	print_bytes(0xffde0000,32)
 	print_bytes(0xffde0200,32)
 	print_bytes(0xffde0400,32)
 	print_bytes(0xffde0600,32)
+	print()
 	if False:
 		for ch in range(256):
-			adr = 0xffde0800 + ch * 32 * 16
+			gsp_adr = 0xffde0800 + ch * 32 * 16
 			print('CHAR_%02x:' % ch)
-			print_words(adr,32)
+			print_words(gsp_adr,32)
 	for r in range(0xad):
-		adr = 0xffec0800+r*16
-		printAddress(adr)
-		print('.word %04Xh' % (gsp_read_word(adr)))
+		gsp_adr = 0xffec0800+r*16
+		if gsp_adr >= 0xFFEC_0B80 and gsp_adr <= 0xFFEC_0C70:
+			if (gsp_adr & 0x10) == 0x00:
+				printAddress(gsp_adr)
+				print('.long %s' % (get_long_parm()))
+		else:
+			printAddress(gsp_adr)
+			print('.word %04Xh' % (gsp_read_word(gsp_adr)))
 	for r in range(0,6,2):
-		adr = 0xffece000+r*16
-		printAddress(adr)
-		print('.long %08Xh' % (gsp_read_long(adr)))
+		gsp_adr = 0xffece000+r*16
+		printAddress(gsp_adr)
+		print('.long %s' % (get_long_parm()))
 	print_words(0xffece800,0x0683)
 	print()
 	for trap in range(32):
-		trapAdr = GSP_TRAP_BASE + (31-trap) * 32
-		trapDest = gsp_read_long(trapAdr)
-		printAddress(trapAdr)
-		print('%-8s => %08X' % (trapName(trap), trapDest))
+		gsp_adr = GSP_TRAP_BASE + (31-trap) * 32
+		printAddress(gsp_adr)
+		print('.long %s' % get_long_parm())
 
 sys.stdout = orig_stdout
 f.close()

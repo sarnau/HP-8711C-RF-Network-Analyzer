@@ -49,9 +49,9 @@ C00003C0h: .word 0000h
 C00003E0h: .word 0000h
 USERFLAGS:
 FFDA0000h: .bss 512*8
-================================================================================
-= RESET_VECTOR
-================================================================================
+********************************************************************************
+* RESET_VECTOR
+********************************************************************************
 RESET_VECTOR:
 FFDA8000h: 0360                     DINT
 FFDA8010h: 0740                     SETF   20h,0,1
@@ -59,19 +59,19 @@ FFDA8020h: 09EF FDF0 FFDD           MOVI   STACK_TOP,SP
 FFDA8050h: 0544                     SETF   4h,0,0
 FFDA8060h: 058F 00F3 C000           MOVE   SP,@HSTCTLL+3,0
 FFDA8090h: 0550                     SETF   10h,0,0
-FFDA80A0h: 09F3 1000 0000           MOVI   1000h,B3_DPTCH
-FFDA80D0h: 09F5 0000 0000           MOVI   0h,B5_WSTART
-FFDA8100h: 09F6 027F 01DF           MOVI   1DF027Fh,B6_WEND
+FFDA80A0h: 09F3 1000 0000           MOVI   00001000h,B3_DPTCH
+FFDA80D0h: 09F5 0000 0000           MOVI   00000000h,B5_WSTART
+FFDA8100h: 09F6 027F 01DF           MOVI   01DF027Fh,B6_WEND
 FFDA8130h: 5718                     CLR    B8_COLOR0
 FFDA8140h: 5739                     CLR    B9_COLOR1
 FFDA8150h: 09FD FFFF FFFF           MOVI   FFFFFFFFh,B13
 FFDA8180h: 6A7E                     LMO    B3_DPTCH,B14
 FFDA8190h: 059E 0140 C000           MOVE   B14,@CONVDP,0
-FFDA81C0h: 09F4 0000 003C           MOVI   3C0000h,B4_OFFSET
+FFDA81C0h: 09F4 0000 003C           MOVI   003C0000h,B4_OFFSET
 FFDA81F0h: 0D3F 08B4                CALLR  FFDB0D50h
-FFDA8210h: 09F4 0000 0000           MOVI   0h,B4_OFFSET
+FFDA8210h: 09F4 0000 0000           MOVI   00000000h,B4_OFFSET
 FFDA8240h: 0D3F 08AF                CALLR  FFDB0D50h
-FFDA8260h: 09F4 0000 001E           MOVI   1E0000h,B4_OFFSET
+FFDA8260h: 09F4 0000 001E           MOVI   001E0000h,B4_OFFSET
 FFDA8290h: 0D3F 08AA                CALLR  FFDB0D50h
 FFDA82B0h: 09C1 1DF0                MOVI   1DF0h,A1
 FFDA82D0h: 0581 0090 C000           MOVE   A1,@DPYSTRT,0
@@ -89,10 +89,10 @@ FFDA8440h: 0550                     SETF   10h,0,0
 FFDA8450h: 0D60                     EINT
 FFDA8460h: 0550                     SETF   10h,0,0
 FFDA8470h: 0740                     SETF   20h,0,1
-FFDA8480h: 09F5 0280 01E0           MOVI   1E00280h,B5_WSTART
+FFDA8480h: 09F5 0280 01E0           MOVI   01E00280h,B5_WSTART
 FFDA84B0h: 0795 0A20 FFEC           MOVE   B5_WSTART,@FFEC0A20h,1
-FFDA84E0h: 09F5 0000 0000           MOVI   0h,B5_WSTART
-FFDA8510h: 09F6 027F 01DF           MOVI   1DF027Fh,B6_WEND
+FFDA84E0h: 09F5 0000 0000           MOVI   00000000h,B5_WSTART
+FFDA8510h: 09F6 027F 01DF           MOVI   01DF027Fh,B6_WEND
 FFDA8540h: 0795 0A00 FFEC           MOVE   B5_WSTART,@FFEC0A00h,1
 FFDA8570h: 0795 0A40 FFEC           MOVE   B5_WSTART,@FFEC0A40h,1
 FFDA85A0h: 0796 0A60 FFEC           MOVE   B6_WEND,@FFEC0A60h,1
@@ -101,40 +101,52 @@ FFDA85E0h: 054A                     SETF   Ah,0,0
 FFDA85F0h: 18C1                     MOVK   6h,A1
 FFDA8600h: 0581 00B5 C000           MOVE   A1,@CONTROL+5,0
 FFDA8630h: 0550                     SETF   10h,0,0
-FFDA8640h: 07A8 E000 FFEC           MOVE   @FFECE000h,A8,1
-FFDA8670h: 09ED 1000 FFDD           MOVI   FFDD1000h,A13
-================================================================================
-= COMMAND_LOOP
-================================================================================
-COMMAND_LOOP:
-FFDA86A0h: 0788 0800 FFEC           MOVE   A8,@FFEC0800h,1
+FFDA8640h: 07A8 E000 FFEC           MOVE   @CMD_LIST_PTR,A8,1
+FFDA8670h: 09ED 1000 FFDD           MOVI   CMD_STACK,A13
+********************************************************************************
+* CMD_LOOP
+********************************************************************************
+CMD_LOOP:
+FFDA86A0h: 0788 0800 FFEC           MOVE   A8,@CURRENT_CMD_PC,1
 FFDA86D0h: 9501                     MOVE   *A8+,A1,0
-FFDA86E0h: 0781 0820 FFEC           MOVE   A1,@FFEC0820h,1
+FFDA86E0h: 0781 0820 FFEC           MOVE   A1,@CURRENT_CMD,1
 FFDA8710h: 0B41 FF57                CMPI   A8h,A1
-FFDA8730h: C706                     JRGT   FFDA87A0h
+FFDA8730h: C706                     JRGT   ILLEGAL_CMD
 FFDA8740h: 24A1                     SLL    5h,A1
-FFDA8750h: 0B21 8000 FFDC           ADDI   FUNCTION_ADR_TABLE,A1
+FFDA8750h: 0B21 8000 FFDC           ADDI   CMD_ADR_TABLE,A1
 FFDA8780h: 8621                     MOVE   *A1,A1,1
 FFDA8790h: 0161                     JUMP   A1
 
+********************************************************************************
+* ILLEGAL_CMD
+********************************************************************************
+ILLEGAL_CMD:
 FFDA87A0h: 1608                     SUBK   10h,A8
 FFDA87B0h: C0FF                     JR     FFDA87B0h
 
+********************************************************************************
+* COMMAND_2_ARC
+********************************************************************************
+COMMAND_2_ARC:
 FFDA87C0h: 9501                     MOVE   *A8+,A1,0
 FFDA87D0h: 9501                     MOVE   *A8+,A1,0
 FFDA87E0h: 9501                     MOVE   *A8+,A1,0
-FFDA87F0h: C0EA                     JR     COMMAND_LOOP
+FFDA87F0h: C0EA                     JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_4_BENCHMARK_TEXT
+********************************************************************************
+COMMAND_4_BENCHMARK_TEXT:
 FFDA8800h: 07BB 0AE0 FFEC           MOVE   @FFEC0AE0h,B11,1
 FFDA8830h: 07BA 0AC0 FFEC           MOVE   @FFEC0AC0h,B10,1
 FFDA8860h: 455B                     SUB    B10,B11
-FFDA8870h: 09FA 0C80 0000           MOVI   C80h,B10
+FFDA8870h: 09FA 0C80 0000           MOVI   00000C80h,B10
 FFDA88A0h: 5F5B                     MPYU   B10,B11
 FFDA88B0h: 09DA 0064                MOVI   64h,B10
 FFDA88D0h: 5B5B                     DIVU   B10,B11
 FFDA88E0h: 4D7A                     MOVE   B11,B10
 FFDA88F0h: 195C                     MOVK   Ah,B12
-FFDA8900h: 09FB 9680 0098           MOVI   989680h,B11
+FFDA8900h: 09FB 9680 0098           MOVI   00989680h,B11
 FFDA8930h: 09E1 0B00 FFEC           MOVI   FFEC0B00h,A1
 FFDA8960h: 09C2 0030                MOVI   30h,A2
 FFDA8980h: 1022                     INC    A2
@@ -150,6 +162,10 @@ FFDA8A10h: 09E8 0B00 FFEC           MOVI   FFEC0B00h,A8
 FFDA8A40h: 1903                     MOVK   8h,A3
 FFDA8A50h: C000 04A1                JR     FFDAD480h
 
+********************************************************************************
+* COMMAND_6_BINARY_MAP
+********************************************************************************
+COMMAND_6_BINARY_MAP:
 FFDA8A70h: 9701                     MOVE   *A8+,A1,1
 FFDA8A80h: 4E20                     MOVE   A1,B0_SADDR
 FFDA8A90h: 9411                     MOVE   *B0_SADDR+,B1_SPTCH,0
@@ -158,13 +174,17 @@ FFDA8AB0h: 059E 0130 C000           MOVE   B14,@CONVSP,0
 FFDA8AE0h: 4E82                     MOVE   A4,B2_DADDR
 FFDA8AF0h: 9617                     MOVE   *B0_SADDR+,B7_DVDX,1
 FFDA8B00h: 0FA0                     PIXBLT B,XY
-FFDA8B10h: C0B8                     JR     COMMAND_LOOP
+FFDA8B10h: C0B8                     JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_8_CIRCLE
+********************************************************************************
+COMMAND_8_CIRCLE:
 FFDA8B20h: 9503                     MOVE   *A8+,A3,0
 FFDA8B30h: 0503                     SEXT   A3,0
 FFDA8B40h: 0383                     ABS    A3
 FFDA8B50h: CA36                     JREQ   FFDA8EC0h
-FFDA8B60h: 09E1 0000 0001           MOVI   10000h,A1
+FFDA8B60h: 09E1 0000 0001           MOVI   00010000h,A1
 FFDA8B90h: 0750                     SETF   10h,0,1
 FFDA8BA0h: 5E61                     MPYU   A3,A1
 FFDA8BB0h: 5729                     CLR    A9
@@ -215,7 +235,7 @@ FFDA8E90h: C025                     JR     FFDA90F0h
 
 FFDA8EA0h: 495B                     CMP    B10,B11
 FFDA8EB0h: CB36                     JRNE   FFDA9220h
-FFDA8EC0h: C000 FF7C                JR     COMMAND_LOOP
+FFDA8EC0h: C000 FF7C                JR     CMD_LOOP
 
 FFDA8EE0h: 099F 0084                MMTM   SP,B8_COLOR0,B13
 FFDA8F00h: E2FA                     SUBXY  B7_DVDX,B10
@@ -234,7 +254,7 @@ FFDA8FB0h: E230                     SUBXY  B1_SPTCH,B0_SADDR
 FFDA8FC0h: 495B                     CMP    B10,B11
 FFDA8FD0h: CB69                     JRNE   FFDA9670h
 FFDA8FE0h: 09BF 2100                MMFM   SP,B8_COLOR0,B13
-FFDA9000h: C000 FF68                JR     COMMAND_LOOP
+FFDA9000h: C000 FF68                JR     CMD_LOOP
 
 FFDA9020h: E05A                     ADDXY  B2_DADDR,B10
 FFDA9030h: F13A                     PIXT   B9_COLOR1,*B10,XY
@@ -375,6 +395,10 @@ FFDA9860h: 4121                     ADD    A9,A1
 FFDA9870h: C5DF                     JRGE   FFDA9670h
 FFDA9880h: C0ED                     JR     FFDA9760h
 
+********************************************************************************
+* COMMAND_10_COPY_RECTANGLE
+********************************************************************************
+COMMAND_10_COPY_RECTANGLE:
 FFDA9890h: 4C71                     MOVE   B3_DPTCH,B1_SPTCH
 FFDA98A0h: 6A3E                     LMO    B1_SPTCH,B14
 FFDA98B0h: 059E 0130 C000           MOVE   B14,@CONVSP,0
@@ -403,7 +427,7 @@ FFDA9A50h: 0550                     SETF   10h,0,0
 FFDA9A60h: 4E25                     MOVE   A1,B5_WSTART
 FFDA9A70h: 4E66                     MOVE   A3,B6_WEND
 FFDA9A80h: 0F60                     PIXBLT XY,XY
-FFDA9A90h: C000 FEBF                JR     COMMAND_LOOP
+FFDA9A90h: C000 FEBF                JR     CMD_LOOP
 
 FFDA9AB0h: 4E25                     MOVE   A1,B5_WSTART
 FFDA9AC0h: 4E66                     MOVE   A3,B6_WEND
@@ -422,17 +446,25 @@ FFDA9B80h: 80C5                     MOVE   A6,*A5,0
 FFDA9B90h: 0F60                     PIXBLT XY,XY
 FFDA9BA0h: 81E5                     MOVE   SP,*A5,0
 FFDA9BB0h: 0550                     SETF   10h,0,0
-FFDA9BC0h: C000 FEAC                JR     COMMAND_LOOP
+FFDA9BC0h: C000 FEAC                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_12_DOT
+********************************************************************************
+COMMAND_12_DOT:
 FFDA9BE0h: 4E82                     MOVE   A4,B2_DADDR
 FFDA9BF0h: F132                     PIXT   B9_COLOR1,*B2_DADDR,XY
 FFDA9C00h: 05A1 0920 FFEC           MOVE   @FFEC0920h,A1,0
-FFDA9C30h: CA00 FEA5                JREQ   COMMAND_LOOP
+FFDA9C30h: CA00 FEA5                JREQ   CMD_LOOP
 FFDA9C50h: 183E                     MOVK   1h,B14
 FFDA9C60h: E1D2                     ADDXY  B14,B2_DADDR
 FFDA9C70h: F132                     PIXT   B9_COLOR1,*B2_DADDR,XY
-FFDA9C80h: C000 FEA0                JR     COMMAND_LOOP
+FFDA9C80h: C000 FEA0                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_14_ERASE_RECTANGLE
+********************************************************************************
+COMMAND_14_ERASE_RECTANGLE:
 FFDA9CA0h: 05A1 00B0 C000           MOVE   @CONTROL,A1,0
 FFDA9CD0h: 4C23                     MOVE   A1,A3
 FFDA9CE0h: 0B81 7C20 FFFF           ANDI   83DFh,A1
@@ -445,14 +477,18 @@ FFDA9D80h: 4D19                     MOVE   B8_COLOR0,B9_COLOR1
 FFDA9D90h: 0FE0                     FILL   XY
 FFDA9DA0h: 4E49                     MOVE   A2,B9_COLOR1
 FFDA9DB0h: 0583 00B0 C000           MOVE   A3,@CONTROL,0
-FFDA9DE0h: C000 FE8A                JR     COMMAND_LOOP
+FFDA9DE0h: C000 FE8A                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_16_FILL_CIRCLE
+********************************************************************************
+COMMAND_16_FILL_CIRCLE:
 FFDA9E00h: A31F                     MOVE   B8_COLOR0,-*SP,1
 FFDA9E10h: 9503                     MOVE   *A8+,A3,0
 FFDA9E20h: 0503                     SEXT   A3,0
 FFDA9E30h: 0383                     ABS    A3
 FFDA9E40h: CA39                     JREQ   FFDAA1E0h
-FFDA9E50h: 09E1 0000 0001           MOVI   10000h,A1
+FFDA9E50h: 09E1 0000 0001           MOVI   00010000h,A1
 FFDA9E80h: 0750                     SETF   10h,0,1
 FFDA9E90h: 5E61                     MPYU   A3,A1
 FFDA9EA0h: 5729                     CLR    A9
@@ -509,7 +545,7 @@ FFDAA1B0h: 4F82                     MOVE   A12,B2_DADDR
 FFDAA1C0h: E584                     CMPXY  A12,A4
 FFDAA1D0h: CF23                     JRNN   FFDAA410h
 FFDAA1E0h: 97F8                     MOVE   *SP+,B8_COLOR0,1
-FFDAA1F0h: C000 FE49                JR     COMMAND_LOOP
+FFDAA1F0h: C000 FE49                JR     CMD_LOOP
 
 FFDAA210h: E230                     SUBXY  B1_SPTCH,B0_SADDR
 FFDAA220h: E037                     ADDXY  B1_SPTCH,B7_DVDX
@@ -574,13 +610,21 @@ FFDAA5B0h: 4121                     ADD    A9,A1
 FFDAA5C0h: C5E4                     JRGE   FFDAA410h
 FFDAA5D0h: C0ED                     JR     FFDAA4B0h
 
+********************************************************************************
+* COMMAND_18_FILL_RECTANGLE
+********************************************************************************
+COMMAND_18_FILL_RECTANGLE:
 FFDAA5E0h: 9701                     MOVE   *A8+,A1,1
 FFDAA5F0h: 4E27                     MOVE   A1,B7_DVDX
 FFDAA600h: 4E82                     MOVE   A4,B2_DADDR
 FFDAA610h: 0FE0                     FILL   XY
-FFDAA620h: C000 FE06                JR     COMMAND_LOOP
+FFDAA620h: C000 FE06                JR     CMD_LOOP
 
-FFDAA640h: 09F1 0001 0001           MOVI   10001h,B1_SPTCH
+********************************************************************************
+* COMMAND_20_21
+********************************************************************************
+COMMAND_20_21:
+FFDAA640h: 09F1 0001 0001           MOVI   00010001h,B1_SPTCH
 FFDAA670h: 4CD0                     MOVE   B6_WEND,B0_SADDR
 FFDAA680h: E2B0                     SUBXY  B5_WSTART,B0_SADDR
 FFDAA690h: E030                     ADDXY  B1_SPTCH,B0_SADDR
@@ -608,17 +652,21 @@ FFDAA800h: ECD2                     MOVX   B6_WEND,B2_DADDR
 FFDAA810h: E232                     SUBXY  B1_SPTCH,B2_DADDR
 FFDAA820h: E852                     CVXYL  B2_DADDR,B2_DADDR
 FFDAA830h: 0FC0                     FILL   L
-FFDAA840h: C000 FDE4                JR     COMMAND_LOOP
+FFDAA840h: C000 FDE4                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_22_23
+********************************************************************************
+COMMAND_22_23:
 FFDAA860h: 9503                     MOVE   *A8+,A3,0
 FFDAA870h: 9702                     MOVE   *A8+,A2,1
 FFDAA880h: 4E41                     MOVE   A2,B1_SPTCH
 FFDAA890h: 9502                     MOVE   *A8+,A2,0
 FFDAA8A0h: 4C63                     MOVE   A3,A3
-FFDAA8B0h: CA00 FDDD                JREQ   COMMAND_LOOP
+FFDAA8B0h: CA00 FDDD                JREQ   CMD_LOOP
 FFDAA8D0h: 4F11                     MOVE   B8_COLOR0,A1
 FFDAA8E0h: 4E48                     MOVE   A2,B8_COLOR0
-FFDAA8F0h: 09F0 0001 0001           MOVI   10001h,B0_SADDR
+FFDAA8F0h: 09F0 0001 0001           MOVI   00010001h,B0_SADDR
 FFDAA920h: 9637                     MOVE   *B1_SPTCH+,B7_DVDX,1
 FFDAA930h: 4CF2                     MOVE   B7_DVDX,B2_DADDR
 FFDAA940h: 2612                     SLL    10h,B2_DADDR
@@ -640,7 +688,7 @@ FFDAAA30h: 0FC0                     FILL   L
 FFDAAA40h: 1038                     INC    B8_COLOR0
 FFDAAA50h: 3E83                     DSJS   A3,FFDAA920h
 FFDAAA60h: 4E28                     MOVE   A1,B8_COLOR0
-FFDAAA70h: C000 FDC1                JR     COMMAND_LOOP
+FFDAAA70h: C000 FDC1                JR     CMD_LOOP
 
 FFDAAA90h: E6FB                     CPW    B7_DVDX,B11
 FFDAAAA0h: CC04                     JRV    FFDAAAF0h
@@ -658,11 +706,15 @@ FFDAAB40h: EEB2                     MOVY   B5_WSTART,B2_DADDR
 FFDAAB50h: F132                     PIXT   B9_COLOR1,*B2_DADDR,XY
 FFDAAB60h: C0ED                     JR     FFDAAA40h
 
+********************************************************************************
+* COMMAND_34_35
+********************************************************************************
+COMMAND_34_35:
 FFDAAB70h: 9507                     MOVE   *A8+,A7,0
 FFDAAB80h: 9501                     MOVE   *A8+,A1,0
 FFDAAB90h: 9700                     MOVE   *A8+,A0,1
 FFDAABA0h: 4CE7                     MOVE   A7,A7
-FFDAABB0h: CA00 FDAD                JREQ   COMMAND_LOOP
+FFDAABB0h: CA00 FDAD                JREQ   CMD_LOOP
 FFDAABD0h: 4C2A                     MOVE   A1,A10
 FFDAABE0h: 270A                     SLL    18h,A10
 FFDAABF0h: 2C8A                     SRL    1Ch,A10
@@ -720,26 +772,26 @@ FFDAAF60h: 9401                     MOVE   *A0+,A1,0
 FFDAAF70h: F024                     PIXT   A1,*A4,XY
 FFDAAF80h: E124                     ADDXY  A9,A4
 FFDAAF90h: 3C87                     DSJS   A7,FFDAAF60h
-FFDAAFA0h: C000 FD6E                JR     COMMAND_LOOP
+FFDAAFA0h: C000 FD6E                JR     CMD_LOOP
 
 FFDAAFC0h: 9401                     MOVE   *A0+,A1,0
 FFDAAFD0h: F024                     PIXT   A1,*A4,XY
 FFDAAFE0h: E124                     ADDXY  A9,A4
 FFDAAFF0h: 3C87                     DSJS   A7,FFDAAFC0h
-FFDAB000h: C000 FD68                JR     COMMAND_LOOP
+FFDAB000h: C000 FD68                JR     CMD_LOOP
 
 FFDAB020h: 2E09                     SRL    10h,A9
 FFDAB030h: 9401                     MOVE   *A0+,A1,0
 FFDAB040h: F024                     PIXT   A1,*A4,XY
 FFDAB050h: E324                     SUBXY  A9,A4
 FFDAB060h: 3C87                     DSJS   A7,FFDAB030h
-FFDAB070h: C000 FD61                JR     COMMAND_LOOP
+FFDAB070h: C000 FD61                JR     CMD_LOOP
 
 FFDAB090h: 9401                     MOVE   *A0+,A1,0
 FFDAB0A0h: F024                     PIXT   A1,*A4,XY
 FFDAB0B0h: E324                     SUBXY  A9,A4
 FFDAB0C0h: 3C87                     DSJS   A7,FFDAB090h
-FFDAB0D0h: C000 FD5B                JR     COMMAND_LOOP
+FFDAB0D0h: C000 FD5B                JR     CMD_LOOP
 
 FFDAB0F0h: 2E09                     SRL    10h,A9
 FFDAB100h: 320A                     RL     10h,A10
@@ -760,7 +812,7 @@ FFDAB1E0h: 0FE0                     FILL   XY
 FFDAB1F0h: E124                     ADDXY  A9,A4
 FFDAB200h: 3E07                     DSJS   A7,FFDAB110h
 FFDAB210h: 4F69                     MOVE   A11,B9_COLOR1
-FFDAB220h: C000 FD46                JR     COMMAND_LOOP
+FFDAB220h: C000 FD46                JR     CMD_LOOP
 
 FFDAB240h: 9401                     MOVE   *A0+,A1,0
 FFDAB250h: 4E29                     MOVE   A1,B9_COLOR1
@@ -779,7 +831,7 @@ FFDAB310h: 0FE0                     FILL   XY
 FFDAB320h: E124                     ADDXY  A9,A4
 FFDAB330h: 3E07                     DSJS   A7,FFDAB240h
 FFDAB340h: 4F69                     MOVE   A11,B9_COLOR1
-FFDAB350h: C000 FD33                JR     COMMAND_LOOP
+FFDAB350h: C000 FD33                JR     CMD_LOOP
 
 FFDAB370h: 1821                     MOVK   1h,A1
 FFDAB380h: E024                     ADDXY  A1,A4
@@ -804,7 +856,7 @@ FFDAB4A0h: 3E07                     DSJS   A7,FFDAB3B0h
 FFDAB4B0h: 1829                     MOVK   1h,A9
 FFDAB4C0h: E324                     SUBXY  A9,A4
 FFDAB4D0h: 4F69                     MOVE   A11,B9_COLOR1
-FFDAB4E0h: C000 FD1A                JR     COMMAND_LOOP
+FFDAB4E0h: C000 FD1A                JR     CMD_LOOP
 
 FFDAB500h: 1821                     MOVK   1h,A1
 FFDAB510h: 2601                     SLL    10h,A1
@@ -829,7 +881,7 @@ FFDAB630h: 1829                     MOVK   1h,A9
 FFDAB640h: 2609                     SLL    10h,A9
 FFDAB650h: E324                     SUBXY  A9,A4
 FFDAB660h: 4F69                     MOVE   A11,B9_COLOR1
-FFDAB670h: C000 FD01                JR     COMMAND_LOOP
+FFDAB670h: C000 FD01                JR     CMD_LOOP
 
 FFDAB690h: 5729                     CLR    A9
 FFDAB6A0h: 320A                     RL     10h,A10
@@ -853,7 +905,7 @@ FFDAB7B0h: 0FE0                     FILL   XY
 FFDAB7C0h: E124                     ADDXY  A9,A4
 FFDAB7D0h: 3E67                     DSJS   A7,FFDAB6B0h
 FFDAB7E0h: 4F69                     MOVE   A11,B9_COLOR1
-FFDAB7F0h: C000 FCE9                JR     COMMAND_LOOP
+FFDAB7F0h: C000 FCE9                JR     CMD_LOOP
 
 FFDAB810h: 9609                     MOVE   *A0+,A9,1
 FFDAB820h: 4F29                     MOVE   A9,B9_COLOR1
@@ -875,7 +927,7 @@ FFDAB910h: 0FE0                     FILL   XY
 FFDAB920h: E124                     ADDXY  A9,A4
 FFDAB930h: 3E67                     DSJS   A7,FFDAB810h
 FFDAB940h: 4F69                     MOVE   A11,B9_COLOR1
-FFDAB950h: C000 FCD3                JR     COMMAND_LOOP
+FFDAB950h: C000 FCD3                JR     CMD_LOOP
 
 FFDAB970h: 1829                     MOVK   1h,A9
 FFDAB980h: E124                     ADDXY  A9,A4
@@ -902,7 +954,7 @@ FFDABAC0h: 3E67                     DSJS   A7,FFDAB9A0h
 FFDABAD0h: 1829                     MOVK   1h,A9
 FFDABAE0h: E324                     SUBXY  A9,A4
 FFDABAF0h: 4F69                     MOVE   A11,B9_COLOR1
-FFDABB00h: C000 FCB8                JR     COMMAND_LOOP
+FFDABB00h: C000 FCB8                JR     CMD_LOOP
 
 FFDABB20h: 1829                     MOVK   1h,A9
 FFDABB30h: 2609                     SLL    10h,A9
@@ -930,14 +982,18 @@ FFDABC80h: 1829                     MOVK   1h,A9
 FFDABC90h: 2609                     SLL    10h,A9
 FFDABCA0h: E324                     SUBXY  A9,A4
 FFDABCB0h: 4F69                     MOVE   A11,B9_COLOR1
-FFDABCC0h: C000 FC9C                JR     COMMAND_LOOP
+FFDABCC0h: C000 FC9C                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_30_31
+********************************************************************************
+COMMAND_30_31:
 FFDABCE0h: 9507                     MOVE   *A8+,A7,0
 FFDABCF0h: 950A                     MOVE   *A8+,A10,0
 FFDABD00h: 9700                     MOVE   *A8+,A0,1
 FFDABD10h: 9504                     MOVE   *A8+,A4,0
 FFDABD20h: 4CE7                     MOVE   A7,A7
-FFDABD30h: CA00 FC95                JREQ   COMMAND_LOOP
+FFDABD30h: CA00 FC95                JREQ   CMD_LOOP
 FFDABD50h: 2604                     SLL    10h,A4
 FFDABD60h: 5621                     CLR    A1
 FFDABD70h: 09C2 FFFF                MOVI   FFFFh,A2
@@ -1011,8 +1067,12 @@ FFDAC190h: 3C69                     DSJS   A9,FFDAC170h
 FFDAC1A0h: 4E1B                     MOVE   B0_SADDR,A11
 FFDAC1B0h: 3E27                     DSJS   A7,FFDAC0B0h
 FFDAC1C0h: 0740                     SETF   20h,0,1
-FFDAC1D0h: C000 FC4B                JR     COMMAND_LOOP
+FFDAC1D0h: C000 FC4B                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_36_LINE_ABSOLUTE
+********************************************************************************
+COMMAND_36_LINE_ABSOLUTE:
 FFDAC1F0h: 9705                     MOVE   *A8+,A5,1
 FFDAC200h: 05A1 0920 FFEC           MOVE   @FFEC0920h,A1,0
 FFDAC230h: E485                     CMPXY  A4,A5
@@ -1069,15 +1129,19 @@ FFDAC520h: C9FC                     JRNC   FFDAC4F0h
 FFDAC530h: 4EA2                     MOVE   A5,B2_DADDR
 FFDAC540h: 4E87                     MOVE   A4,B7_DVDX
 FFDAC550h: E257                     SUBXY  B2_DADDR,B7_DVDX
-FFDAC560h: 09FE 0001 0001           MOVI   10001h,B14
+FFDAC560h: 09FE 0001 0001           MOVI   00010001h,B14
 FFDAC590h: 1FE1                     BTST   0h,A1
 FFDAC5A0h: CA01                     JREQ   FFDAC5C0h
 FFDAC5B0h: 103E                     INC    B14
 FFDAC5C0h: E1D7                     ADDXY  B14,B7_DVDX
 FFDAC5D0h: 0FE0                     FILL   XY
 FFDAC5E0h: 4CA4                     MOVE   A5,A4
-FFDAC5F0h: C000 FC09                JR     COMMAND_LOOP
+FFDAC5F0h: C000 FC09                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_38_LINE_RELATIVE
+********************************************************************************
+COMMAND_38_LINE_RELATIVE:
 FFDAC610h: 9705                     MOVE   *A8+,A5,1
 FFDAC620h: E085                     ADDXY  A4,A5
 FFDAC630h: 05A1 0920 FFEC           MOVE   @FFEC0920h,A1,0
@@ -1135,15 +1199,19 @@ FFDAC950h: C9FC                     JRNC   FFDAC920h
 FFDAC960h: 4EA2                     MOVE   A5,B2_DADDR
 FFDAC970h: 4E87                     MOVE   A4,B7_DVDX
 FFDAC980h: E257                     SUBXY  B2_DADDR,B7_DVDX
-FFDAC990h: 09FE 0001 0001           MOVI   10001h,B14
+FFDAC990h: 09FE 0001 0001           MOVI   00010001h,B14
 FFDAC9C0h: 1FE1                     BTST   0h,A1
 FFDAC9D0h: CA01                     JREQ   FFDAC9F0h
 FFDAC9E0h: 103E                     INC    B14
 FFDAC9F0h: E1D7                     ADDXY  B14,B7_DVDX
 FFDACA00h: 0FE0                     FILL   XY
 FFDACA10h: 4CA4                     MOVE   A5,A4
-FFDACA20h: C000 FBC6                JR     COMMAND_LOOP
+FFDACA20h: C000 FBC6                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_40_PIXEL_MAP
+********************************************************************************
+COMMAND_40_PIXEL_MAP:
 FFDACA40h: 9701                     MOVE   *A8+,A1,1
 FFDACA50h: 4E20                     MOVE   A1,B0_SADDR
 FFDACA60h: 9411                     MOVE   *B0_SADDR+,B1_SPTCH,0
@@ -1152,8 +1220,12 @@ FFDACA80h: 059E 0130 C000           MOVE   B14,@CONVSP,0
 FFDACAB0h: 4E82                     MOVE   A4,B2_DADDR
 FFDACAC0h: 9617                     MOVE   *B0_SADDR+,B7_DVDX,1
 FFDACAD0h: 0F20                     PIXBLT L,XY
-FFDACAE0h: C000 FBBA                JR     COMMAND_LOOP
+FFDACAE0h: C000 FBBA                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_42_POLYLINE_ABSOLUTE
+********************************************************************************
+COMMAND_42_POLYLINE_ABSOLUTE:
 FFDACB00h: 05A1 0920 FFEC           MOVE   @FFEC0920h,A1,0
 FFDACB30h: 9502                     MOVE   *A8+,A2,0
 FFDACB40h: 9503                     MOVE   *A8+,A3,0
@@ -1214,7 +1286,7 @@ FFDACE70h: C9FC                     JRNC   FFDACE40h
 FFDACE80h: 4EA2                     MOVE   A5,B2_DADDR
 FFDACE90h: 4E87                     MOVE   A4,B7_DVDX
 FFDACEA0h: E257                     SUBXY  B2_DADDR,B7_DVDX
-FFDACEB0h: 09FE 0001 0001           MOVI   10001h,B14
+FFDACEB0h: 09FE 0001 0001           MOVI   00010001h,B14
 FFDACEE0h: 1FE1                     BTST   0h,A1
 FFDACEF0h: CA01                     JREQ   FFDACF10h
 FFDACF00h: 103E                     INC    B14
@@ -1223,8 +1295,12 @@ FFDACF20h: 0FE0                     FILL   XY
 FFDACF30h: 4CA4                     MOVE   A5,A4
 FFDACF40h: 0D82 FFC1                DSJ    A2,FFDACB70h
 FFDACF60h: 4C68                     MOVE   A3,A8
-FFDACF70h: C000 FB71                JR     COMMAND_LOOP
+FFDACF70h: C000 FB71                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_44_POLYLINE_RELATIVE
+********************************************************************************
+COMMAND_44_POLYLINE_RELATIVE:
 FFDACF90h: 05A1 0920 FFEC           MOVE   @FFEC0920h,A1,0
 FFDACFC0h: 9502                     MOVE   *A8+,A2,0
 FFDACFD0h: 9503                     MOVE   *A8+,A3,0
@@ -1286,7 +1362,7 @@ FFDAD310h: C9FC                     JRNC   FFDAD2E0h
 FFDAD320h: 4EA2                     MOVE   A5,B2_DADDR
 FFDAD330h: 4E87                     MOVE   A4,B7_DVDX
 FFDAD340h: E257                     SUBXY  B2_DADDR,B7_DVDX
-FFDAD350h: 09FE 0001 0001           MOVI   10001h,B14
+FFDAD350h: 09FE 0001 0001           MOVI   00010001h,B14
 FFDAD380h: 1FE1                     BTST   0h,A1
 FFDAD390h: CA01                     JREQ   FFDAD3B0h
 FFDAD3A0h: 103E                     INC    B14
@@ -1295,8 +1371,12 @@ FFDAD3C0h: 0FE0                     FILL   XY
 FFDAD3D0h: 4CA4                     MOVE   A5,A4
 FFDAD3E0h: 0D82 FFC0                DSJ    A2,FFDAD000h
 FFDAD400h: 4C68                     MOVE   A3,A8
-FFDAD410h: C000 FB27                JR     COMMAND_LOOP
+FFDAD410h: C000 FB27                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_46_TEXT
+********************************************************************************
+COMMAND_46_TEXT:
 FFDAD430h: 9503                     MOVE   *A8+,A3,0
 FFDAD440h: CA7C                     JREQ   FFDADC10h
 FFDAD450h: 9501                     MOVE   *A8+,A1,0
@@ -1418,20 +1498,32 @@ FFDADBB0h: 97E1                     MOVE   *SP+,A1,1
 FFDADBC0h: E024                     ADDXY  A1,A4
 FFDADBD0h: 97E8                     MOVE   *SP+,A8,1
 FFDADBE0h: 97ED                     MOVE   *SP+,A13,1
-FFDADBF0h: C000 FAA9                JR     COMMAND_LOOP
+FFDADBF0h: C000 FAA9                JR     CMD_LOOP
 
 FFDADC10h: 9501                     MOVE   *A8+,A1,0
 FFDADC20h: 2481                     SLL    4h,A1
 FFDADC30h: 4028                     ADD    A1,A8
-FFDADC40h: C000 FAA4                JR     COMMAND_LOOP
+FFDADC40h: C000 FAA4                JR     CMD_LOOP
 
-FFDADC60h: C000 FAA2                JR     COMMAND_LOOP
+********************************************************************************
+* COMMAND_48_TEXT_UNDERLINE
+********************************************************************************
+COMMAND_48_TEXT_UNDERLINE:
+FFDADC60h: C000 FAA2                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_50_CALL
+********************************************************************************
+COMMAND_50_CALL:
 FFDADC80h: 9701                     MOVE   *A8+,A1,1
 FFDADC90h: 930D                     MOVE   A8,*A13+,1
 FFDADCA0h: 4C28                     MOVE   A1,A8
-FFDADCB0h: C000 FA9D                JR     COMMAND_LOOP
+FFDADCB0h: C000 FA9D                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_52_CALL_NOT_USER_FLAG
+********************************************************************************
+COMMAND_52_CALL_NOT_USER_FLAG:
 FFDADCD0h: 9501                     MOVE   *A8+,A1,0
 FFDADCE0h: 2481                     SLL    4h,A1
 FFDADCF0h: 0B21 0000 FFDA           ADDI   USERFLAGS,A1
@@ -1440,11 +1532,15 @@ FFDADD30h: CB05                     JRNE   FFDADD90h
 FFDADD40h: 9701                     MOVE   *A8+,A1,1
 FFDADD50h: 930D                     MOVE   A8,*A13+,1
 FFDADD60h: 4C28                     MOVE   A1,A8
-FFDADD70h: C000 FA91                JR     COMMAND_LOOP
+FFDADD70h: C000 FA91                JR     CMD_LOOP
 
 FFDADD90h: 1008                     ADDK   20h,A8
-FFDADDA0h: C000 FA8E                JR     COMMAND_LOOP
+FFDADDA0h: C000 FA8E                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_54_CALL_ON_USER_FLAG
+********************************************************************************
+COMMAND_54_CALL_ON_USER_FLAG:
 FFDADDC0h: 9501                     MOVE   *A8+,A1,0
 FFDADDD0h: 2481                     SLL    4h,A1
 FFDADDE0h: 0B21 0000 FFDA           ADDI   USERFLAGS,A1
@@ -1453,65 +1549,109 @@ FFDADE20h: CA05                     JREQ   FFDADE80h
 FFDADE30h: 9701                     MOVE   *A8+,A1,1
 FFDADE40h: 930D                     MOVE   A8,*A13+,1
 FFDADE50h: 4C28                     MOVE   A1,A8
-FFDADE60h: C000 FA82                JR     COMMAND_LOOP
+FFDADE60h: C000 FA82                JR     CMD_LOOP
 
 FFDADE80h: 1008                     ADDK   20h,A8
-FFDADE90h: C000 FA7F                JR     COMMAND_LOOP
+FFDADE90h: C000 FA7F                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_56_JUMP
+********************************************************************************
+COMMAND_56_JUMP:
 FFDADEB0h: 8708                     MOVE   *A8,A8,1
-FFDADEC0h: C000 FA7C                JR     COMMAND_LOOP
+FFDADEC0h: C000 FA7C                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_58_JUMP_NOT_USER_FLAG
+********************************************************************************
+COMMAND_58_JUMP_NOT_USER_FLAG:
 FFDADEE0h: 9501                     MOVE   *A8+,A1,0
 FFDADEF0h: 2481                     SLL    4h,A1
 FFDADF00h: 0B21 0000 FFDA           ADDI   USERFLAGS,A1
 FFDADF30h: 8421                     MOVE   *A1,A1,0
 FFDADF40h: CB03                     JRNE   FFDADF80h
 FFDADF50h: 8708                     MOVE   *A8,A8,1
-FFDADF60h: C000 FA72                JR     COMMAND_LOOP
+FFDADF60h: C000 FA72                JR     CMD_LOOP
 
 FFDADF80h: 1008                     ADDK   20h,A8
-FFDADF90h: C000 FA6F                JR     COMMAND_LOOP
+FFDADF90h: C000 FA6F                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_60_JUMP_ON_USER_FLAG
+********************************************************************************
+COMMAND_60_JUMP_ON_USER_FLAG:
 FFDADFB0h: 9501                     MOVE   *A8+,A1,0
 FFDADFC0h: 2481                     SLL    4h,A1
 FFDADFD0h: 0B21 0000 FFDA           ADDI   USERFLAGS,A1
 FFDAE000h: 8421                     MOVE   *A1,A1,0
 FFDAE010h: CA03                     JREQ   FFDAE050h
 FFDAE020h: 8708                     MOVE   *A8,A8,1
-FFDAE030h: C000 FA65                JR     COMMAND_LOOP
+FFDAE030h: C000 FA65                JR     CMD_LOOP
 
 FFDAE050h: 1008                     ADDK   20h,A8
-FFDAE060h: C000 FA62                JR     COMMAND_LOOP
+FFDAE060h: C000 FA62                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_62_RETURN
+********************************************************************************
+COMMAND_62_RETURN:
 FFDAE080h: A7A8                     MOVE   -*A13,A8,1
-FFDAE090h: C000 FA5F                JR     COMMAND_LOOP
+FFDAE090h: C000 FA5F                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_64_SKIP1
+********************************************************************************
+COMMAND_64_SKIP1:
 FFDAE0B0h: 1208                     ADDK   10h,A8
-FFDAE0C0h: C000 FA5C                JR     COMMAND_LOOP
+FFDAE0C0h: C000 FA5C                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_66_SKIP2
+********************************************************************************
+COMMAND_66_SKIP2:
 FFDAE0E0h: 1008                     ADDK   20h,A8
-FFDAE0F0h: C000 FA59                JR     COMMAND_LOOP
+FFDAE0F0h: C000 FA59                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_68_SKIP3
+********************************************************************************
+COMMAND_68_SKIP3:
 FFDAE110h: 0B08 0030                ADDI   30h,A8
-FFDAE130h: C000 FA55                JR     COMMAND_LOOP
+FFDAE130h: C000 FA55                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_70_SKIP4
+********************************************************************************
+COMMAND_70_SKIP4:
 FFDAE150h: 0B08 0040                ADDI   40h,A8
-FFDAE170h: C000 FA51                JR     COMMAND_LOOP
+FFDAE170h: C000 FA51                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_72_USER_FLAG_CLEAR
+********************************************************************************
+COMMAND_72_USER_FLAG_CLEAR:
 FFDAE190h: 9501                     MOVE   *A8+,A1,0
 FFDAE1A0h: 2481                     SLL    4h,A1
 FFDAE1B0h: 0B21 0000 FFDA           ADDI   USERFLAGS,A1
 FFDAE1E0h: 5642                     CLR    A2
 FFDAE1F0h: 8041                     MOVE   A2,*A1,0
-FFDAE200h: C000 FA48                JR     COMMAND_LOOP
+FFDAE200h: C000 FA48                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_74_USER_FLAG_SET
+********************************************************************************
+COMMAND_74_USER_FLAG_SET:
 FFDAE220h: 9501                     MOVE   *A8+,A1,0
 FFDAE230h: 2481                     SLL    4h,A1
 FFDAE240h: 0B21 0000 FFDA           ADDI   USERFLAGS,A1
 FFDAE270h: 1822                     MOVK   1h,A2
 FFDAE280h: 8041                     MOVE   A2,*A1,0
-FFDAE290h: C000 FA3F                JR     COMMAND_LOOP
+FFDAE290h: C000 FA3F                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_76_USER_FLAG_TOGGLE 
+********************************************************************************
+COMMAND_76_USER_FLAG_TOGGLE :
 FFDAE2B0h: 9501                     MOVE   *A8+,A1,0
 FFDAE2C0h: 2481                     SLL    4h,A1
 FFDAE2D0h: 0B21 0000 FFDA           ADDI   USERFLAGS,A1
@@ -1519,35 +1659,51 @@ FFDAE300h: 8422                     MOVE   *A1,A2,0
 FFDAE310h: 1823                     MOVK   1h,A3
 FFDAE320h: 5662                     XOR    A3,A2
 FFDAE330h: 8041                     MOVE   A2,*A1,0
-FFDAE340h: C000 FA34                JR     COMMAND_LOOP
+FFDAE340h: C000 FA34                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_78_DYNAMIC_FRAME
+********************************************************************************
+COMMAND_78_DYNAMIC_FRAME:
 FFDAE360h: 05A1 0840 FFEC           MOVE   @FFEC0840h,A1,0
-FFDAE390h: CBFC                     JRNE   FFDAE360h
-FFDAE3A0h: 09F4 0000 001E           MOVI   1E0000h,B4_OFFSET
+FFDAE390h: CBFC                     JRNE   COMMAND_78_DYNAMIC_FRAME
+FFDAE3A0h: 09F4 0000 001E           MOVI   001E0000h,B4_OFFSET
 FFDAE3D0h: 05A1 0090 C000           MOVE   @DPYSTRT,A1,0
 FFDAE400h: 0B41 E20F                CMPI   1DF0h,A1
 FFDAE420h: CA03                     JREQ   FFDAE460h
-FFDAE430h: 09F4 0000 0000           MOVI   0h,B4_OFFSET
+FFDAE430h: 09F4 0000 0000           MOVI   00000000h,B4_OFFSET
 FFDAE460h: 07BE 09C0 FFEC           MOVE   @FFEC09C0h,B14,1
 FFDAE490h: 41D4                     ADD    B14,B4_OFFSET
-FFDAE4A0h: C000 FA1E                JR     COMMAND_LOOP
+FFDAE4A0h: C000 FA1E                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_80_STATIC_FRAME
+********************************************************************************
+COMMAND_80_STATIC_FRAME:
 FFDAE4C0h: 5621                     CLR    A1
 FFDAE4D0h: 0581 0840 FFEC           MOVE   A1,@FFEC0840h,0
 FFDAE500h: 07BE 09C0 FFEC           MOVE   @FFEC09C0h,B14,1
-FFDAE530h: 09F4 0000 003C           MOVI   3C0000h,B4_OFFSET
+FFDAE530h: 09F4 0000 003C           MOVI   003C0000h,B4_OFFSET
 FFDAE560h: 41D4                     ADD    B14,B4_OFFSET
-FFDAE570h: C000 FA11                JR     COMMAND_LOOP
+FFDAE570h: C000 FA11                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_82_STATIC_FRAME_AND_ERASE
+********************************************************************************
+COMMAND_82_STATIC_FRAME_AND_ERASE:
 FFDAE590h: 1841                     MOVK   2h,A1
 FFDAE5A0h: 0581 0840 FFEC           MOVE   A1,@FFEC0840h,0
 FFDAE5D0h: 07BE 09C0 FFEC           MOVE   @FFEC09C0h,B14,1
-FFDAE600h: 09F4 0000 003C           MOVI   3C0000h,B4_OFFSET
+FFDAE600h: 09F4 0000 003C           MOVI   003C0000h,B4_OFFSET
 FFDAE630h: 05A1 0840 FFEC           MOVE   @FFEC0840h,A1,0
 FFDAE660h: CBFC                     JRNE   FFDAE630h
 FFDAE670h: 41D4                     ADD    B14,B4_OFFSET
-FFDAE680h: C000 FA00                JR     COMMAND_LOOP
+FFDAE680h: C000 FA00                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_84_GATED_CALL
+********************************************************************************
+COMMAND_84_GATED_CALL:
 FFDAE6A0h: 1608                     SUBK   10h,A8
 FFDAE6B0h: 0541                     SETF   1h,0,0
 FFDAE6C0h: 8501                     MOVE   *A8,A1,0
@@ -1559,12 +1715,16 @@ FFDAE710h: 1208                     ADDK   10h,A8
 FFDAE720h: 9701                     MOVE   *A8+,A1,1
 FFDAE730h: 930D                     MOVE   A8,*A13+,1
 FFDAE740h: 4C28                     MOVE   A1,A8
-FFDAE750h: C000 F9F3                JR     COMMAND_LOOP
+FFDAE750h: C000 F9F3                JR     CMD_LOOP
 
 FFDAE770h: 0550                     SETF   10h,0,0
 FFDAE780h: 0B08 0040                ADDI   40h,A8
-FFDAE7A0h: C000 F9EE                JR     COMMAND_LOOP
+FFDAE7A0h: C000 F9EE                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_86_INTERRUPT_HOST
+********************************************************************************
+COMMAND_86_INTERRUPT_HOST:
 FFDAE7C0h: 1608                     SUBK   10h,A8
 FFDAE7D0h: 0788 08C0 FFEC           MOVE   A8,@FFEC08C0h,1
 FFDAE800h: 1208                     ADDK   10h,A8
@@ -1572,16 +1732,28 @@ FFDAE810h: 0544                     SETF   4h,0,0
 FFDAE820h: 1921                     MOVK   9h,A1
 FFDAE830h: 0581 00F4 C000           MOVE   A1,@HSTCTLL+4,0
 FFDAE860h: 0550                     SETF   10h,0,0
-FFDAE870h: C000 F9E1                JR     COMMAND_LOOP
+FFDAE870h: C000 F9E1                JR     CMD_LOOP
 
-FFDAE890h: C000 F9DF                JR     COMMAND_LOOP
+********************************************************************************
+* COMMAND_IGNORE
+********************************************************************************
+COMMAND_IGNORE:
+FFDAE890h: C000 F9DF                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_90_91
+********************************************************************************
+COMMAND_90_91:
 FFDAE8B0h: 0541                     SETF   1h,0,0
 FFDAE8C0h: 1821                     MOVK   1h,A1
 FFDAE8D0h: B028 FFF0                MOVE   A1,*A8(FFF0h),0
 FFDAE8F0h: 0550                     SETF   10h,0,0
-FFDAE900h: C000 F9D8                JR     COMMAND_LOOP
+FFDAE900h: C000 F9D8                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_92_SEGMENT_END
+********************************************************************************
+COMMAND_92_SEGMENT_END:
 FFDAE920h: 07A1 08A0 FFEC           MOVE   @FFEC08A0h,A1,1
 FFDAE950h: 0541                     SETF   1h,0,0
 FFDAE960h: 5642                     CLR    A2
@@ -1589,21 +1761,33 @@ FFDAE970h: 8041                     MOVE   A2,*A1,0
 FFDAE980h: 0550                     SETF   10h,0,0
 FFDAE990h: 07A2 0860 FFEC           MOVE   @FFEC0860h,A2,1
 FFDAE9C0h: 4822                     CMP    A1,A2
-FFDAE9D0h: CB00 F9CB                JRNE   COMMAND_LOOP
+FFDAE9D0h: CB00 F9CB                JRNE   CMD_LOOP
 FFDAE9F0h: 0541                     SETF   1h,0,0
 FFDAEA00h: 1822                     MOVK   1h,A2
 FFDAEA10h: 8041                     MOVE   A2,*A1,0
 FFDAEA20h: 0550                     SETF   10h,0,0
 FFDAEA30h: 5642                     CLR    A2
 FFDAEA40h: 0782 0860 FFEC           MOVE   A2,@FFEC0860h,1
-FFDAEA70h: C000 F9C1                JR     COMMAND_LOOP
+FFDAEA70h: C000 F9C1                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_94_SEGMENT_END_AND_RETURN
+********************************************************************************
+COMMAND_94_SEGMENT_END_AND_RETURN:
 FFDAEA90h: A7A8                     MOVE   -*A13,A8,1
-FFDAEAA0h: C0E7                     JR     FFDAE920h
+FFDAEAA0h: C0E7                     JR     COMMAND_92_SEGMENT_END
 
+********************************************************************************
+* COMMAND_96_SEGMENT_END_AND_JUMP
+********************************************************************************
+COMMAND_96_SEGMENT_END_AND_JUMP:
 FFDAEAB0h: 8708                     MOVE   *A8,A8,1
-FFDAEAC0h: C0E5                     JR     FFDAE920h
+FFDAEAC0h: C0E5                     JR     COMMAND_92_SEGMENT_END
 
+********************************************************************************
+* COMMAND_98_SEGMENT_START
+********************************************************************************
+COMMAND_98_SEGMENT_START:
 FFDAEAD0h: 1608                     SUBK   10h,A8
 FFDAEAE0h: 0360                     DINT
 FFDAEAF0h: 8501                     MOVE   *A8,A1,0
@@ -1614,36 +1798,52 @@ FFDAEB50h: 1021                     INC    A1
 FFDAEB60h: 8028                     MOVE   A1,*A8,0
 FFDAEB70h: 0D60                     EINT
 FFDAEB80h: 1208                     ADDK   10h,A8
-FFDAEB90h: C000 F9AF                JR     COMMAND_LOOP
+FFDAEB90h: C000 F9AF                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_100_STALL
+********************************************************************************
+COMMAND_100_STALL:
 FFDAEBB0h: 1608                     SUBK   10h,A8
-FFDAEBC0h: C000 F9AC                JR     COMMAND_LOOP
+FFDAEBC0h: C000 F9AC                JR     CMD_LOOP
 
-FFDAEBE0h: 09F4 0000 001E           MOVI   1E0000h,B4_OFFSET
+********************************************************************************
+* COMMAND_102_SYNC_COPY_STATIC
+********************************************************************************
+COMMAND_102_SYNC_COPY_STATIC:
+FFDAEBE0h: 09F4 0000 001E           MOVI   001E0000h,B4_OFFSET
 FFDAEC10h: 05A1 0090 C000           MOVE   @DPYSTRT,A1,0
 FFDAEC40h: 0B41 E20F                CMPI   1DF0h,A1
 FFDAEC60h: CA03                     JREQ   FFDAECA0h
-FFDAEC70h: 09F4 0000 0000           MOVI   0h,B4_OFFSET
+FFDAEC70h: 09F4 0000 0000           MOVI   00000000h,B4_OFFSET
 FFDAECA0h: 07BE 09C0 FFEC           MOVE   @FFEC09C0h,B14,1
 FFDAECD0h: 41D4                     ADD    B14,B4_OFFSET
 FFDAECE0h: 1821                     MOVK   1h,A1
 FFDAECF0h: 0581 0840 FFEC           MOVE   A1,@FFEC0840h,0
-FFDAED20h: C000 F996                JR     COMMAND_LOOP
+FFDAED20h: C000 F996                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_104_SYNC_DISPLAY_DYNAMIC
+********************************************************************************
+COMMAND_104_SYNC_DISPLAY_DYNAMIC:
 FFDAED40h: 05A1 0090 C000           MOVE   @DPYSTRT,A1,0
 FFDAED70h: 09C2 1DF0                MOVI   1DF0h,A2
-FFDAED90h: 09F4 0000 001E           MOVI   1E0000h,B4_OFFSET
+FFDAED90h: 09F4 0000 001E           MOVI   001E0000h,B4_OFFSET
 FFDAEDC0h: 4841                     CMP    A2,A1
 FFDAEDD0h: CB05                     JRNE   FFDAEE30h
 FFDAEDE0h: 09C2 3BF0                MOVI   3BF0h,A2
-FFDAEE00h: 09F4 0000 0000           MOVI   0h,B4_OFFSET
+FFDAEE00h: 09F4 0000 0000           MOVI   00000000h,B4_OFFSET
 FFDAEE30h: 0582 0090 C000           MOVE   A2,@DPYSTRT,0
 FFDAEE60h: 07BE 09C0 FFEC           MOVE   @FFEC09C0h,B14,1
 FFDAEE90h: 41D4                     ADD    B14,B4_OFFSET
 FFDAEEA0h: 1821                     MOVK   1h,A1
 FFDAEEB0h: 0581 0840 FFEC           MOVE   A1,@FFEC0840h,0
-FFDAEEE0h: C000 F97A                JR     COMMAND_LOOP
+FFDAEEE0h: C000 F97A                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_106_BENCHMARK_START_0x6a
+********************************************************************************
+COMMAND_106_BENCHMARK_START_0x6a:
 FFDAEF00h: 09E5 0AC0 FFEC           MOVI   FFEC0AC0h,A5
 FFDAEF30h: 0541                     SETF   1h,0,0
 FFDAEF40h: 058F 011A C000           MOVE   SP,@INTENB+10,0
@@ -1669,28 +1869,44 @@ FFDAF130h: 0541                     SETF   1h,0,0
 FFDAF140h: 183A                     MOVK   1h,B10
 FFDAF150h: 059A 011A C000           MOVE   B10,@INTENB+10,0
 FFDAF180h: 0550                     SETF   10h,0,0
-FFDAF190h: C000 F94F                JR     COMMAND_LOOP
+FFDAF190h: C000 F94F                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_108_BENCHMARK_START_0x6c
+********************************************************************************
+COMMAND_108_BENCHMARK_START_0x6c:
 FFDAF1B0h: 09E5 0AE0 FFEC           MOVI   FFEC0AE0h,A5
 FFDAF1E0h: C0D4                     JR     FFDAEF30h
 
-FFDAF1F0h: 09F5 0000 0000           MOVI   0h,B5_WSTART
-FFDAF220h: 09F6 027F 01DF           MOVI   1DF027Fh,B6_WEND
-FFDAF250h: C000 F943                JR     COMMAND_LOOP
+********************************************************************************
+* COMMAND_110_CLIP_OFF
+********************************************************************************
+COMMAND_110_CLIP_OFF:
+FFDAF1F0h: 09F5 0000 0000           MOVI   00000000h,B5_WSTART
+FFDAF220h: 09F6 027F 01DF           MOVI   01DF027Fh,B6_WEND
+FFDAF250h: C000 F943                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_112_CLIP_ON
+********************************************************************************
+COMMAND_112_CLIP_ON:
 FFDAF270h: 07B5 0A40 FFEC           MOVE   @FFEC0A40h,B5_WSTART,1
 FFDAF2A0h: 07B6 0A60 FFEC           MOVE   @FFEC0A60h,B6_WEND,1
-FFDAF2D0h: C000 F93B                JR     COMMAND_LOOP
+FFDAF2D0h: C000 F93B                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_114_CLIP_RECTANGLE
+********************************************************************************
+COMMAND_114_CLIP_RECTANGLE:
 FFDAF2F0h: 9701                     MOVE   *A8+,A1,1
 FFDAF300h: 0781 0A00 FFEC           MOVE   A1,@FFEC0A00h,1
 FFDAF330h: 4E22                     MOVE   A1,B2_DADDR
 FFDAF340h: 9701                     MOVE   *A8+,A1,1
 FFDAF350h: 0781 0A20 FFEC           MOVE   A1,@FFEC0A20h,1
 FFDAF380h: 4E27                     MOVE   A1,B7_DVDX
-FFDAF390h: 09F5 0000 0000           MOVI   0h,B5_WSTART
-FFDAF3C0h: 09F6 027F 01DF           MOVI   1DF027Fh,B6_WEND
-FFDAF3F0h: 09F0 0001 0001           MOVI   10001h,B0_SADDR
+FFDAF390h: 09F5 0000 0000           MOVI   00000000h,B5_WSTART
+FFDAF3C0h: 09F6 027F 01DF           MOVI   01DF027Fh,B6_WEND
+FFDAF3F0h: 09F0 0001 0001           MOVI   00010001h,B0_SADDR
 FFDAF420h: 0541                     SETF   1h,0,0
 FFDAF430h: 0588 00B7 C000           MOVE   A8,@CONTROL+7,0
 FFDAF460h: 07B1 09E0 FFEC           MOVE   @FFEC09E0h,B1_SPTCH,1
@@ -1709,15 +1925,27 @@ FFDAF550h: E0B6                     ADDXY  B5_WSTART,B6_WEND
 FFDAF560h: E216                     SUBXY  B0_SADDR,B6_WEND
 FFDAF570h: 0795 0A40 FFEC           MOVE   B5_WSTART,@FFEC0A40h,1
 FFDAF5A0h: 0796 0A60 FFEC           MOVE   B6_WEND,@FFEC0A60h,1
-FFDAF5D0h: C000 F90B                JR     COMMAND_LOOP
+FFDAF5D0h: C000 F90B                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_116_MOVE_ABSOLUTE_0x74
+********************************************************************************
+COMMAND_116_MOVE_ABSOLUTE_0x74:
 FFDAF5F0h: 9704                     MOVE   *A8+,A4,1
-FFDAF600h: C000 F908                JR     COMMAND_LOOP
+FFDAF600h: C000 F908                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_118_MOVE_ABSOLUTE_0x76
+********************************************************************************
+COMMAND_118_MOVE_ABSOLUTE_0x76:
 FFDAF620h: 9701                     MOVE   *A8+,A1,1
 FFDAF630h: E024                     ADDXY  A1,A4
-FFDAF640h: C000 F904                JR     COMMAND_LOOP
+FFDAF640h: C000 F904                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_120_ORIGIN
+********************************************************************************
+COMMAND_120_ORIGIN:
 FFDAF660h: 07BE 09C0 FFEC           MOVE   @FFEC09C0h,B14,1
 FFDAF690h: 45D4                     SUB    B14,B4_OFFSET
 FFDAF6A0h: 9701                     MOVE   *A8+,A1,1
@@ -1731,6 +1959,10 @@ FFDAF750h: 07B2 0A00 FFEC           MOVE   @FFEC0A00h,B2_DADDR,1
 FFDAF780h: 07B7 0A20 FFEC           MOVE   @FFEC0A20h,B7_DVDX,1
 FFDAF7B0h: C0BD                     JR     FFDAF390h
 
+********************************************************************************
+* COMMAND_122_PIXEL_OPERATION
+********************************************************************************
+COMMAND_122_PIXEL_OPERATION:
 FFDAF7C0h: 9501                     MOVE   *A8+,A1,0
 FFDAF7D0h: 4E28                     MOVE   A1,B8_COLOR0
 FFDAF7E0h: 4D1E                     MOVE   B8_COLOR0,B14
@@ -1742,8 +1974,12 @@ FFDAF830h: 55D8                     OR     B14,B8_COLOR0
 FFDAF840h: 4D1E                     MOVE   B8_COLOR0,B14
 FFDAF850h: 261E                     SLL    10h,B14
 FFDAF860h: 55D8                     OR     B14,B8_COLOR0
-FFDAF870h: C000 F8E1                JR     COMMAND_LOOP
+FFDAF870h: C000 F8E1                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_124_PEN_FOREGROUND
+********************************************************************************
+COMMAND_124_PEN_FOREGROUND:
 FFDAF890h: 9501                     MOVE   *A8+,A1,0
 FFDAF8A0h: 4E29                     MOVE   A1,B9_COLOR1
 FFDAF8B0h: 4D3E                     MOVE   B9_COLOR1,B14
@@ -1755,34 +1991,58 @@ FFDAF900h: 55D9                     OR     B14,B9_COLOR1
 FFDAF910h: 4D3E                     MOVE   B9_COLOR1,B14
 FFDAF920h: 261E                     SLL    10h,B14
 FFDAF930h: 55D9                     OR     B14,B9_COLOR1
-FFDAF940h: C000 F8D4                JR     COMMAND_LOOP
+FFDAF940h: C000 F8D4                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_126_127
+********************************************************************************
+COMMAND_126_127:
 FFDAF960h: 9501                     MOVE   *A8+,A1,0
 FFDAF970h: 0545                     SETF   5h,0,0
 FFDAF980h: 0581 00BA C000           MOVE   A1,@CONTROL+10,0
 FFDAF9B0h: 0550                     SETF   10h,0,0
-FFDAF9C0h: C000 F8CC                JR     COMMAND_LOOP
+FFDAF9C0h: C000 F8CC                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_128_PIXEL_STRETCH_OFF
+********************************************************************************
+COMMAND_128_PIXEL_STRETCH_OFF:
 FFDAF9E0h: 5621                     CLR    A1
 FFDAF9F0h: 0581 0920 FFEC           MOVE   A1,@FFEC0920h,0
-FFDAFA20h: C000 F8C6                JR     COMMAND_LOOP
+FFDAFA20h: C000 F8C6                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_130_PIXEL_STRETCH_ON
+********************************************************************************
+COMMAND_130_PIXEL_STRETCH_ON:
 FFDAFA40h: 1821                     MOVK   1h,A1
 FFDAFA50h: 0581 0920 FFEC           MOVE   A1,@FFEC0920h,0
-FFDAFA80h: C000 F8C0                JR     COMMAND_LOOP
+FFDAFA80h: C000 F8C0                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_132_SCALE_FACTOR_0x84
+********************************************************************************
+COMMAND_132_SCALE_FACTOR_0x84:
 FFDAFAA0h: 9701                     MOVE   *A8+,A1,1
 FFDAFAB0h: 0781 0940 FFEC           MOVE   A1,@FFEC0940h,1
 FFDAFAE0h: 9701                     MOVE   *A8+,A1,1
 FFDAFAF0h: 0781 0960 FFEC           MOVE   A1,@FFEC0960h,1
-FFDAFB20h: C000 F8B6                JR     COMMAND_LOOP
+FFDAFB20h: C000 F8B6                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_134_SCALE_FACTOR_0x86
+********************************************************************************
+COMMAND_134_SCALE_FACTOR_0x86:
 FFDAFB40h: 9501                     MOVE   *A8+,A1,0
 FFDAFB50h: 0581 0980 FFEC           MOVE   A1,@FFEC0980h,0
 FFDAFB80h: 9501                     MOVE   *A8+,A1,0
 FFDAFB90h: 0581 09A0 FFEC           MOVE   A1,@FFEC09A0h,0
-FFDAFBC0h: C000 F8AC                JR     COMMAND_LOOP
+FFDAFBC0h: C000 F8AC                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_136_TEXT_FONT
+********************************************************************************
+COMMAND_136_TEXT_FONT:
 FFDAFBE0h: 9503                     MOVE   *A8+,A3,0
 FFDAFBF0h: 09E1 9540 FFDC           MOVI   FONTS_TABLES,A1
 FFDAFC20h: 24A3                     SLL    5h,A3
@@ -1792,32 +2052,44 @@ FFDAFC70h: 09C7 0010                MOVI   10h,A7
 FFDAFC90h: 8623                     MOVE   *A1,A3,1
 FFDAFCA0h: 9A62                     MOVE   *A3+,*A2+,1
 FFDAFCB0h: 3C47                     DSJS   A7,FFDAFCA0h
-FFDAFCC0h: C000 F89C                JR     COMMAND_LOOP
+FFDAFCC0h: C000 F89C                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_138_TRANSPARENCY_OFF
+********************************************************************************
+COMMAND_138_TRANSPARENCY_OFF:
 FFDAFCE0h: 0541                     SETF   1h,0,0
 FFDAFCF0h: 5621                     CLR    A1
 FFDAFD00h: 0581 00B5 C000           MOVE   A1,@CONTROL+5,0
 FFDAFD30h: 0550                     SETF   10h,0,0
-FFDAFD40h: C000 F894                JR     COMMAND_LOOP
+FFDAFD40h: C000 F894                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_140_TRANSPARENCY_ON
+********************************************************************************
+COMMAND_140_TRANSPARENCY_ON:
 FFDAFD60h: 0541                     SETF   1h,0,0
 FFDAFD70h: 1821                     MOVK   1h,A1
 FFDAFD80h: 0581 00B5 C000           MOVE   A1,@CONTROL+5,0
 FFDAFDB0h: 0550                     SETF   10h,0,0
-FFDAFDC0h: C000 F88C                JR     COMMAND_LOOP
+FFDAFDC0h: C000 F88C                JR     CMD_LOOP
 
-================================================================================
-= HI_VECTOR
-================================================================================
+********************************************************************************
+* HI_VECTOR
+********************************************************************************
 HI_VECTOR:
 FFDAFDE0h: 098F 6000                MMTM   SP,A1,A2
 FFDAFE00h: 05A1 00F0 C000           MOVE   @HSTCTLL,A1,0
 FFDAFE30h: 27A1                     SLL    1Dh,A1
 FFDAFE40h: 2D01                     SRL    18h,A1
-FFDAFE50h: 0B21 0B80 FFEC           ADDI   FFEC0B80h,A1
+FFDAFE50h: 0B21 0B80 FFEC           ADDI   MSGIN_TABLE,A1
 FFDAFE80h: 8621                     MOVE   *A1,A1,1
 FFDAFE90h: 0161                     JUMP   A1
 
+********************************************************************************
+* MSGIN_1
+********************************************************************************
+MSGIN_1:
 FFDAFEA0h: 07A1 0860 FFEC           MOVE   @FFEC0860h,A1,1
 FFDAFED0h: 0541                     SETF   1h,0,0
 FFDAFEE0h: 8422                     MOVE   *A1,A2,0
@@ -1831,6 +2103,10 @@ FFDAFF90h: 0550                     SETF   10h,0,0
 FFDAFFA0h: 09AF 0006                MMFM   SP,A1,A2
 FFDAFFC0h: 0940                     RETI
 
+********************************************************************************
+* MSGIN_2
+********************************************************************************
+MSGIN_2:
 FFDAFFD0h: 09E1 0ED0 FFEC           MOVI   FFEC0ED0h,A1
 FFDB0000h: B7E2 0060                MOVE   *SP(60h),A2,1
 FFDB0020h: 9241                     MOVE   A2,*A1+,1
@@ -1871,12 +2147,16 @@ FFDB0260h: 9390                     MOVE   B12,*B0_SADDR+,1
 FFDB0270h: 93B0                     MOVE   B13,*B0_SADDR+,1
 FFDB0280h: 93D0                     MOVE   B14,*B0_SADDR+,1
 FFDB0290h: 4E40                     MOVE   A2,B0_SADDR
+********************************************************************************
+* MSGIN_0_3_4_7
+********************************************************************************
+MSGIN_0_3_4_7:
 FFDB02A0h: 0541                     SETF   1h,0,0
 FFDB02B0h: C0CA                     JR     FFDAFF60h
 
-================================================================================
-= DI_VECTOR
-================================================================================
+********************************************************************************
+* DI_VECTOR
+********************************************************************************
 DI_VECTOR:
 FFDB02C0h: 099F 000A                MMTM   SP,B12,B14
 FFDB02E0h: 0541                     SETF   1h,0,0
@@ -1905,19 +2185,19 @@ FFDB05E0h: 57DE                     CLR    B14
 FFDB05F0h: 0549                     SETF   9h,0,0
 FFDB0600h: 059E 00B6 C000           MOVE   B14,@CONTROL+6,0
 FFDB0630h: 0550                     SETF   10h,0,0
-FFDB0640h: 09F3 2000 0000           MOVI   2000h,B3_DPTCH
-FFDB0670h: 09F7 0800 0001           MOVI   10800h,B7_DVDX
-FFDB06A0h: 09F2 0000 003C           MOVI   3C0000h,B2_DADDR
+FFDB0640h: 09F3 2000 0000           MOVI   00002000h,B3_DPTCH
+FFDB0670h: 09F7 0800 0001           MOVI   00010800h,B7_DVDX
+FFDB06A0h: 09F2 0000 003C           MOVI   003C0000h,B2_DADDR
 FFDB06D0h: 5739                     CLR    B9_COLOR1
 FFDB06E0h: 05BE 00B0 C000           MOVE   @CONTROL,B14,0
 FFDB0710h: 0FC0                     FILL   L
 FFDB0720h: 0541                     SETF   1h,0,0
 FFDB0730h: 183E                     MOVK   1h,B14
 FFDB0740h: 059E 008B C000           MOVE   B14,@DPYCTL+11,0
-FFDB0770h: 09F2 0000 003C           MOVI   3C0000h,B2_DADDR
+FFDB0770h: 09F2 0000 003C           MOVI   003C0000h,B2_DADDR
 FFDB07A0h: 05BE 0080 C000           MOVE   @DPYCTL,B14,0
 FFDB07D0h: FA5E                     PIXT   *B2_DADDR,B14
-FFDB07E0h: 09F7 0004 00F0           MOVI   F00004h,B7_DVDX
+FFDB07E0h: 09F7 0004 00F0           MOVI   00F00004h,B7_DVDX
 FFDB0810h: 0FC0                     FILL   L
 FFDB0820h: 058F 008B C000           MOVE   SP,@DPYCTL+11,0
 FFDB0850h: 0550                     SETF   10h,0,0
@@ -1928,11 +2208,11 @@ FFDB08C0h: 059E 00B0 C000           MOVE   B14,@CONTROL,0
 FFDB08F0h: C042                     JR     FFDB0D20h
 
 FFDB0900h: 09DE FFFF                MOVI   FFFFh,B14
-FFDB0920h: 059E 0000 0400           MOVE   B14,@4000000h,0
+FFDB0920h: 059E 0000 0400           MOVE   B14,@04000000h,0
 FFDB0950h: 09DE FFFF                MOVI   FFFFh,B14
-FFDB0970h: 059E 0000 0200           MOVE   B14,@2000000h,0
-FFDB09A0h: 059E 2000 0200           MOVE   B14,@2002000h,0
-FFDB09D0h: 05BE 0000 0420           MOVE   @4200000h,B14,0
+FFDB0970h: 059E 0000 0200           MOVE   B14,@02000000h,0
+FFDB09A0h: 059E 2000 0200           MOVE   B14,@02002000h,0
+FFDB09D0h: 05BE 0000 0420           MOVE   @04200000h,B14,0
 FFDB0A00h: 05C0 0090 C000 01E0 C000 MOVE   @DPYSTRT,@DPYADR,0
 FFDB0A50h: 05BE 00B0 C000           MOVE   @CONTROL,B14,0
 FFDB0A80h: 099F F102                MMTM   SP,B0_SADDR-B3_DPTCH,B7_DVDX,B14
@@ -1943,13 +2223,13 @@ FFDB0AF0h: 0550                     SETF   10h,0,0
 FFDB0B00h: 0541                     SETF   1h,0,0
 FFDB0B10h: 183E                     MOVK   1h,B14
 FFDB0B20h: 059E 008B C000           MOVE   B14,@DPYCTL+11,0
-FFDB0B50h: 09F3 2000 0000           MOVI   2000h,B3_DPTCH
+FFDB0B50h: 09F3 2000 0000           MOVI   00002000h,B3_DPTCH
 FFDB0B80h: 4C71                     MOVE   B3_DPTCH,B1_SPTCH
 FFDB0B90h: 4C92                     MOVE   B4_OFFSET,B2_DADDR
 FFDB0BA0h: 07B0 09C0 FFEC           MOVE   @FFEC09C0h,B0_SADDR,1
 FFDB0BD0h: 4412                     SUB    B0_SADDR,B2_DADDR
-FFDB0BE0h: 09F0 0000 003C           MOVI   3C0000h,B0_SADDR
-FFDB0C10h: 09F7 0004 00F0           MOVI   F00004h,B7_DVDX
+FFDB0BE0h: 09F0 0000 003C           MOVI   003C0000h,B0_SADDR
+FFDB0C10h: 09F7 0004 00F0           MOVI   00F00004h,B7_DVDX
 FFDB0C40h: 0F00                     PIXBLT L,L
 FFDB0C50h: 058F 008B C000           MOVE   SP,@DPYCTL+11,0
 FFDB0C80h: 0550                     SETF   10h,0,0
@@ -1966,11 +2246,15 @@ FFDB0D90h: 0549                     SETF   9h,0,0
 FFDB0DA0h: 0599 00B6 C000           MOVE   B9_COLOR1,@CONTROL+6,0
 FFDB0DD0h: 0550                     SETF   10h,0,0
 FFDB0DE0h: 4C92                     MOVE   B4_OFFSET,B2_DADDR
-FFDB0DF0h: 09F7 0280 01E0           MOVI   1E00280h,B7_DVDX
+FFDB0DF0h: 09F7 0280 01E0           MOVI   01E00280h,B7_DVDX
 FFDB0E20h: 0FC0                     FILL   L
 FFDB0E30h: 0581 00B0 C000           MOVE   A1,@CONTROL,0
 FFDB0E60h: 0960                     RETS
 
+********************************************************************************
+* MSGIN_5
+********************************************************************************
+MSGIN_5:
 FFDB0E70h: 0550                     SETF   10h,0,0
 FFDB0E80h: 09DE 0050                MOVI   50h,B14
 FFDB0EA0h: 059E 00F0 C000           MOVE   B14,@HSTCTLL,0
@@ -2014,6 +2298,10 @@ FFDB1220h: 0300                     NOP
 FFDB1230h: 0300                     NOP
 FFDB1240h: C0DF                     JR     FFDB1040h
 
+********************************************************************************
+* MSGIN_6
+********************************************************************************
+MSGIN_6:
 FFDB1250h: 0550                     SETF   10h,0,0
 FFDB1260h: 05BE 00B0 C000           MOVE   @CONTROL,B14,0
 FFDB1290h: 099F F102                MMTM   SP,B0_SADDR-B3_DPTCH,B7_DVDX,B14
@@ -2023,7 +2311,7 @@ FFDB1300h: 57DE                     CLR    B14
 FFDB1310h: 0549                     SETF   9h,0,0
 FFDB1320h: 059E 00B6 C000           MOVE   B14,@CONTROL+6,0
 FFDB1350h: 0550                     SETF   10h,0,0
-FFDB1360h: 09F3 2000 0000           MOVI   2000h,B3_DPTCH
+FFDB1360h: 09F3 2000 0000           MOVI   00002000h,B3_DPTCH
 FFDB1390h: 4C71                     MOVE   B3_DPTCH,B1_SPTCH
 FFDB13A0h: 0300                     NOP
 FFDB13B0h: 0300                     NOP
@@ -2045,7 +2333,7 @@ FFDB1540h: 09DE 0064                MOVI   64h,B14
 FFDB1560h: 0300                     NOP
 FFDB1570h: 0300                     NOP
 FFDB1580h: 3C7E                     DSJS   B14,FFDB1560h
-FFDB1590h: 09F7 0004 0001           MOVI   10004h,B7_DVDX
+FFDB1590h: 09F7 0004 0001           MOVI   00010004h,B7_DVDX
 FFDB15C0h: 0F00                     PIXBLT L,L
 FFDB15D0h: 57DE                     CLR    B14
 FFDB15E0h: 059E 008B C000           MOVE   B14,@DPYCTL+11,0
@@ -2056,33 +2344,37 @@ FFDB1660h: 57DE                     CLR    B14
 FFDB1670h: 059E 0CC0 FFEC           MOVE   B14,@FFEC0CC0h,0
 FFDB16A0h: C0CF                     JR     FFDB13A0h
 
-================================================================================
-= ILLOP_VECTOR
-================================================================================
+********************************************************************************
+* ILLOP_VECTOR
+********************************************************************************
 ILLOP_VECTOR:
 FFDB16B0h: 97E0                     MOVE   *SP+,A0,1
 FFDB16C0h: 97E1                     MOVE   *SP+,A1,1
 FFDB16D0h: C0FF                     JR     FFDB16D0h
 
-================================================================================
-= INT1_VECTOR
-================================================================================
+********************************************************************************
+* INT1_VECTOR
+********************************************************************************
 INT1_VECTOR:
 FFDB16E0h: C0FF                     JR     INT1_VECTOR
 
-================================================================================
-= INT2_VECTOR
-================================================================================
+********************************************************************************
+* INT2_VECTOR
+********************************************************************************
 INT2_VECTOR:
 FFDB16F0h: C0FF                     JR     INT2_VECTOR
 
+********************************************************************************
+* COMMAND_26_GRAPHYY_0x1a
+********************************************************************************
+COMMAND_26_GRAPHYY_0x1a:
 FFDB1700h: 9504                     MOVE   *A8+,A4,0
 FFDB1710h: 9701                     MOVE   *A8+,A1,1
 FFDB1720h: 9702                     MOVE   *A8+,A2,1
 FFDB1730h: 9703                     MOVE   *A8+,A3,1
 FFDB1740h: 9506                     MOVE   *A8+,A6,0
 FFDB1750h: 4C84                     MOVE   A4,A4
-FFDB1760h: CA00 F6F2                JREQ   COMMAND_LOOP
+FFDB1760h: CA00 F6F2                JREQ   CMD_LOOP
 FFDB1780h: 098F 0084                MMTM   SP,A8,A13
 FFDB17A0h: 099F 0080                MMTM   SP,B8_COLOR0
 FFDB17C0h: 4C8D                     MOVE   A4,A13
@@ -2197,13 +2489,17 @@ FFDB2010h: 0550                     SETF   10h,0,0
 FFDB2020h: 09BF 0100                MMFM   SP,B8_COLOR0
 FFDB2040h: 09AF 2100                MMFM   SP,A8,A13
 FFDB2060h: 4F89                     MOVE   A12,B9_COLOR1
-FFDB2070h: C000 F661                JR     COMMAND_LOOP
+FFDB2070h: C000 F661                JR     CMD_LOOP
 
+********************************************************************************
+* COMMAND_28_GRAPHYY_0x1c
+********************************************************************************
+COMMAND_28_GRAPHYY_0x1c:
 FFDB2090h: 9504                     MOVE   *A8+,A4,0
 FFDB20A0h: 9701                     MOVE   *A8+,A1,1
 FFDB20B0h: 9703                     MOVE   *A8+,A3,1
 FFDB20C0h: 4C84                     MOVE   A4,A4
-FFDB20D0h: CA00 F65B                JREQ   COMMAND_LOOP
+FFDB20D0h: CA00 F65B                JREQ   CMD_LOOP
 FFDB20F0h: 098F 0084                MMTM   SP,A8,A13
 FFDB2110h: 099F 0080                MMTM   SP,B8_COLOR0
 FFDB2130h: 4C8D                     MOVE   A4,A13
@@ -2308,7 +2604,7 @@ FFDB2920h: 0550                     SETF   10h,0,0
 FFDB2930h: 09BF 0100                MMFM   SP,B8_COLOR0
 FFDB2950h: 09AF 2100                MMFM   SP,A8,A13
 FFDB2970h: 4F89                     MOVE   A12,B9_COLOR1
-FFDB2980h: C000 F5D0                JR     COMMAND_LOOP
+FFDB2980h: C000 F5D0                JR     CMD_LOOP
 
 FFDB29A0h: 3320 FFDB                .long    FFDB3320h
 
@@ -2626,7 +2922,7 @@ FFDB4A40h: 0542                     SETF   2h,0,0
 FFDB4A50h: 185A                     MOVK   2h,B10
 FFDB4A60h: 815B                     MOVE   B10,*B11,0
 FFDB4A70h: 0550                     SETF   10h,0,0
-FFDB4A80h: 09F1 0001 0001           MOVI   10001h,B1_SPTCH
+FFDB4A80h: 09F1 0001 0001           MOVI   00010001h,B1_SPTCH
 FFDB4AB0h: 4E82                     MOVE   A4,B2_DADDR
 FFDB4AC0h: E65E                     CPW    B2_DADDR,B14
 FFDB4AD0h: CD05                     JRNV   FFDB4B30h
@@ -2861,7 +3157,7 @@ FFDB5AD0h: 0542                     SETF   2h,0,0
 FFDB5AE0h: 185A                     MOVK   2h,B10
 FFDB5AF0h: 815B                     MOVE   B10,*B11,0
 FFDB5B00h: 0550                     SETF   10h,0,0
-FFDB5B10h: 09F1 0001 0001           MOVI   10001h,B1_SPTCH
+FFDB5B10h: 09F1 0001 0001           MOVI   00010001h,B1_SPTCH
 FFDB5B40h: 4E82                     MOVE   A4,B2_DADDR
 FFDB5B50h: E65E                     CPW    B2_DADDR,B14
 FFDB5B60h: CD05                     JRNV   FFDB5BC0h
@@ -3115,8 +3411,8 @@ FFDB6C40h: 141B                     SUBK   20h,B11
 FFDB6C50h: 895B                     MOVE   *B10,*B11,0
 FFDB6C60h: 4C80                     MOVE   A4,A0
 FFDB6C70h: 4C83                     MOVE   A4,A3
-FFDB6C80h: 09EB 0000 0001           MOVI   10000h,A11
-FFDB6CB0h: 09F1 0001 0001           MOVI   10001h,B1_SPTCH
+FFDB6C80h: 09EB 0000 0001           MOVI   00010000h,A11
+FFDB6CB0h: 09F1 0001 0001           MOVI   00010001h,B1_SPTCH
 FFDB6CE0h: 059E 0C80 FFEC           MOVE   B14,@FFEC0C80h,0
 FFDB6D10h: 0960                     RETS
 
@@ -3259,8 +3555,8 @@ FFDB7600h: 995B                     MOVE   *B10+,*B11+,0
 FFDB7610h: 995B                     MOVE   *B10+,*B11+,0
 FFDB7620h: 4C80                     MOVE   A4,A0
 FFDB7630h: 4C83                     MOVE   A4,A3
-FFDB7640h: 09EB 0000 0001           MOVI   10000h,A11
-FFDB7670h: 09F1 0001 0001           MOVI   10001h,B1_SPTCH
+FFDB7640h: 09EB 0000 0001           MOVI   00010000h,A11
+FFDB7670h: 09F1 0001 0001           MOVI   00010001h,B1_SPTCH
 FFDB76A0h: 1830                     MOVK   1h,B0_SADDR
 FFDB76B0h: 059E 0C80 FFEC           MOVE   B14,@FFEC0C80h,0
 FFDB76E0h: 0960                     RETS
@@ -3557,19 +3853,23 @@ FFDB8C50h: E285                     SUBXY  A4,A5
 FFDB8C60h: F165                     PIXT   A11,*A5,XY
 FFDB8C70h: C0DF                     JR     FFDB8A70h
 
+********************************************************************************
+* COMMAND_24_25
+********************************************************************************
+COMMAND_24_25:
 FFDB8C80h: 9503                     MOVE   *A8+,A3,0
 FFDB8C90h: 9701                     MOVE   *A8+,A1,1
 FFDB8CA0h: 9700                     MOVE   *A8+,A0,1
 FFDB8CB0h: 950A                     MOVE   *A8+,A10,0
 FFDB8CC0h: 1423                     DEC    A3
-FFDB8CD0h: C600 EF9B                JRLE   COMMAND_LOOP
+FFDB8CD0h: C600 EF9B                JRLE   CMD_LOOP
 FFDB8CF0h: 098F 0084                MMTM   SP,A8,A13
 FFDB8D10h: 4F3C                     MOVE   B9_COLOR1,A12
 FFDB8D20h: 4F1E                     MOVE   B8_COLOR0,A14
 FFDB8D30h: 4F40                     MOVE   A10,B0_SADDR
 FFDB8D40h: 574A                     CLR    A10
-FFDB8D50h: 09F1 0001 0001           MOVI   10001h,B1_SPTCH
-FFDB8D80h: 09E2 0000 0001           MOVI   10000h,A2
+FFDB8D50h: 09F1 0001 0001           MOVI   00010001h,B1_SPTCH
+FFDB8D80h: 09E2 0000 0001           MOVI   00010000h,A2
 FFDB8DB0h: 09FB 0000 FFDD           MOVI   FFDD0000h,B11
 FFDB8DE0h: 4E27                     MOVE   A1,B7_DVDX
 FFDB8DF0h: 2717                     SLL    18h,B7_DVDX
@@ -3656,7 +3956,7 @@ FFDB9410h: 0550                     SETF   10h,0,0
 FFDB9420h: 0740                     SETF   20h,0,1
 FFDB9430h: 4F89                     MOVE   A12,B9_COLOR1
 FFDB9440h: 09AF 2100                MMFM   SP,A8,A13
-FFDB9460h: C000 EF22                JR     COMMAND_LOOP
+FFDB9460h: C000 EF22                JR     CMD_LOOP
 
 FFDB9480h: 0009                     .word    0009h
 FFDB9490h: 9405                     MOVE   *A0+,A5,0
@@ -3758,19 +4058,23 @@ FFDB9A40h: F132                     PIXT   B9_COLOR1,*B2_DADDR,XY
 FFDB9A50h: C0DD                     JR     FFDB9830h
 
 FFDB9A60h: 0300                     NOP
+********************************************************************************
+* COMMAND_32_GRAPHYY_0x20
+********************************************************************************
+COMMAND_32_GRAPHYY_0x20:
 FFDB9A70h: 9503                     MOVE   *A8+,A3,0
 FFDB9A80h: 9701                     MOVE   *A8+,A1,1
 FFDB9A90h: 9700                     MOVE   *A8+,A0,1
 FFDB9AA0h: 950A                     MOVE   *A8+,A10,0
 FFDB9AB0h: 1423                     DEC    A3
-FFDB9AC0h: C600 EEBC                JRLE   COMMAND_LOOP
+FFDB9AC0h: C600 EEBC                JRLE   CMD_LOOP
 FFDB9AE0h: 098F 0084                MMTM   SP,A8,A13
 FFDB9B00h: 4F3C                     MOVE   B9_COLOR1,A12
 FFDB9B10h: 4F1E                     MOVE   B8_COLOR0,A14
 FFDB9B20h: 4F40                     MOVE   A10,B0_SADDR
 FFDB9B30h: 574A                     CLR    A10
-FFDB9B40h: 09F1 0001 0001           MOVI   10001h,B1_SPTCH
-FFDB9B70h: 09E2 0000 0001           MOVI   10000h,A2
+FFDB9B40h: 09F1 0001 0001           MOVI   00010001h,B1_SPTCH
+FFDB9B70h: 09E2 0000 0001           MOVI   00010000h,A2
 FFDB9BA0h: 09FB 0000 FFDD           MOVI   FFDD0000h,B11
 FFDB9BD0h: 09FA A1B0 FFDB           MOVI   FFDBA1B0h,B10
 FFDB9C00h: 995B                     MOVE   *B10+,*B11+,0
@@ -3848,7 +4152,7 @@ FFDBA120h: 0D5F 0000 FFDD           CALLA  FFDD0000h
 FFDBA150h: 0740                     SETF   20h,0,1
 FFDBA160h: 4F89                     MOVE   A12,B9_COLOR1
 FFDBA170h: 09AF 2100                MMFM   SP,A8,A13
-FFDBA190h: C000 EE4F                JR     COMMAND_LOOP
+FFDBA190h: C000 EE4F                JR     CMD_LOOP
 
 FFDBA1B0h: 9405                     MOVE   *A0+,A5,0
 FFDBA1C0h: 4D61                     MOVE   A11,A1
@@ -3935,191 +4239,201 @@ FFDBA680h: C0DD                     JR     FFDBA460h
 
 FFDBA690h: 0300                     NOP
 
-FUNCTION_ADR_TABLE:
+CMD_ADR_TABLE:
 FFDC8000h: .long 00000000h
 FFDC8020h: .long 00000000h
-FFDC8040h: .long FFDA87C0h
-FFDC8060h: .long FFDA87C0h
-FFDC8080h: .long FFDA8800h
-FFDC80A0h: .long FFDA8800h
-FFDC80C0h: .long FFDA8A70h
-FFDC80E0h: .long FFDA8A70h
-FFDC8100h: .long FFDA8B20h
-FFDC8120h: .long FFDA8B20h
-FFDC8140h: .long FFDA9890h
-FFDC8160h: .long FFDA9890h
-FFDC8180h: .long FFDA9BE0h
-FFDC81A0h: .long FFDA9BE0h
-FFDC81C0h: .long FFDA9CA0h
-FFDC81E0h: .long FFDA9CA0h
-FFDC8200h: .long FFDA9E00h
-FFDC8220h: .long FFDA9E00h
-FFDC8240h: .long FFDAA5E0h
-FFDC8260h: .long FFDAA5E0h
-FFDC8280h: .long FFDAA640h
-FFDC82A0h: .long FFDAA640h
-FFDC82C0h: .long FFDAA860h
-FFDC82E0h: .long FFDAA860h
-FFDC8300h: .long FFDB8C80h
-FFDC8320h: .long FFDB8C80h
-FFDC8340h: .long FFDB1700h
-FFDC8360h: .long FFDB1700h
-FFDC8380h: .long FFDB2090h
-FFDC83A0h: .long FFDB2090h
-FFDC83C0h: .long FFDABCE0h
-FFDC83E0h: .long FFDABCE0h
-FFDC8400h: .long FFDB9A70h
-FFDC8420h: .long FFDB9A70h
-FFDC8440h: .long FFDAAB70h
-FFDC8460h: .long FFDAAB70h
-FFDC8480h: .long FFDAC1F0h
-FFDC84A0h: .long FFDAC1F0h
-FFDC84C0h: .long FFDAC610h
-FFDC84E0h: .long FFDAC610h
-FFDC8500h: .long FFDACA40h
-FFDC8520h: .long FFDACA40h
-FFDC8540h: .long FFDACB00h
-FFDC8560h: .long FFDACB00h
-FFDC8580h: .long FFDACF90h
-FFDC85A0h: .long FFDACF90h
-FFDC85C0h: .long FFDAD430h
-FFDC85E0h: .long FFDAD430h
-FFDC8600h: .long FFDADC60h
-FFDC8620h: .long FFDADC60h
-FFDC8640h: .long FFDADC80h
-FFDC8660h: .long FFDADC80h
-FFDC8680h: .long FFDADCD0h
-FFDC86A0h: .long FFDADCD0h
-FFDC86C0h: .long FFDADDC0h
-FFDC86E0h: .long FFDADDC0h
-FFDC8700h: .long FFDADEB0h
-FFDC8720h: .long FFDADEB0h
-FFDC8740h: .long FFDADEE0h
-FFDC8760h: .long FFDADEE0h
-FFDC8780h: .long FFDADFB0h
-FFDC87A0h: .long FFDADFB0h
-FFDC87C0h: .long FFDAE080h
-FFDC87E0h: .long FFDAE080h
-FFDC8800h: .long FFDAE0B0h
-FFDC8820h: .long FFDAE0B0h
-FFDC8840h: .long FFDAE0E0h
-FFDC8860h: .long FFDAE0E0h
-FFDC8880h: .long FFDAE110h
-FFDC88A0h: .long FFDAE110h
-FFDC88C0h: .long FFDAE150h
-FFDC88E0h: .long FFDAE150h
-FFDC8900h: .long FFDAE190h
-FFDC8920h: .long FFDAE190h
-FFDC8940h: .long FFDAE220h
-FFDC8960h: .long FFDAE220h
-FFDC8980h: .long FFDAE2B0h
-FFDC89A0h: .long FFDAE2B0h
-FFDC89C0h: .long FFDAE360h
-FFDC89E0h: .long FFDAE360h
-FFDC8A00h: .long FFDAE4C0h
-FFDC8A20h: .long FFDAE4C0h
-FFDC8A40h: .long FFDAE590h
-FFDC8A60h: .long FFDAE590h
-FFDC8A80h: .long FFDAE6A0h
-FFDC8AA0h: .long FFDAE6A0h
-FFDC8AC0h: .long FFDAE7C0h
-FFDC8AE0h: .long FFDAE7C0h
-FFDC8B00h: .long FFDAE890h
-FFDC8B20h: .long FFDAE890h
-FFDC8B40h: .long FFDAE8B0h
-FFDC8B60h: .long FFDAE8B0h
-FFDC8B80h: .long FFDAE920h
-FFDC8BA0h: .long FFDAE920h
-FFDC8BC0h: .long FFDAEA90h
-FFDC8BE0h: .long FFDAEA90h
-FFDC8C00h: .long FFDAEAB0h
-FFDC8C20h: .long FFDAEAB0h
-FFDC8C40h: .long FFDAEAD0h
-FFDC8C60h: .long FFDAEAD0h
-FFDC8C80h: .long FFDAEBB0h
-FFDC8CA0h: .long FFDAEBB0h
-FFDC8CC0h: .long FFDAEBE0h
-FFDC8CE0h: .long FFDAEBE0h
-FFDC8D00h: .long FFDAED40h
-FFDC8D20h: .long FFDAED40h
-FFDC8D40h: .long FFDAEF00h
-FFDC8D60h: .long FFDAEF00h
-FFDC8D80h: .long FFDAF1B0h
-FFDC8DA0h: .long FFDAF1B0h
-FFDC8DC0h: .long FFDAF1F0h
-FFDC8DE0h: .long FFDAF1F0h
-FFDC8E00h: .long FFDAF270h
-FFDC8E20h: .long FFDAF270h
-FFDC8E40h: .long FFDAF2F0h
-FFDC8E60h: .long FFDAF2F0h
-FFDC8E80h: .long FFDAF5F0h
-FFDC8EA0h: .long FFDAF5F0h
-FFDC8EC0h: .long FFDAF620h
-FFDC8EE0h: .long FFDAF620h
-FFDC8F00h: .long FFDAF660h
-FFDC8F20h: .long FFDAF660h
-FFDC8F40h: .long FFDAF7C0h
-FFDC8F60h: .long FFDAF7C0h
-FFDC8F80h: .long FFDAF890h
-FFDC8FA0h: .long FFDAF890h
-FFDC8FC0h: .long FFDAF960h
-FFDC8FE0h: .long FFDAF960h
-FFDC9000h: .long FFDAF9E0h
-FFDC9020h: .long FFDAF9E0h
-FFDC9040h: .long FFDAFA40h
-FFDC9060h: .long FFDAFA40h
-FFDC9080h: .long FFDAFAA0h
-FFDC90A0h: .long FFDAFAA0h
-FFDC90C0h: .long FFDAFB40h
-FFDC90E0h: .long FFDAFB40h
-FFDC9100h: .long FFDAFBE0h
-FFDC9120h: .long FFDAFBE0h
-FFDC9140h: .long FFDAFCE0h
-FFDC9160h: .long FFDAFCE0h
-FFDC9180h: .long FFDAFD60h
-FFDC91A0h: .long FFDAFD60h
-FFDC91C0h: .long FFDAE890h
-FFDC91E0h: .long FFDAE890h
-FFDC9200h: .long FFDAE890h
-FFDC9220h: .long FFDAE890h
-FFDC9240h: .long FFDAE890h
-FFDC9260h: .long FFDAE890h
-FFDC9280h: .long FFDAE890h
-FFDC92A0h: .long FFDAE890h
-FFDC92C0h: .long FFDAE890h
-FFDC92E0h: .long FFDAE890h
-FFDC9300h: .long FFDAE890h
-FFDC9320h: .long FFDAE890h
-FFDC9340h: .long FFDAE890h
-FFDC9360h: .long FFDAE890h
-FFDC9380h: .long FFDAE890h
-FFDC93A0h: .long FFDAE890h
-FFDC93C0h: .long FFDAE890h
-FFDC93E0h: .long FFDAE890h
-FFDC9400h: .long FFDAE890h
-FFDC9420h: .long FFDAE890h
-FFDC9440h: .long FFDAE890h
-FFDC9460h: .long FFDAE890h
-FFDC9480h: .long FFDAE890h
-FFDC94A0h: .long FFDAE890h
-FFDC94C0h: .long FFDAE890h
-FFDC94E0h: .long FFDAE890h
-FFDC9500h: .long FFDAE890h
-FFDC9520h: .long FFDAE890h
+FFDC8040h: .long COMMAND_2_ARC
+FFDC8060h: .long COMMAND_2_ARC
+FFDC8080h: .long COMMAND_4_BENCHMARK_TEXT
+FFDC80A0h: .long COMMAND_4_BENCHMARK_TEXT
+FFDC80C0h: .long COMMAND_6_BINARY_MAP
+FFDC80E0h: .long COMMAND_6_BINARY_MAP
+FFDC8100h: .long COMMAND_8_CIRCLE
+FFDC8120h: .long COMMAND_8_CIRCLE
+FFDC8140h: .long COMMAND_10_COPY_RECTANGLE
+FFDC8160h: .long COMMAND_10_COPY_RECTANGLE
+FFDC8180h: .long COMMAND_12_DOT
+FFDC81A0h: .long COMMAND_12_DOT
+FFDC81C0h: .long COMMAND_14_ERASE_RECTANGLE
+FFDC81E0h: .long COMMAND_14_ERASE_RECTANGLE
+FFDC8200h: .long COMMAND_16_FILL_CIRCLE
+FFDC8220h: .long COMMAND_16_FILL_CIRCLE
+FFDC8240h: .long COMMAND_18_FILL_RECTANGLE
+FFDC8260h: .long COMMAND_18_FILL_RECTANGLE
+FFDC8280h: .long COMMAND_20_21
+FFDC82A0h: .long COMMAND_20_21
+FFDC82C0h: .long COMMAND_22_23
+FFDC82E0h: .long COMMAND_22_23
+FFDC8300h: .long COMMAND_24_25
+FFDC8320h: .long COMMAND_24_25
+FFDC8340h: .long COMMAND_26_GRAPHYY_0x1a
+FFDC8360h: .long COMMAND_26_GRAPHYY_0x1a
+FFDC8380h: .long COMMAND_28_GRAPHYY_0x1c
+FFDC83A0h: .long COMMAND_28_GRAPHYY_0x1c
+FFDC83C0h: .long COMMAND_30_31
+FFDC83E0h: .long COMMAND_30_31
+FFDC8400h: .long COMMAND_32_GRAPHYY_0x20
+FFDC8420h: .long COMMAND_32_GRAPHYY_0x20
+FFDC8440h: .long COMMAND_34_35
+FFDC8460h: .long COMMAND_34_35
+FFDC8480h: .long COMMAND_36_LINE_ABSOLUTE
+FFDC84A0h: .long COMMAND_36_LINE_ABSOLUTE
+FFDC84C0h: .long COMMAND_38_LINE_RELATIVE
+FFDC84E0h: .long COMMAND_38_LINE_RELATIVE
+FFDC8500h: .long COMMAND_40_PIXEL_MAP
+FFDC8520h: .long COMMAND_40_PIXEL_MAP
+FFDC8540h: .long COMMAND_42_POLYLINE_ABSOLUTE
+FFDC8560h: .long COMMAND_42_POLYLINE_ABSOLUTE
+FFDC8580h: .long COMMAND_44_POLYLINE_RELATIVE
+FFDC85A0h: .long COMMAND_44_POLYLINE_RELATIVE
+FFDC85C0h: .long COMMAND_46_TEXT
+FFDC85E0h: .long COMMAND_46_TEXT
+FFDC8600h: .long COMMAND_48_TEXT_UNDERLINE
+FFDC8620h: .long COMMAND_48_TEXT_UNDERLINE
+FFDC8640h: .long COMMAND_50_CALL
+FFDC8660h: .long COMMAND_50_CALL
+FFDC8680h: .long COMMAND_52_CALL_NOT_USER_FLAG
+FFDC86A0h: .long COMMAND_52_CALL_NOT_USER_FLAG
+FFDC86C0h: .long COMMAND_54_CALL_ON_USER_FLAG
+FFDC86E0h: .long COMMAND_54_CALL_ON_USER_FLAG
+FFDC8700h: .long COMMAND_56_JUMP
+FFDC8720h: .long COMMAND_56_JUMP
+FFDC8740h: .long COMMAND_58_JUMP_NOT_USER_FLAG
+FFDC8760h: .long COMMAND_58_JUMP_NOT_USER_FLAG
+FFDC8780h: .long COMMAND_60_JUMP_ON_USER_FLAG
+FFDC87A0h: .long COMMAND_60_JUMP_ON_USER_FLAG
+FFDC87C0h: .long COMMAND_62_RETURN
+FFDC87E0h: .long COMMAND_62_RETURN
+FFDC8800h: .long COMMAND_64_SKIP1
+FFDC8820h: .long COMMAND_64_SKIP1
+FFDC8840h: .long COMMAND_66_SKIP2
+FFDC8860h: .long COMMAND_66_SKIP2
+FFDC8880h: .long COMMAND_68_SKIP3
+FFDC88A0h: .long COMMAND_68_SKIP3
+FFDC88C0h: .long COMMAND_70_SKIP4
+FFDC88E0h: .long COMMAND_70_SKIP4
+FFDC8900h: .long COMMAND_72_USER_FLAG_CLEAR
+FFDC8920h: .long COMMAND_72_USER_FLAG_CLEAR
+FFDC8940h: .long COMMAND_74_USER_FLAG_SET
+FFDC8960h: .long COMMAND_74_USER_FLAG_SET
+FFDC8980h: .long COMMAND_76_USER_FLAG_TOGGLE 
+FFDC89A0h: .long COMMAND_76_USER_FLAG_TOGGLE 
+FFDC89C0h: .long COMMAND_78_DYNAMIC_FRAME
+FFDC89E0h: .long COMMAND_78_DYNAMIC_FRAME
+FFDC8A00h: .long COMMAND_80_STATIC_FRAME
+FFDC8A20h: .long COMMAND_80_STATIC_FRAME
+FFDC8A40h: .long COMMAND_82_STATIC_FRAME_AND_ERASE
+FFDC8A60h: .long COMMAND_82_STATIC_FRAME_AND_ERASE
+FFDC8A80h: .long COMMAND_84_GATED_CALL
+FFDC8AA0h: .long COMMAND_84_GATED_CALL
+FFDC8AC0h: .long COMMAND_86_INTERRUPT_HOST
+FFDC8AE0h: .long COMMAND_86_INTERRUPT_HOST
+FFDC8B00h: .long COMMAND_IGNORE
+FFDC8B20h: .long COMMAND_IGNORE
+FFDC8B40h: .long COMMAND_90_91
+FFDC8B60h: .long COMMAND_90_91
+FFDC8B80h: .long COMMAND_92_SEGMENT_END
+FFDC8BA0h: .long COMMAND_92_SEGMENT_END
+FFDC8BC0h: .long COMMAND_94_SEGMENT_END_AND_RETURN
+FFDC8BE0h: .long COMMAND_94_SEGMENT_END_AND_RETURN
+FFDC8C00h: .long COMMAND_96_SEGMENT_END_AND_JUMP
+FFDC8C20h: .long COMMAND_96_SEGMENT_END_AND_JUMP
+FFDC8C40h: .long COMMAND_98_SEGMENT_START
+FFDC8C60h: .long COMMAND_98_SEGMENT_START
+FFDC8C80h: .long COMMAND_100_STALL
+FFDC8CA0h: .long COMMAND_100_STALL
+FFDC8CC0h: .long COMMAND_102_SYNC_COPY_STATIC
+FFDC8CE0h: .long COMMAND_102_SYNC_COPY_STATIC
+FFDC8D00h: .long COMMAND_104_SYNC_DISPLAY_DYNAMIC
+FFDC8D20h: .long COMMAND_104_SYNC_DISPLAY_DYNAMIC
+FFDC8D40h: .long COMMAND_106_BENCHMARK_START_0x6a
+FFDC8D60h: .long COMMAND_106_BENCHMARK_START_0x6a
+FFDC8D80h: .long COMMAND_108_BENCHMARK_START_0x6c
+FFDC8DA0h: .long COMMAND_108_BENCHMARK_START_0x6c
+FFDC8DC0h: .long COMMAND_110_CLIP_OFF
+FFDC8DE0h: .long COMMAND_110_CLIP_OFF
+FFDC8E00h: .long COMMAND_112_CLIP_ON
+FFDC8E20h: .long COMMAND_112_CLIP_ON
+FFDC8E40h: .long COMMAND_114_CLIP_RECTANGLE
+FFDC8E60h: .long COMMAND_114_CLIP_RECTANGLE
+FFDC8E80h: .long COMMAND_116_MOVE_ABSOLUTE_0x74
+FFDC8EA0h: .long COMMAND_116_MOVE_ABSOLUTE_0x74
+FFDC8EC0h: .long COMMAND_118_MOVE_ABSOLUTE_0x76
+FFDC8EE0h: .long COMMAND_118_MOVE_ABSOLUTE_0x76
+FFDC8F00h: .long COMMAND_120_ORIGIN
+FFDC8F20h: .long COMMAND_120_ORIGIN
+FFDC8F40h: .long COMMAND_122_PIXEL_OPERATION
+FFDC8F60h: .long COMMAND_122_PIXEL_OPERATION
+FFDC8F80h: .long COMMAND_124_PEN_FOREGROUND
+FFDC8FA0h: .long COMMAND_124_PEN_FOREGROUND
+FFDC8FC0h: .long COMMAND_126_127
+FFDC8FE0h: .long COMMAND_126_127
+FFDC9000h: .long COMMAND_128_PIXEL_STRETCH_OFF
+FFDC9020h: .long COMMAND_128_PIXEL_STRETCH_OFF
+FFDC9040h: .long COMMAND_130_PIXEL_STRETCH_ON
+FFDC9060h: .long COMMAND_130_PIXEL_STRETCH_ON
+FFDC9080h: .long COMMAND_132_SCALE_FACTOR_0x84
+FFDC90A0h: .long COMMAND_132_SCALE_FACTOR_0x84
+FFDC90C0h: .long COMMAND_134_SCALE_FACTOR_0x86
+FFDC90E0h: .long COMMAND_134_SCALE_FACTOR_0x86
+FFDC9100h: .long COMMAND_136_TEXT_FONT
+FFDC9120h: .long COMMAND_136_TEXT_FONT
+FFDC9140h: .long COMMAND_138_TRANSPARENCY_OFF
+FFDC9160h: .long COMMAND_138_TRANSPARENCY_OFF
+FFDC9180h: .long COMMAND_140_TRANSPARENCY_ON
+FFDC91A0h: .long COMMAND_140_TRANSPARENCY_ON
+FFDC91C0h: .long COMMAND_IGNORE
+FFDC91E0h: .long COMMAND_IGNORE
+FFDC9200h: .long COMMAND_IGNORE
+FFDC9220h: .long COMMAND_IGNORE
+FFDC9240h: .long COMMAND_IGNORE
+FFDC9260h: .long COMMAND_IGNORE
+FFDC9280h: .long COMMAND_IGNORE
+FFDC92A0h: .long COMMAND_IGNORE
+FFDC92C0h: .long COMMAND_IGNORE
+FFDC92E0h: .long COMMAND_IGNORE
+FFDC9300h: .long COMMAND_IGNORE
+FFDC9320h: .long COMMAND_IGNORE
+FFDC9340h: .long COMMAND_IGNORE
+FFDC9360h: .long COMMAND_IGNORE
+FFDC9380h: .long COMMAND_IGNORE
+FFDC93A0h: .long COMMAND_IGNORE
+FFDC93C0h: .long COMMAND_IGNORE
+FFDC93E0h: .long COMMAND_IGNORE
+FFDC9400h: .long COMMAND_IGNORE
+FFDC9420h: .long COMMAND_IGNORE
+FFDC9440h: .long COMMAND_IGNORE
+FFDC9460h: .long COMMAND_IGNORE
+FFDC9480h: .long COMMAND_IGNORE
+FFDC94A0h: .long COMMAND_IGNORE
+FFDC94C0h: .long COMMAND_IGNORE
+FFDC94E0h: .long COMMAND_IGNORE
+FFDC9500h: .long COMMAND_IGNORE
+
 FONTS_TABLES:
-FFDC9540h: .long FFDE0000h
-FFDC9560h: .long FFDE0200h
-FFDC9580h: .long FFDE0400h
-FFDC95A0h: .long FFDE0600h
+FFDC9540h: .long FONT_0
+FFDC9560h: .long FONT_1
+FFDC9580h: .long FONT_2
+FFDC95A0h: .long FONT_3
+
 FFDD0000h: .bss 256*2*8
+CMD_STACK:
 FFDD1000h: .bss 11*2*8
 FFDD8000h: .bss 16*2*8
+
+FONT_0:
 FFDE0000h: .byte 08h,c0h,ffh,deh,00h,0ah,00h,14h,00h,09h,00h,10h,00h,00h,00h,04h,00h,10h,00h,10h,08h,00h,ffh,deh,01h,00h,00h,00h,00h,00h,00h,00h,6fh,66h,74h,6eh,00h,32h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h
+FONT_1:
 FFDE0200h: .byte 08h,c0h,ffh,deh,00h,0ah,00h,14h,00h,09h,00h,10h,00h,00h,00h,04h,00h,10h,00h,10h,08h,00h,ffh,deh,01h,00h,00h,00h,00h,00h,00h,00h,6fh,66h,74h,6eh,00h,32h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h
+FONT_2:
 FFDE0400h: .byte 08h,c0h,ffh,deh,00h,0ah,00h,14h,00h,09h,00h,10h,00h,00h,00h,04h,00h,10h,00h,10h,08h,00h,ffh,deh,01h,00h,00h,00h,00h,00h,00h,00h,6fh,66h,74h,6eh,00h,32h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h
+FONT_3:
 FFDE0600h: .byte 08h,c0h,ffh,deh,00h,0ah,00h,14h,00h,09h,00h,10h,00h,00h,00h,04h,00h,10h,00h,10h,08h,00h,ffh,deh,01h,00h,00h,00h,00h,00h,00h,00h,6fh,66h,74h,6eh,00h,32h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h
+
+CURRENT_CMD_PC:
 FFEC0800h: .word 0000h
 FFEC0810h: .word 0000h
+CURRENT_CMD:
 FFEC0820h: .word 0000h
 FFEC0830h: .word 0000h
 FFEC0840h: .word 0000h
@@ -4174,22 +4488,15 @@ FFEC0B40h: .word 0030h
 FFEC0B50h: .word 0030h
 FFEC0B60h: .word 0030h
 FFEC0B70h: .word 0030h
-FFEC0B80h: .word 02A0h
-FFEC0B90h: .word FFDBh
-FFEC0BA0h: .word FEA0h
-FFEC0BB0h: .word FFDAh
-FFEC0BC0h: .word FFD0h
-FFEC0BD0h: .word FFDAh
-FFEC0BE0h: .word 02A0h
-FFEC0BF0h: .word FFDBh
-FFEC0C00h: .word 02A0h
-FFEC0C10h: .word FFDBh
-FFEC0C20h: .word 0E70h
-FFEC0C30h: .word FFDBh
-FFEC0C40h: .word 1250h
-FFEC0C50h: .word FFDBh
-FFEC0C60h: .word 02A0h
-FFEC0C70h: .word FFDBh
+MSGIN_TABLE:
+FFEC0B80h: .long MSGIN_0_3_4_7
+FFEC0BA0h: .long MSGIN_1
+FFEC0BC0h: .long MSGIN_2
+FFEC0BE0h: .long MSGIN_0_3_4_7
+FFEC0C00h: .long MSGIN_0_3_4_7
+FFEC0C20h: .long MSGIN_5
+FFEC0C40h: .long MSGIN_6
+FFEC0C60h: .long MSGIN_0_3_4_7
 FFEC0C80h: .word 0000h
 FFEC0C90h: .word 0000h
 FFEC0CA0h: .word 0460h
@@ -4291,40 +4598,42 @@ FFEC1290h: .word 0000h
 FFEC12A0h: .word 0000h
 FFEC12B0h: .word 0000h
 FFEC12C0h: .word 0000h
-FFECE000h: .long FFECE800h
+CMD_LIST_PTR:
+FFECE000h: .long CMD_BUFFER
 FFECE020h: .long FFEC0860h
-FFECE040h: .long FFDC9540h
+FFECE040h: .long FONTS_TABLES
+CMD_BUFFER:
 FFECE800h: .word 0072h,0000h,0000h,0280h,01E0h,0078h,0000h,0000h,0088h,0002h,0050h,007Ah,0000h,007Ch,0000h,0074h,0000h,0000h,0012h,0280h,01E0h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0066h,004Eh,007Ah,0000h,007Ch,000Fh,0074h,0002h,01CDh,008Ch,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,002Eh,0600h,0604h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,0020h,000Ah,0000h,0000h,0000h,0000h,008Ah,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,0058h,007Ch,0009h,0074h,025Fh,01C8h,0006h,4CF0h,FFEDh,0038h,4FE0h,FFEDh,0058h,0020h,0020h,0016h,6FFCh,3FFFh,63FEh,7FE0h,C0FEh,7F80h,C07Eh,7F00h,803Eh,7E01h,803Eh,7C01h,18DEh,7C3Fh,30DEh,7863h,318Eh,78C6h,618Eh,78C6h,630Eh,798Ch,C30Eh,798Ch,C60Eh,7998h,C60Eh,7998h,FC1Eh,7DF0h,0C1Eh,7C00h,183Eh,7E00h,183Eh,7E00h,307Eh,7F00h,30FEh,7FC0h,63FEh,7FF0h,6FFCh,3FFFh,0058h,0068h,0038h,E9E0h,FFECh
 
-FFFFFFE0h: RESET_VECTOR => FFDA8000
-FFFFFFC0h: INT1_VECTOR => FFDB16E0
-FFFFFFA0h: INT2_VECTOR => FFDB16F0
-FFFFFF80h: TRAP_3_VECTOR => FFDA8000
-FFFFFF60h: TRAP_4_VECTOR => FFDA8000
-FFFFFF40h: TRAP_5_VECTOR => FFDA8000
-FFFFFF20h: TRAP_6_VECTOR => FFDA8000
-FFFFFF00h: TRAP_7_VECTOR => FFDA8000
-FFFFFEE0h: NMI_VECTOR => FFDA8000
-FFFFFEC0h: HI_VECTOR => FFDAFDE0
-FFFFFEA0h: DI_VECTOR => FFDB02C0
-FFFFFE80h: WV_VECTOR => FFDA8000
-FFFFFE60h: TRAP_12_VECTOR => FFDA8000
-FFFFFE40h: TRAP_13_VECTOR => FFDA8000
-FFFFFE20h: TRAP_14_VECTOR => FFDA8000
-FFFFFE00h: TRAP_15_VECTOR => FFDA8000
-FFFFFDE0h: TRAP_16_VECTOR => FFDA8000
-FFFFFDC0h: TRAP_17_VECTOR => FFDA8000
-FFFFFDA0h: TRAP_18_VECTOR => FFDA8000
-FFFFFD80h: TRAP_19_VECTOR => FFDA8000
-FFFFFD60h: TRAP_20_VECTOR => FFDA8000
-FFFFFD40h: TRAP_21_VECTOR => FFDA8000
-FFFFFD20h: TRAP_22_VECTOR => FFDA8000
-FFFFFD00h: TRAP_23_VECTOR => FFDA8000
-FFFFFCE0h: TRAP_24_VECTOR => FFDA8000
-FFFFFCC0h: TRAP_25_VECTOR => FFDA8000
-FFFFFCA0h: TRAP_26_VECTOR => FFDA8000
-FFFFFC80h: TRAP_27_VECTOR => FFDA8000
-FFFFFC60h: TRAP_28_VECTOR => FFDA8000
-FFFFFC40h: TRAP_29_VECTOR => FFDA8000
-FFFFFC20h: ILLOP_VECTOR => FFDB16B0
-FFFFFC00h: TRAP_31_VECTOR => FFDA8000
+FFFFFFE0h: .long RESET_VECTOR
+FFFFFFC0h: .long INT1_VECTOR
+FFFFFFA0h: .long INT2_VECTOR
+FFFFFF80h: .long RESET_VECTOR
+FFFFFF60h: .long RESET_VECTOR
+FFFFFF40h: .long RESET_VECTOR
+FFFFFF20h: .long RESET_VECTOR
+FFFFFF00h: .long RESET_VECTOR
+FFFFFEE0h: .long RESET_VECTOR
+FFFFFEC0h: .long HI_VECTOR
+FFFFFEA0h: .long DI_VECTOR
+FFFFFE80h: .long RESET_VECTOR
+FFFFFE60h: .long RESET_VECTOR
+FFFFFE40h: .long RESET_VECTOR
+FFFFFE20h: .long RESET_VECTOR
+FFFFFE00h: .long RESET_VECTOR
+FFFFFDE0h: .long RESET_VECTOR
+FFFFFDC0h: .long RESET_VECTOR
+FFFFFDA0h: .long RESET_VECTOR
+FFFFFD80h: .long RESET_VECTOR
+FFFFFD60h: .long RESET_VECTOR
+FFFFFD40h: .long RESET_VECTOR
+FFFFFD20h: .long RESET_VECTOR
+FFFFFD00h: .long RESET_VECTOR
+FFFFFCE0h: .long RESET_VECTOR
+FFFFFCC0h: .long RESET_VECTOR
+FFFFFCA0h: .long RESET_VECTOR
+FFFFFC80h: .long RESET_VECTOR
+FFFFFC60h: .long RESET_VECTOR
+FFFFFC40h: .long RESET_VECTOR
+FFFFFC20h: .long ILLOP_VECTOR
+FFFFFC00h: .long RESET_VECTOR
