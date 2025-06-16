@@ -234,177 +234,177 @@ def gsp_disass():
 
 	if om == 0x0000:
 		if subop == 0x0020:
-			return 'REV    ' + get_des_reg()
+			return ('REV', get_des_reg(), 'Find TMS3401 0 revision level')
 		elif subop == 0x0100:
-			return 'EMU    '
+			return ('EMU', None, 'Initiate emulation')
 		elif subop == 0x0120:
-			return 'EXGPC  ' + get_des_reg()
+			return ('EXGPC', get_des_reg(), 'Exchange program counter with register')
 		elif subop == 0x0140:
-			return 'GETPC  ' + get_des_reg()
+			return ('GETPC', get_des_reg(), 'Get program counter into register')
 		elif subop == 0x0160:
-			return 'JUMP   ' + get_des_reg()
+			return ('JUMP', get_des_reg(), 'Jump indirect')
 		elif subop == 0x0180:
-			return 'GETST  ' + get_des_reg()
+			return ('GETST', get_des_reg(), 'Get status register into register')
 		elif subop == 0x01a0:
-			return 'PUTST  ' + get_des_reg()
+			return ('PUTST', get_des_reg(), 'Copy register into status')
 		elif subop == 0x01c0:
-			return 'POPST  '
+			return ('POPST', None, 'Pop status register from stack')
 		elif subop == 0x01e0:
-			return 'PUSHST '
+			return ('PUSHST', None, 'Push status register onto stack')
 	elif om == 0x0200:
 		if subop == 0x0100:
-			return 'NOP    '
+			return ('NOP', None, 'No operation')
 		elif subop == 0x0120:
-			return 'CLRC   '
+			return ('CLRC', None, 'Clear carry')
 		elif subop == 0x0140:
-			return 'MOVEB  @%s,@%s' % (get_long_parm(),get_long_parm())
+			return ('MOVB', '@%s,@%s' % (get_long_parm(),get_long_parm()), 'Move byte, absolute to absolute')
 		elif subop == 0x0160:
-			return 'DINT   '
+			return ('DINT', None, 'Disable Interrupts')
 		elif subop == 0x0180:
-			return 'ABS    ' + get_des_reg()
+			return ('ABS', get_des_reg(), 'Store absolute value')
 		elif subop == 0x01a0:
-			return 'NEG    ' + get_des_reg()
+			return ('NEG', get_des_reg(), 'Negate register')
 		elif subop == 0x01c0:
-			return 'NEGB   ' + get_des_reg()
+			return ('NEGB', get_des_reg(), 'Negate register with borrow')
 		elif subop == 0x01e0:
-			return 'NOT    ' + get_des_reg()
+			return ('NOT', get_des_reg(), 'Complement register')
 	elif (om == 0x0400) or (om == 0x0600):
 		if subop == 0x0100:
-			return 'SEXT   ' + get_des_reg() + ',' + get_field()
+			return ('SEXT', get_des_reg() + ',' + get_field(), 'Sign extend to long')
 		elif subop == 0x0120:
-			return 'ZEXT   ' + get_des_reg() + ',' + get_field()
+			return ('ZEXT', get_des_reg() + ',' + get_field(), 'Zero extend to long')
 		elif (subop == 0x0140) or (subop == 0x0160):
 			p1 = op & 0x1f
 			if p1 == 0:
 				p1 = 0x20
-			return 'SETF   %Xh,%X,%s' % (p1,(op >> 5) & 1,get_field())
+			return ('SETF', '%Xh,%X,%s' % (p1,(op >> 5) & 1,get_field()), 'Set field parameters')
 		elif subop == 0x0180:
-			return 'MOVE   %s,@%s,%c' % (get_des_reg(),get_long_parm(),get_field())
+			return ('MOVE', '%s,@%s,%c' % (get_des_reg(),get_long_parm(),get_field()), 'Move field, register to absolute')
 		elif subop == 0x01a0:
-			return 'MOVE   @%s,%s,%c' % (get_long_parm(),get_des_reg(),get_field())
+			return ('MOVE', '@%s,%s,%c' % (get_long_parm(),get_des_reg(),get_field()), 'Move field, absolute to register')
 		elif subop == 0x01c0:
-			return 'MOVE   @%s,@%s,%c' % (get_long_parm(),get_long_parm(),get_field())
+			return ('MOVE', '@%s,@%s,%c' % (get_long_parm(),get_long_parm(),get_field()), 'Move field, absolute to absolute')
 		elif subop == 0x01e0:
 			if op & 0x0200:
-				return 'MOVE   @%s,%s' % (get_long_parm(),get_des_reg())
+				return ('MOVE', '@%s,%s' % (get_long_parm(),get_des_reg()), 'Move field, absolute to register')
 			else:
-				return 'MOVB   %s,@%s' % (get_des_reg(),get_long_parm())
+				return ('MOVB', '%s,@%s' % (get_des_reg(),get_long_parm()), 'Move byte, register to absolute')
 	elif om == 0x0800:
 		if subop == 0x0100:
-			return 'TRAP   %Xh' % (op & 0x1F)
+			return ('TRAP', '%Xh' % (op & 0x1F), 'Software interrupt')
 		elif subop == 0x0120:
-			return 'CALL   %s' % (get_des_reg())
+			return ('CALL', '%s' % (get_des_reg()), 'Call subroutine indirect')
 		elif subop == 0x0140:
-			return 'RETI   '
+			return ('RETI', None, 'Return from interrupt')
 		elif subop == 0x0160:
 			if op & 0x1F:
-				return 'RETS   %Xh' % (op & 0x1F)
+				return ('RETS', '%Xh' % (op & 0x1F), 'Return from subroutine: *SP+ → PC; SP+32+16N → SP')
 			else:
-				return 'RETS   '
+				return ('RETS', None, 'Return from subroutine')
 		elif subop == 0x0180:
-			return 'MMTM   %s,%s' % (get_des_reg(),get_reg_list(True))
+			return ('MMTM', '%s,%s' % (get_des_reg(),get_reg_list(True)), 'If Register n is in the register list: Rn → -*Rd (repeat for n = 0 to 15)')
 		elif subop == 0x01a0:
-			return 'MMFM   %s,%s' % (get_des_reg(),get_reg_list(False))
+			return ('MMFM', '%s,%s' % (get_des_reg(),get_reg_list(False)), 'If Register n is in the register list: *Rs+ → Rn (repeat for n = 0 to 15)')
 		elif subop == 0x01c0:
-			return 'MOVI   %s,%s' % (get_word_parm(),get_des_reg())
+			return ('MOVI', '%s,%s' % (get_word_parm(),get_des_reg()), 'Move immediate (16 bits)')
 		elif subop == 0x01e0:
-			return 'MOVI   %s,%s' % (get_long_parm(),get_des_reg())
+			return ('MOVI', '%s,%s' % (get_long_parm(),get_des_reg()), 'Move immediate (32 bits)')
 	elif om == 0x0a00:
 		if subop == 0x0100:
-			return 'ADDI   %s,%s' % (get_word_parm(),get_des_reg())
+			return ('ADDI', '%s,%s' % (get_word_parm(),get_des_reg()), 'Add immediate (16 bits)')
 		elif subop == 0x0120:
-			return 'ADDI   %s,%s' % (get_long_parm(),get_des_reg())
+			return ('ADDI', '%s,%s' % (get_long_parm(),get_des_reg()), 'Add immediate (32 bits)')
 		elif subop == 0x0140:
-			return 'CMPI   %s,%s' % (get_word_parm_1s_comp(),get_des_reg())
+			return ('CMPI', '%s,%s' % (get_word_parm_1s_comp(),get_des_reg()), 'Compare immediate (16 bits)')
 		elif subop == 0x0160:
-			return 'CMPI   %s,%s' % (get_long_parm_1s_comp(),get_des_reg())
+			return ('CMPI', '%s,%s' % (get_long_parm_1s_comp(),get_des_reg()), 'Compare immediate (32 bits)')
 		elif subop == 0x0180:
-			return 'ANDI   %s,%s' % (get_long_parm_1s_comp(),get_des_reg())
+			return ('ANDI', '%s,%s' % (get_long_parm_1s_comp(),get_des_reg()), 'AND immediate (32 bits)')
 		elif subop == 0x01a0:
-			return 'ORI    %s,%s' % (get_long_parm(),get_des_reg())
+			return ('ORI', '%s,%s' % (get_long_parm(),get_des_reg()), 'OR immediate (32 bits)')
 		elif subop == 0x01c0:
-			return 'XORI   %s,%s' % (get_long_parm(),get_des_reg())
+			return ('XORI', '%s,%s' % (get_long_parm(),get_des_reg()), 'Exclusive OR immediate value (32 bits)')
 		elif subop == 0x01e0:
-			return 'SUBI   %s,%s' % (get_word_parm_1s_comp(),get_des_reg())
+			return ('SUBI', '%s,%s' % (get_word_parm_1s_comp(),get_des_reg()), 'Subtract immediate (16 bits)')
 	elif om == 0x0c00:
 		if subop == 0x0100:
-			return 'SUBI   %s,%s' % (get_long_parm_1s_comp(),get_des_reg())
+			return ('SUBI', '%s,%s' % (get_long_parm_1s_comp(),get_des_reg()), 'Subtract immediate (32 bits)')
 		elif subop == 0x0120:
-			return 'CALLR  %s' % (get_relative())
+			return ('CALLR', '%s' % (get_relative()), 'Call subroutine relative')
 		elif subop == 0x0140:
-			return 'CALLA  %s' % (get_long_parm())
+			return ('CALLA', '%s' % (get_long_parm()), 'Call subroutine address')
 		elif subop == 0x0160:
-			return 'EINT     '
+			return ('EINT', None, 'Enable Interrupts')
 		elif subop == 0x0180:
-			return 'DSJ    %s,%s' % (get_des_reg(),get_relative())
+			return ('DSJ', '%s,%s' % (get_des_reg(),get_relative()), 'Decrement register and skip jump')
 		elif subop == 0x01a0:
-			return 'DSJEQ  %s,%s' % (get_des_reg(),get_relative())
+			return ('DSJEQ', '%s,%s' % (get_des_reg(),get_relative()), 'Conditionally decrement register and skip jump')
 		elif subop == 0x01c0:
-			return 'DSJNE  %s,%s' % (get_des_reg(),get_relative())
+			return ('DSJNE', '%s,%s' % (get_des_reg(),get_relative()), 'Conditionally decrement register and skip jump')
 		elif subop == 0x01a0:
-			return 'SETC   '
+			return ('SETC', None, 'Set carry')
 	elif om == 0x0e00:
 		if subop == 0x0100:
-			return 'PIXBLT L,L'
+			return ('PIXBLT', 'L,L', 'Pixel block transfer, linear to linear')
 		elif subop == 0x0120:
-			return 'PIXBLT L,XY'
+			return ('PIXBLT', 'L,XY', 'Pixel block transfer, linear to XY')
 		elif subop == 0x0140:
-			return 'PIXBLT XY,L'
+			return ('PIXBLT', 'XY,L', 'Pixel block transfer, XY to linear')
 		elif subop == 0x0160:
-			return 'PIXBLT XY,XY'
+			return ('PIXBLT', 'XY,XY', 'Pixel block transfer, XY to XY')
 		elif subop == 0x0180:
-			return 'PIXBLT B,L'
+			return ('PIXBLT', 'B,L', 'Pixel block transfer, binary to linear')
 		elif subop == 0x01a0:
-			return 'PIXBLT B,XY'
+			return ('PIXBLT', 'B,XY', 'Pixel block transfer and expand, binary to XY')
 		elif subop == 0x01c0:
-			return 'FILL   L'
+			return ('FILL', 'L', 'Fill array with processed pixels, linear')
 		elif subop == 0x01e0:
-			return 'FILL   XY'
+			return ('FILL', 'XY', 'Fill array with processed pixels, XY')
 
 	elif om == 0x1000 or om == 0x1200:
 		if (op & 0x03e0) != 0x0020:
-			return 'ADDK   %s,%s' % (get_constant_1_32(),get_des_reg())
+			return ('ADDK', '%s,%s' % (get_constant_1_32(),get_des_reg()), 'Add constant (5 bits)')
 		else:
-			return 'INC    %s' % (get_des_reg())
+			return ('INC', '%s' % (get_des_reg()), 'Increment register')
 	elif om == 0x1400 or om == 0x1600:
 		if (op & 0x03e0) != 0x0020:
-			return 'SUBK   %s,%s' % (get_constant_1_32(),get_des_reg())
+			return ('SUBK', '%s,%s' % (get_constant_1_32(),get_des_reg()), 'Subtract constant (5 bits)')
 		else:
-			return 'DEC    %s' % (get_des_reg())
+			return ('DEC', '%s' % (get_des_reg()), 'Decrement register')
 	elif om == 0x1800 or om == 0x1a00:
-		return 'MOVK   %s,%s' % (get_constant_1_32(),get_des_reg())
+		return ('MOVK', '%s,%s' % (get_constant_1_32(),get_des_reg()), 'Move constant (5 bits)')
 	elif om == 0x1c00 or om == 0x1e00:
-		return 'BTST   %s,%s' % (get_constant_1s_comp(),get_des_reg())
+		return ('BTST', '%s,%s' % (get_constant_1s_comp(),get_des_reg()), 'Set status on value of: bit K in Rd')
 
 	elif om == 0x2000 or om == 0x2200:
-		return 'SLA    %s,%s' % (get_constant(),get_des_reg())
+		return ('SLA', '%s,%s' % (get_constant(),get_des_reg()), 'Shift left arithmetic, constant')
 	elif om == 0x2400 or om == 0x2600:
-		return 'SLL    %s,%s' % (get_constant(),get_des_reg())
+		return ('SLL', '%s,%s' % (get_constant(),get_des_reg()), 'Shift left logical, constant')
 	elif om == 0x2800 or om == 0x2a00:
-		return 'SRA    %s,%s' % (get_constant_2s_comp(),get_des_reg())
+		return ('SRA', '%s,%s' % (get_constant_2s_comp(),get_des_reg()), 'Shift right arithmetic, constant')
 	elif om == 0x2c00 or om == 0x2e00:
-		return 'SRL    %s,%s' % (get_constant_2s_comp(),get_des_reg())
+		return ('SRL', '%s,%s' % (get_constant_2s_comp(),get_des_reg()), 'Shift right logical, constant')
 
 	elif om == 0x3000 or om == 0x3200:
-		return 'RL     %s,%s' % (get_constant(),get_des_reg())
+		return ('RL', '%s,%s' % (get_constant(),get_des_reg()), 'Rotate left, constant')
 	elif om == 0x3800 or om == 0x3a00 or om == 0x3c00 or om == 0x3e00:
-		return 'DSJS   %s,%s' % (get_des_reg(),get_relative_5bit())
+		return ('DSJS', '%s,%s' % (get_des_reg(),get_relative_5bit()), 'Decrement register and skip jump short')
 
 	elif om == 0x4000:
-		return 'ADD    %s' % (get_src_des_reg())
+		return ('ADD', get_src_des_reg(), 'Add registers')
 	elif om == 0x4200:
-		return 'ADDC   %s' % (get_src_des_reg())
+		return ('ADDC', get_src_des_reg(), 'Add registers with carry')
 	elif om == 0x4400:
-		return 'SUB    %s' % (get_src_des_reg())
+		return ('SUB', get_src_des_reg(), 'Subtract registers')
 	elif om == 0x4600:
-		return 'SUBB   %s' % (get_src_des_reg())
+		return ('SUBB', get_src_des_reg(), 'Subtract registers with borrow')
 	elif om == 0x4800:
-		return 'CMP    %s' % (get_src_des_reg())
+		return ('CMP', get_src_des_reg(), 'Compare registers')
 	elif om == 0x4a00:
-		return 'BTST   %s' % (get_src_des_reg())
+		return ('BTST', get_src_des_reg(), 'Test register bit, register')
 	elif om == 0x4c00 or om == 0x4e00:
 		if (op & 0x0200) == 0x0000:
-			return 'MOVE   %s' % (get_src_des_reg())
+			return ('MOVE', get_src_des_reg(), 'Move register to register')
 		else:
 			sstr = get_src_reg()
 			if rf == 'A':
@@ -412,144 +412,146 @@ def gsp_disass():
 			else:
 				rf = 'A'
 			dstr = get_des_reg()
-			return 'MOVE   %s,%s' % (sstr, dstr)
+			return ('MOVE', '%s,%s' % (sstr, dstr), 'Move register to register')
 
 	elif om == 0x5000:
-		return 'AND    %s' % (get_src_des_reg())
+		return ('AND', get_src_des_reg(), 'AND registers')
 	elif om == 0x5200:
-		return 'ANDN   %s' % (get_src_des_reg())
+		return ('ANDN', get_src_des_reg(), 'AND register with complement')
 	elif om == 0x5400:
-		return 'OR     %s' % (get_src_des_reg())
+		return ('OR', get_src_des_reg(), 'OR registers')
 	elif om == 0x5600:
 		if rs != rd:
-			return 'XOR    %s' % (get_src_des_reg())
+			return ('XOR', get_src_des_reg(), 'XOR registers')
 		else:
-			return 'CLR    %s' % (get_des_reg())
+			return ('CLR', get_des_reg(), 'Clear register')
 	elif om == 0x5800:
-		return 'DIVS   %s' % (get_src_des_reg())
+		return ('DIVS', get_src_des_reg(), 'Rd even: Rd:Rd+1/Rs → Rd; Remainder → Rd+1; Rd odd: Rd/Rs → Rd (signed divide)')
 	elif om == 0x5a00:
-		return 'DIVU   %s' % (get_src_des_reg())
+		return ('DIVU', get_src_des_reg(), 'Rd even: Rd:Rd+1/Rs → Rd; Remainder → Rd+1; Rd odd: Rd/Rs → Rd (unsigned divide)')
 	elif om == 0x5c00:
-		return 'MPYS   %s' % (get_src_des_reg())
+		return ('MPYS', get_src_des_reg(), 'Rd even: Rs*Rd → Rd:Rd+1; Rd odd: Rs*Rd → Rd (signed multiply)')
 	elif om == 0x5e00:
-		return 'MPYU   %s' % (get_src_des_reg())
+		return ('MPYU', get_src_des_reg(), 'Rd even: Rs*Rd → Rd:Rd+1; Rd odd: Rs*Rd → Rd (unsigned multiply)')
 
 	elif om == 0x6000:
-		return 'SLA    %s' % (get_src_des_reg())
+		return ('SLA', get_src_des_reg(), 'Shift left arithmetic, register')
 	elif om == 0x6200:
-		return 'SLL    %s' % (get_src_des_reg())
+		return ('SLL', get_src_des_reg(), 'Shift left logical, register')
 	elif om == 0x6400:
-		return 'SRA    %s' % (get_src_des_reg())
+		return ('SRA', get_src_des_reg(), 'Shift right arithmetic, register')
 	elif om == 0x6600:
-		return 'SRL    %s' % (get_src_des_reg())
+		return ('SRL', get_src_des_reg(), 'Shift right logical, register')
 	elif om == 0x6800:
-		return 'RL     %s' % (get_src_des_reg())
+		return ('RL', get_src_des_reg(), 'Rotate left. register')
 	elif om == 0x6a00:
-		return 'LMO    %s' % (get_src_des_reg())
+		return ('LMO', get_src_des_reg(), 'Leftmost one bit')
 	elif om == 0x6c00:
-		return 'MODS   %s' % (get_src_des_reg())
+		return ('MODS', get_src_des_reg(), 'Modulus signed')
 	elif om == 0x6e00:
-		return 'MODU   %s' % (get_src_des_reg())
+		return ('MODU', get_src_des_reg(), 'Modulus unsigned')
 
 	elif om == 0x8000 or om == 0x8200:
-		return 'MOVE   %s,*%s,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '%s,*%s,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field. register to indirect')
 	elif om == 0x8400 or om == 0x8600:
-		return 'MOVE   *%s,%s,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '*%s,%s,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field. indirect to register')
 	elif om == 0x8800 or om == 0x8a00:
-		return 'MOVE   *%s,*%s,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '*%s,*%s,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field, indirect to indirect')
 	elif om == 0x8c00:
-		return 'MOVB   %s,*%s' % (get_src_reg(),get_des_reg())
+		return ('MOVB', '%s,*%s' % (get_src_reg(),get_des_reg()), 'Move byte. register to indirect')
 	elif om == 0x8e00:
-		return 'MOVB   *%s' % (get_src_des_reg())
+		return ('MOVB', '*%s' % (get_src_des_reg()), 'Move byte. indirect to register')
 
 	elif om == 0x9000 or om == 0x9200:
-		return 'MOVE   %s,*%s+,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '%s,*%s+,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field. register to indirect (postincrement)')
 	elif om == 0x9400 or om == 0x9600:
-		return 'MOVE   *%s+,%s,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '*%s+,%s,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field. indirect (postincrement) to register')
 	elif om == 0x9800 or om == 0x9a00:
-		return 'MOVE   *%s+,*%s+,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '*%s+,*%s+,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field, indirect (postincrement) to indirect (postincrement)')
 	elif om == 0x9c00:
-		return 'MOVB   *%s,*%s' % (get_src_reg(),get_des_reg())
+		return ('MOVB', '*%s,*%s' % (get_src_reg(),get_des_reg()), 'Move field, indirect to indirect')
 
 	elif om == 0xa000 or om == 0xa200:
-		return 'MOVE   %s,-*%s,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '%s,-*%s,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field. register to indirect (predecrement)')
 	elif om == 0xa400 or om == 0xa600:
-		return 'MOVE   -*%s,%s,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '-*%s,%s,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field. indirect (predecrement) to register')
 	elif om == 0xa800 or om == 0xaa00:
-		return 'MOVE   -*%s,-*%s,%s' % (get_src_reg(),get_des_reg(),get_field())
+		return ('MOVE', '-*%s,-*%s,%s' % (get_src_reg(),get_des_reg(),get_field()), 'Move field, indirect (predecrement) to indirect (predecrement)')
 	elif om == 0xac00:
-		return 'MOVB   %s,*%s(%s)' % (get_src_reg(),get_des_reg(),get_word_parm())
+		return ('MOVB', '%s,*%s(%s)' % (get_src_reg(),get_des_reg(),get_word_parm()), 'Move byte. register to indirect with offset')
 	elif om == 0xae00:
-		return 'MOVB   *%s(%s),%s' % (get_src_reg(),get_word_parm(),get_des_reg())
+		return ('MOVB', '*%s(%s),%s' % (get_src_reg(),get_word_parm(),get_des_reg()), 'Move byte. indirect with offset to register')
 
 	elif om == 0xb000 or om == 0xb200:
-		return 'MOVE   %s,*%s(%s),%s' % (get_src_reg(),get_des_reg(),get_word_parm(),get_field())
+		return ('MOVE', '%s,*%s(%s),%s' % (get_src_reg(),get_des_reg(),get_word_parm(),get_field()), 'Move field, register to indirect with offset')
 	elif om == 0xb400 or om == 0xb600:
-		return 'MOVE   *%s(%s),%s,%s' % (get_src_reg(),get_word_parm(),get_des_reg(),get_field())
+		return ('MOVE', '*%s(%s),%s,%s' % (get_src_reg(),get_word_parm(),get_des_reg(),get_field()), 'Move field, indirect with offset to register')
 	elif om == 0xb800 or om == 0xba00:
-		return 'MOVE   *%s(%s),*%s(%s),%s' % (get_src_reg(),get_word_parm(),get_des_reg(),get_word_parm(),get_field())
+		return ('MOVE', '*%s(%s),*%s(%s),%s' % (get_src_reg(),get_word_parm(),get_des_reg(),get_word_parm(),get_field()), 'Move field, indirect with offset to indirect with offset')
 	elif om == 0xbc00:
-		return 'MOVB   *%s(%s),*%s(%s)' % (get_src_reg(),get_word_parm(),get_des_reg(),get_word_parm())
+		return ('MOVB', '*%s(%s),*%s(%s)' % (get_src_reg(),get_word_parm(),get_des_reg(),get_word_parm()), 'Move byte. indirect with offset to indirect with offset')
 
 	elif om == 0xc000 or om == 0xc200 or om == 0xc400 or om == 0xc600 or om == 0xc800 or om == 0xca00 or om == 0xcc00 or om == 0xce00:
 		if (op & 0xFF) == 0x80:
 			cs = 'JA'
+			cmt = 'Jump absolute conditional'
 		else:
 			cs = 'JR'
+			cmt = 'Jump relative conditional'
 		jrt = ['  ','P ','LS','HI','LT','GE','LE','GT','C ','NC','EQ','NE','V ','NV','N ','NN']
 		cs += jrt[(op & 0x0f00) >> 8]
-		cs += '   '
+		cs = cs.strip()
 		if (op & 0xFF) == 0x00:
-			return cs + '%s' % (get_relative())
+			return (cs, '%s' % (get_relative()), cmt)
 		elif (op & 0xFF) == 0x80:
-			return cs + '%s' % (get_long_parm())
+			return (cs, '%s' % (get_long_parm()), cmt)
 		else:
-			return cs + '%s' % (get_relative_8bit())
+			return (cs, '%s' % (get_relative_8bit()), cmt)
 
 	elif om == 0xd000 or om == 0xd200:
-		return 'MOVE   *%s(%s),*%s+,%s' % (get_src_reg(),get_word_parm(),get_des_reg(),get_field())
+		return ('MOVE', '*%s(%s),*%s+,%s' % (get_src_reg(),get_word_parm(),get_des_reg(),get_field()), 'Move field, indirect with offset to indirect (postincrement)')
 	elif om == 0xd400 or om == 0xd600:
 		if subop == 0x0000:
-			return 'MOVE   @%s,*%s+,%s' % (get_long_parm(),get_des_reg(),get_field())
+			return ('MOVE', '@%s,*%s+,%s' % (get_long_parm(),get_des_reg(),get_field()), 'Move field, absolute to indirect (postincrement)')
 		elif subop == 0x0100:
-			return 'EXGF   %s,%s' % (get_des_reg(),get_field())
+			return ('EXGF', '%s,%s' % (get_des_reg(),get_field()), 'Exchange field size')
 	elif om == 0xde00:
 		if subop == 0x0100:
-			return 'LINE   0'
+			return ('LINE', '0', 'Perform the inner loop of Bresenham\'s line-drawing algorithm')
 		elif subop == 0x0180:
-			return 'LINE   1'
+			return ('LINE', '1', 'Perform the inner loop of Bresenham\'s line-drawing algorithm')
 
 	elif om == 0xe000:
-		return 'ADDXY  %s' % (get_src_des_reg())
+		return ('ADDXY', get_src_des_reg(), 'Add registers in XV mode')
 	elif om == 0xe200:
-		return 'SUBXY  %s' % (get_src_des_reg())
+		return ('SUBXY', get_src_des_reg(), 'Subtract registers in XY mode')
 	elif om == 0xe400:
-		return 'CMPXY  %s' % (get_src_des_reg())
+		return ('CMPXY', get_src_des_reg(), 'Compare X and V halves of registers')
 	elif om == 0xe600:
-		return 'CPW    %s' % (get_src_des_reg())
+		return ('CPW', get_src_des_reg(), 'Compare point to window')
 	elif om == 0xe800:
-		return 'CVXYL  %s' % (get_src_des_reg())
+		return ('CVXYL', get_src_des_reg(), 'Convert XY address to linear address')
 	elif om == 0xec00:
-		return 'MOVX   %s' % (get_src_des_reg())
+		return ('MOVX', get_src_des_reg(), 'Move X half of register')
 	elif om == 0xee00:
-		return 'MOVY   %s' % (get_src_des_reg())
+		return ('MOVY', get_src_des_reg(), 'Move Y half of register')
 
 	elif om == 0xf000:
-		return 'PIXT   %s,*%s,XY' % (get_src_reg(),get_des_reg())
+		return ('PIXT', '%s,*%s,XY' % (get_src_reg(),get_des_reg()), 'Pixel transfer, register to indirect XY')
 	elif om == 0xf200:
-		return 'PIXT   *%s,XY,%s' % (get_src_reg(),get_des_reg())
+		return ('PIXT', '*%s,XY,%s' % (get_src_reg(),get_des_reg()), 'Pixel transfer, indirect XY to register')
 	elif om == 0xf400:
-		return 'PIXT   *%s,XY,*%s,XY' % (get_src_reg(),get_des_reg())
+		return ('PIXT', '*%s,XY,*%s,XY' % (get_src_reg(),get_des_reg()), 'Pixel transfer, indirect XY to indirect XY')
 	elif om == 0xf600:
-		return 'DRAV   %s' % (get_src_des_reg())
+		return ('DRAV', get_src_des_reg(), 'Draw and advance: COLOR1 pixel value → *Rd; RdX+=RsX; RdY+=RsY')
 	elif om == 0xf800:
-		return 'PIXT   %s,*%s' % (get_src_reg(),get_des_reg())
+		return ('PIXT', '%s,*%s' % (get_src_reg(),get_des_reg()), 'Pixel transfer, register to indirect')
 	elif om == 0xfa00:
-		return 'PIXT   *%s' % (get_src_des_reg())
+		return ('PIXT', '*%s' % (get_src_des_reg()), 'Pixel transfer, indirect to register')
 	elif om == 0xfc00:
-		return 'PIXT   *%s,*%s' % (get_src_reg(),get_des_reg())
+		return ('PIXT', '*%s,*%s' % (get_src_reg(),get_des_reg()), 'Pixel transfer, indirect to indirect')
 
-	return '.word    %04Xh' % (op & 0xffff)
+	return ('.word', '%04Xh' % (op & 0xffff))
 
 # 2. check all traps of the TI34010
 def trapName(trap):
@@ -795,7 +797,17 @@ def disass_line():
 			gsp_adr += 16
 		dstr = '.word    %s' % ','.join(ww)
 	else:
-		dstr = gsp_disass().strip()
+		ret = gsp_disass()
+		if not isinstance(ret, tuple): # if only a single string is returned, make it a tuple
+			ret = (ret,'')
+		dstr = '%-7s' % ret[0]
+		if ret[1]:
+			dstr += '%-20s' % ret[1]
+		else:
+			dstr += '%-20s' % ''
+		if len(ret) >= 3 and ret[2]:
+			dstr += ' ; ' + ret[2]
+		dstr = dstr.rstrip()
 		addLF = False
 		if dstr.startswith('RETS') or dstr.startswith('RETI') or dstr.startswith('JR ') or dstr.startswith('JUMP'):
 			addLF = True
