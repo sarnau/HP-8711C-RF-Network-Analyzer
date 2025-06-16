@@ -763,7 +763,7 @@ if PRINT_DATA:
 	printAddress(0x04200000)
 	print('.word 0')
 	for r in range(len(GSP_REGS)):
-		printAddress(GSP_REG_BASE+r*2*16)
+		printAddress(GSP_REG_BASE+r*16)
 		print('.word %04Xh' % (GSP_REGS[r]))
 	printAddress(0xffda0000)
 	print('.bss 512*8')
