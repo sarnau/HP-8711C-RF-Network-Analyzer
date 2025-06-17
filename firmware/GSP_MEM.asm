@@ -106,10 +106,10 @@ FFDA8450h: 0D60                     EINT                        ; Enable Interru
 FFDA8460h: 0550                     SETF   10h,0,0              ; Set field parameters
 FFDA8470h: 0740                     SETF   20h,0,1              ; Set field parameters
 FFDA8480h: 09F5 0280 01E0           MOVI   01E00280h,B5_WSTART  ; Move immediate (32 bits)
-FFDA84B0h: 0795 0A20 FFEC           MOVE   B5_WSTART,@FFEC0A20h,1 ; Move field, register to absolute
+FFDA84B0h: 0795 0A20 FFEC           MOVE   B5_WSTART,@CLIP_RECT_dXdY,1 ; Move field, register to absolute
 FFDA84E0h: 09F5 0000 0000           MOVI   SCREENBASE_0x0000_0000,B5_WSTART ; Move immediate (32 bits)
 FFDA8510h: 09F6 027F 01DF           MOVI   01DF027Fh,B6_WEND    ; Move immediate (32 bits)
-FFDA8540h: 0795 0A00 FFEC           MOVE   B5_WSTART,@FFEC0A00h,1 ; Move field, register to absolute
+FFDA8540h: 0795 0A00 FFEC           MOVE   B5_WSTART,@CLIP_RECT_XY,1 ; Move field, register to absolute
 FFDA8570h: 0795 0A40 FFEC           MOVE   B5_WSTART,@CLIP_MIN_XY,1 ; Move field, register to absolute
 FFDA85A0h: 0796 0A60 FFEC           MOVE   B6_WEND,@CLIP_MAX_XY,1 ; Move field, register to absolute
 FFDA85D0h: 5684                     CLR    A4                   ; Clear register
@@ -1915,17 +1915,17 @@ FFDAF2D0h: C000 F93B                JR     CMD_LOOP             ; Jump relative 
 ********************************************************************************
 COMMAND_114_CLIP_RECTANGLE:
 FFDAF2F0h: 9701                     MOVE   *A8+,A1,1            ; Move field. indirect (postincrement) to register
-FFDAF300h: 0781 0A00 FFEC           MOVE   A1,@FFEC0A00h,1      ; Move field, register to absolute
+FFDAF300h: 0781 0A00 FFEC           MOVE   A1,@CLIP_RECT_XY,1   ; Move field, register to absolute
 FFDAF330h: 4E22                     MOVE   A1,B2_DADDR          ; Move register to register
 FFDAF340h: 9701                     MOVE   *A8+,A1,1            ; Move field. indirect (postincrement) to register
-FFDAF350h: 0781 0A20 FFEC           MOVE   A1,@FFEC0A20h,1      ; Move field, register to absolute
+FFDAF350h: 0781 0A20 FFEC           MOVE   A1,@CLIP_RECT_dXdY,1 ; Move field, register to absolute
 FFDAF380h: 4E27                     MOVE   A1,B7_DVDX           ; Move register to register
 FFDAF390h: 09F5 0000 0000           MOVI   SCREENBASE_0x0000_0000,B5_WSTART ; Move immediate (32 bits)
 FFDAF3C0h: 09F6 027F 01DF           MOVI   01DF027Fh,B6_WEND    ; Move immediate (32 bits)
 FFDAF3F0h: 09F0 0001 0001           MOVI   00010001h,B0_SADDR   ; Move immediate (32 bits)
 FFDAF420h: 0541                     SETF   1h,0,0               ; Set field parameters
 FFDAF430h: 0588 00B7 C000           MOVE   A8,@CONTROL+7,0      ; Move field, register to absolute
-FFDAF460h: 07B1 09E0 FFEC           MOVE   @FFEC09E0h,B1_SPTCH,1 ; Move field, absolute to register
+FFDAF460h: 07B1 09E0 FFEC           MOVE   @ORIGIN_XY,B1_SPTCH,1 ; Move field, absolute to register
 FFDAF490h: E032                     ADDXY  B1_SPTCH,B2_DADDR    ; Add registers in XV mode
 FFDAF4A0h: 0FE0                     FILL   XY                   ; Fill array with processed pixels, XY
 FFDAF4B0h: 0590 00B7 C000           MOVE   B0_SADDR,@CONTROL+7,0 ; Move field, register to absolute
@@ -1951,9 +1951,9 @@ FFDAF5F0h: 9704                     MOVE   *A8+,A4,1            ; Move field. in
 FFDAF600h: C000 F908                JR     CMD_LOOP             ; Jump relative conditional
 
 ********************************************************************************
-* COMMAND_118_MOVE_ABSOLUTE_0x76
+* COMMAND_118_MOVE_RELATIVE_0x76
 ********************************************************************************
-COMMAND_118_MOVE_ABSOLUTE_0x76:
+COMMAND_118_MOVE_RELATIVE_0x76:
 FFDAF620h: 9701                     MOVE   *A8+,A1,1            ; Move field. indirect (postincrement) to register
 FFDAF630h: E024                     ADDXY  A1,A4                ; Add registers in XV mode
 FFDAF640h: C000 F904                JR     CMD_LOOP             ; Jump relative conditional
@@ -1965,20 +1965,20 @@ COMMAND_120_ORIGIN:
 FFDAF660h: 07BE 09C0 FFEC           MOVE   @FFEC09C0h,B14_TEMP,1 ; Move field, absolute to register
 FFDAF690h: 45D4                     SUB    B14_TEMP,B4_OFFSET   ; Subtract registers
 FFDAF6A0h: 9701                     MOVE   *A8+,A1,1            ; Move field. indirect (postincrement) to register
-FFDAF6B0h: 0781 09E0 FFEC           MOVE   A1,@FFEC09E0h,1      ; Move field, register to absolute
+FFDAF6B0h: 0781 09E0 FFEC           MOVE   A1,@ORIGIN_XY,1      ; Move field, register to absolute
 FFDAF6E0h: E821                     CVXYL  A1,A1                ; Convert XY address to linear address
 FFDAF6F0h: 4E2E                     MOVE   A1,B14_TEMP          ; Move register to register
 FFDAF700h: 449E                     SUB    B4_OFFSET,B14_TEMP   ; Subtract registers
 FFDAF710h: 079E 09C0 FFEC           MOVE   B14_TEMP,@FFEC09C0h,1 ; Move field, register to absolute
 FFDAF740h: 4E24                     MOVE   A1,B4_OFFSET         ; Move register to register
-FFDAF750h: 07B2 0A00 FFEC           MOVE   @FFEC0A00h,B2_DADDR,1 ; Move field, absolute to register
-FFDAF780h: 07B7 0A20 FFEC           MOVE   @FFEC0A20h,B7_DVDX,1 ; Move field, absolute to register
+FFDAF750h: 07B2 0A00 FFEC           MOVE   @CLIP_RECT_XY,B2_DADDR,1 ; Move field, absolute to register
+FFDAF780h: 07B7 0A20 FFEC           MOVE   @CLIP_RECT_dXdY,B7_DVDX,1 ; Move field, absolute to register
 FFDAF7B0h: C0BD                     JR     FFDAF390h            ; Jump relative conditional
 
 ********************************************************************************
-* COMMAND_122_PIXEL_OPERATION
+* COMMAND_122_PEN_BACKGROUND
 ********************************************************************************
-COMMAND_122_PIXEL_OPERATION:
+COMMAND_122_PEN_BACKGROUND:
 FFDAF7C0h: 9501                     MOVE   *A8+,A1,0            ; Move field. indirect (postincrement) to register
 FFDAF7D0h: 4E28                     MOVE   A1,B8_COLOR0         ; Move register to register
 FFDAF7E0h: 4D1E                     MOVE   B8_COLOR0,B14_TEMP   ; Move register to register
@@ -2010,9 +2010,9 @@ FFDAF930h: 55D9                     OR     B14_TEMP,B9_COLOR1   ; OR registers
 FFDAF940h: C000 F8D4                JR     CMD_LOOP             ; Jump relative conditional
 
 ********************************************************************************
-* COMMAND_126_127
+* COMMAND_126_PIXEL_OPERATION
 ********************************************************************************
-COMMAND_126_127:
+COMMAND_126_PIXEL_OPERATION:
 FFDAF960h: 9501                     MOVE   *A8+,A1,0            ; Move field. indirect (postincrement) to register
 FFDAF970h: 0545                     SETF   5h,0,0               ; Set field parameters
 FFDAF980h: 0581 00BA C000           MOVE   A1,@CONTROL+10,0     ; Move field, register to absolute
@@ -4378,16 +4378,16 @@ FFDC8E40h: .long COMMAND_114_CLIP_RECTANGLE
 FFDC8E60h: .long COMMAND_114_CLIP_RECTANGLE
 FFDC8E80h: .long COMMAND_116_MOVE_ABSOLUTE_0x74
 FFDC8EA0h: .long COMMAND_116_MOVE_ABSOLUTE_0x74
-FFDC8EC0h: .long COMMAND_118_MOVE_ABSOLUTE_0x76
-FFDC8EE0h: .long COMMAND_118_MOVE_ABSOLUTE_0x76
+FFDC8EC0h: .long COMMAND_118_MOVE_RELATIVE_0x76
+FFDC8EE0h: .long COMMAND_118_MOVE_RELATIVE_0x76
 FFDC8F00h: .long COMMAND_120_ORIGIN
 FFDC8F20h: .long COMMAND_120_ORIGIN
-FFDC8F40h: .long COMMAND_122_PIXEL_OPERATION
-FFDC8F60h: .long COMMAND_122_PIXEL_OPERATION
+FFDC8F40h: .long COMMAND_122_PEN_BACKGROUND
+FFDC8F60h: .long COMMAND_122_PEN_BACKGROUND
 FFDC8F80h: .long COMMAND_124_PEN_FOREGROUND
 FFDC8FA0h: .long COMMAND_124_PEN_FOREGROUND
-FFDC8FC0h: .long COMMAND_126_127
-FFDC8FE0h: .long COMMAND_126_127
+FFDC8FC0h: .long COMMAND_126_PIXEL_OPERATION
+FFDC8FE0h: .long COMMAND_126_PIXEL_OPERATION
 FFDC9000h: .long COMMAND_128_PIXEL_STRETCH_OFF
 FFDC9020h: .long COMMAND_128_PIXEL_STRETCH_OFF
 FFDC9040h: .long COMMAND_130_PIXEL_STRETCH_ON
@@ -4488,10 +4488,13 @@ FFEC09A0h: .word 0000h
 FFEC09B0h: .word 0000h
 FFEC09C0h: .word 0000h
 FFEC09D0h: .word 0000h
+ORIGIN_XY:
 FFEC09E0h: .word 0000h
 FFEC09F0h: .word 0000h
+CLIP_RECT_XY:
 FFEC0A00h: .word 0000h
 FFEC0A10h: .word 0000h
+CLIP_RECT_dXdY:
 FFEC0A20h: .word 0280h
 FFEC0A30h: .word 01E0h
 CLIP_MIN_XY:
