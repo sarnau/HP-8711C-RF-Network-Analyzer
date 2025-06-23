@@ -42,6 +42,15 @@ The mainboard has a backup battery (Panasonic Lithium Battery BR-2/3A 3V), which
 ![Replaced parts](./img/replaced_parts.jpg)
 
 
+## Upgrading to an LCD
+
+It is relatively easy to upgrade the device to an LCD. I've added some photos from my conversion including STL files created with FreeCAD for the mounting hardware.
+
+![Installation](./LCD-upgrade/LCD_installing_VGA_converter_in_frame.jpg)
+
+![Installed LCD](./LCD-upgrade/LCD_done.jpg)
+
+
 ## Adding keyword option without opening the device
 
 There are hacks in the internet, which requires to remove the boot rom, patch it and reflash it. This is not necessary with the 4.5 firmware, because it supports entering the option keyword.
