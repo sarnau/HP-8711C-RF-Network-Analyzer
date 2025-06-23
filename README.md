@@ -44,7 +44,7 @@ The mainboard has a backup battery (Panasonic Lithium Battery BR-2/3A 3V), which
 
 ## Upgrading to an LCD
 
-It is relatively easy to upgrade the device to an LCD. I've added some photos from my conversion including STL files created with FreeCAD for the mounting hardware.
+It is relatively easy to upgrade the device to an LCD. I've added some photos from my conversion with a AA084VC03 LCD including STL files created with FreeCAD for the mounting hardware.
 
 ![Installation](./LCD-upgrade/LCD_installing_VGA_converter_in_frame.jpg)
 
