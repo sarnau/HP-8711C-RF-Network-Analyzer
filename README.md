@@ -55,6 +55,8 @@ It is relatively easy to upgrade the device to an LCD. I've added some photos fr
 
 There are hacks in the internet, which requires to remove the boot rom, patch it and reflash it. This is not necessary with the 4.5 firmware, because it supports entering the option keyword.
 
+A reader tested this also on a HP8712B and it works as well, expect for the LAN option, which does not exist in that hardware (a message with "Unknown option" was displayed for about 5 seconds)
+
 Select 'System Options' => 'System Config' => 'Options Setup'
 
 ![Before installing new Options](./img/options_update_before.jpg)
