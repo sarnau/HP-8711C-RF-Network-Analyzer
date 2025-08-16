@@ -95,21 +95,22 @@ So far the typical way to upgrade the unit was to open the device, reading it ou
 
 *** MARKUS: I couldn't find an email for you so I thought this might be a way to get a comment/issue report to you. ***
 
-I have upgraded my HP8711's options and have the LAN, IBASIC and fault location installed.  I am trying to swap the device over to an '8712 so that I will hve VNA functionality and Smith charts.
+I have upgraded my HP8711C's options and have the LAN, IBASIC and fault location installed.  I am trying to swap the device over to an '8712C so that I will hve VNA functionality and Smith charts.
 
 Thanks for your EXCELLENT web page, directions and information.  
 
 HOWEVER, when I follow the procedure for uploaded/executing the 80-byte OC read/modify/write code, 'put \memory' does not work for me on my 8711C.  It returns an error to the terminal:
-	tftp> put ./memory
-	Got ERROR packet: File not found
-	Got ERROR, aborted
-	tftp> 
+
+    tftp> put ./memory
+    Got ERROR packet: File not found
+    Got ERROR, aborted
+    tftp> 
 
 On reboot the analyzer comes up as an '8711C again.  
 
 I tried "put ./memory", also renaming my local 'memory' file to '\memory' but the analyzer does not like those names either.  I think it is failing when looking for the target folder.  
 
-If I ftp to the analyzer, 'cd /' and then 'dir' I see the folder '/ram', but folder/mount point called '/memory'.  Perhaps I need 'tftp memory /ram' to upload and execute the file.  Local name 'memory', remote destination '/ram'.
+If I ftp to the analyzer, 'cd /' and then 'dir' I see the folder '/ram', but  nofolder/mount point called '/memory'.  Perhaps I need 'tftp memory /ram' to upload and execute the file.  Local name 'memory', remote destination '/ram'.
 
 I might be wrong, and I don't want to "brick" my analyzer so I stopped further experimentation.
 
