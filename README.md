@@ -91,43 +91,18 @@ So far the typical way to upgrade the unit was to open the device, reading it ou
 2. Turn the device on and directly after the "All BootROM Selftests Passed." message, hold down the SOFTKEY 7. You should see a "Booting to LAN Monitor". Note the IP address in my case it is "-64.168.1.3" (-64 is a bug in the BootROM treating the first byte as a signed byte, the real value is 256-64 = 192)
 3. Launch the Terminal and `cd` into the directory with the `memory` file in it.
 4. Launch TFTP with the IP address of the device, like `tftp 192.168.1.3` (use your IP adress from above)
-5. Enter `put \memory` and press return. You should see a message on the device, that the memory file was received and a _LINEFEED_! Once that happened, turn the device off and on again.
+5. Next step is to upload the binary file 'memory' to the analyzer so that it can take effect.  For UNIX and MacOS, enter:
+	
+	`put memory /memory`
 
-*** MARKUS: I couldn't find an email for you so I thought this might be a way to get a comment/issue report to you. ***
+and press return. This will copy the local file 'memory' to a root directory file '/memory' on the analyzer.  You should see a message on the device indicating that the memory file was received and a _LINEFEED_! Example (MacOS termainl window):
 
-I have upgraded my HP8711C's options and have the LAN, IBASIC and fault location installed.  I am trying to swap the device over to an '8712C so that I will hve VNA functionality and Smith charts.
+    `tftp> put memory /memory
+    Sent 80 bytes during 0.1 seconds in 1 blocks
+    tftp> quit`
 
-Thanks for your EXCELLENT web page, directions and information.  
-
-HOWEVER, when I follow the procedure for uploaded/executing the 80-byte OC read/modify/write code, 'put \memory' does not work for me on my 8711C.  It returns an error to the terminal:
-
-    tftp> put \memory
-    Got ERROR packet: File not found
-    Got ERROR, aborted
-    tftp> 
-
-There was an error message on the analyzer stating that it could not find '\memory'.
-
-On reboot the analyzer comes up as an '8711C again.  
-
-I tried "put ./memory", also renaming my local 'memory' file to '\memory' but the analyzer does not like those names either.  I think it is failing when looking for the target folder.  
-
-If I ftp to the analyzer, 'cd /' and then 'dir' I see the folder '/ram' (along with /int, /nvram, and /data), but  no folder/mount point called '/memory'.  Perhaps I need 'tftp memory /ram' to upload and execute the file.  Local name 'memory', remote destination '/ram'.
-
-I might be wrong, and I don't want to "brick" my analyzer so I stopped further experimentation.
-
-My firmware is version 4.51, I did not upgrade to 4.52 as I want to try to avoid the challenge of LIF format floppies.  I do not have any other machine remaining with a 3.5" floppy drive on it...  Except the analyzer!
-
-My email is mcquiggi@sfu.ca if you want to reply via email rather than through GitHub.
-
-Thanks in advance for any insight, and thanks again for the clear explanations and the web site.
-
-Kevin McQuiggin
-Vancouver Island, BC Canada
-
-
-
-6. Done!
+6. Once this upload is complete, turn the analyzer off and on again.  It should reboot as an HP8712C device.  Type 'quit' to leave the local tftp client.
+7. Done!
 
 While I haven't tried it on Windows, this command might do the trick. Again: you need to replace the IP address with the one from your device.
 
