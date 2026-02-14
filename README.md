@@ -91,8 +91,18 @@ So far the typical way to upgrade the unit was to open the device, reading it ou
 2. Turn the device on and directly after the "All BootROM Selftests Passed." message, hold down the SOFTKEY 7. You should see a "Booting to LAN Monitor". Note the IP address in my case it is "-64.168.1.3" (-64 is a bug in the BootROM treating the first byte as a signed byte, the real value is 256-64 = 192)
 3. Launch the Terminal and `cd` into the directory with the `memory` file in it.
 4. Launch TFTP with the IP address of the device, like `tftp 192.168.1.3` (use your IP adress from above)
-5. Enter `put \memory` and press return. You should see a message on the device, that the memory file was received and a _LINEFEED_! Once that happened, turn the device off and on again.
-6. Done!
+5. Next step is to upload the binary file 'memory' to the analyzer so that it can take effect.  For UNIX and MacOS, enter:
+	
+	`put memory /memory`
+
+and press return. This will copy the local file 'memory' to a root directory file '/memory' on the analyzer.  You should see a message on the device indicating that the memory file was received and a _LINEFEED_! Example (MacOS termainl window):
+
+    `tftp> put memory /memory
+    Sent 80 bytes during 0.1 seconds in 1 blocks
+    tftp> quit`
+
+6. Once this upload is complete, turn the analyzer off and on again.  It should reboot as an HP8712C device.  Type 'quit' to leave the local tftp client.
+7. Done!
 
 While I haven't tried it on Windows, this command might do the trick. Again: you need to replace the IP address with the one from your device.
 
